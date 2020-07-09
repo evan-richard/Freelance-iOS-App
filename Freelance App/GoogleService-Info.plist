@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>115123656193-621s2cun5kqt03cuvv4dk5j9ko46f9r4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.115123656193-621s2cun5kqt03cuvv4dk5j9ko46f9r4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC1kLUMdwrCBc4NvWE6tOuY_9a0j9VoInw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>115123656193</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.EvanRichard.Freelance-App</string>
+	<key>PROJECT_ID</key>
+	<string>freelance-app-c4685</string>
+	<key>STORAGE_BUCKET</key>
+	<string>freelance-app-c4685.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:115123656193:ios:a995b28b6b695756c6d200</string>
+	<key>DATABASE_URL</key>
+	<string>https://freelance-app-c4685.firebaseio.com</string>
+</dict>
+</plist>
