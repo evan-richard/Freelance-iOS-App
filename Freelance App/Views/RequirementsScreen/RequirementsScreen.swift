@@ -9,29 +9,61 @@
 import SwiftUI
 
 struct RequirementsScreen: View {
+    @State private var isSearching: Bool = false
+    @State private var searchString: String = ""
+    
     var body: some View {
         VStack {
-            RequirementsList()
-            .navigationBarTitle("Requirements", displayMode: .large)
-                .navigationBarItems(trailing:
-                    HStack(spacing: 30) {
-                        Button(action: {
-            //            pass
-                        }, label: {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.purple)
-                        })
-                        Button(action: {
-            //            pass
-                        }, label: {
-                            Image(systemName: "square.and.pencil")
-                                .foregroundColor(.purple)
-                        })
-                    }
-                )
-                .padding()
-            Spacer()
+            if isSearching {
+                SearchRequirementsListView(searchString: $searchString, isSearching: $isSearching)
+                .navigationBarTitle("Requirements", displayMode: .inline)
+                    .navigationBarItems(trailing:
+                        HStack(spacing: 35) {
+                            Button(action: {
+                                withAnimation {
+                                    self.isSearching.toggle()
+                                    self.searchString = ""
+                                }
+                            }, label: {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.purple)
+                                    .imageScale(.large)
+                            })
+                            Button(action: {
+                //            pass
+                            }, label: {
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(.purple)
+                                    .imageScale(.large)
+                            })
+                        }
+                    )
+            } else {
+                RequirementsList(searchString: $searchString)
+                .navigationBarTitle("Requirements", displayMode: .large)
+                    .navigationBarItems(trailing:
+                        HStack(spacing: 35) {
+                            Button(action: {
+                                withAnimation {
+                                    self.isSearching.toggle()
+                                }
+                            }, label: {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.purple)
+                                    .imageScale(.large)
+                            })
+                            Button(action: {
+                //            pass
+                            }, label: {
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(.purple)
+                                    .imageScale(.large)
+                            })
+                        }
+                    )
+            }
         }
+        .padding()
     }
 }
 

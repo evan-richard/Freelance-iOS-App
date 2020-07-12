@@ -40,6 +40,7 @@ struct OverviewScreen: View {
         }, label: {
             Image(systemName: "square.and.arrow.up")
                 .foregroundColor(.purple)
+                .imageScale(.large)
         }))
         .padding()
     }

@@ -10,39 +10,51 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var searchString: String
-    
-    @State private var isEditing = false
+    @Binding var isSearching: Bool
     
     var body: some View {
         HStack {
-            Image(systemName: "magnifyingglass").opacity(0.3)
-            TextField("Search", text: $searchString)
-            
-            if isEditing {
-                Spacer()
-                Button(action: {
-                    self.isEditing = false
-                    self.searchString = ""
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.primary)
-                        .opacity(0.3)
+            HStack {
+                Image(systemName: "magnifyingglass").opacity(0.3)
+                TextField("Search", text: $searchString)
+                
+                if !searchString.isEmpty {
+                    Spacer()
+                    Button(action: {
+                        self.searchString = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.primary)
+                            .opacity(0.3)
+                    }
                 }
             }
+            .padding(7)
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(8)
+            .onTapGesture {
+                withAnimation {
+                    self.isSearching = true
+                }
+            }
+            if isSearching {
+                Button(action: {
+                    withAnimation {
+                        self.isSearching = false
+                        self.searchString = ""
+                        self.hideKeyboard()
+                    }
+                }, label: {
+                    Text("Cancel")
+                })
+            }
         }
-        .padding(7)
-        .padding(.horizontal, 10)
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(8)
-        .onTapGesture {
-            self.isEditing = true
-        }
+        .frame(height: 40)
     }
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(searchString: Binding.constant(""))
-        .environment(\.colorScheme, .dark)
+        SearchBar(searchString: Binding.constant(""), isSearching: Binding.constant(false))
     }
 }

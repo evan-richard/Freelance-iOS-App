@@ -11,8 +11,16 @@ import SwiftUI
 struct RequirementsList: View {
     @ObservedObject var requirementListVM: RequirementListViewModel = RequirementListViewModel()
     
+    @Binding var searchString: String
+    
     var body: some View {
-        List(self.requirementListVM.requirementCellViewModels) { requirementCellVM in
+        List(self.requirementListVM.requirementCellViewModels.filter({ requirementCellVM in
+            if searchString != "" {
+                return requirementCellVM.title.lowercased().contains(searchString.lowercased())
+            } else {
+                return true
+            }
+        })) { requirementCellVM in
             RequirementListRowItem(requirementCellVM: requirementCellVM)
         }
     }
@@ -20,6 +28,6 @@ struct RequirementsList: View {
 
 struct RequirementsList_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementsList()
+        RequirementsList(searchString: Binding.constant(""))
     }
 }

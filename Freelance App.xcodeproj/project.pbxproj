@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */; };
 		207F4FBA24B758220044E1B7 /* RequirementsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */; };
+		207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */; };
+		207F4FBF24B7DF690044E1B7 /* SearchRequirementsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -66,6 +68,8 @@
 		1D5E6780A3186D2B5AE91A97 /* Pods_Freelance_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freelance_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailViewModel.swift; sourceTree = "<group>"; };
 		207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementsDetailView.swift; sourceTree = "<group>"; };
+		207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardHelper.swift; sourceTree = "<group>"; };
+		207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequirementsListView.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207F4FBB24B7DA180044E1B7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +187,7 @@
 		20B7C79D24AFC5AB0098BBF6 /* Freelance App */ = {
 			isa = PBXGroup;
 			children = (
+				207F4FBB24B7DA180044E1B7 /* Helpers */,
 				2093C37424B529D4001C6C5F /* ViewModels */,
 				20FCE45824AFED1500D2C270 /* Store */,
 				20B7C7DA24AFD11E0098BBF6 /* Models */,
@@ -273,6 +286,7 @@
 				20FCE45F24B0CFA700D2C270 /* RequirementListRowItem.swift */,
 				20FCE46324B1408800D2C270 /* RequirementsList.swift */,
 				207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */,
+				207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */,
 			);
 			path = RequirementsScreen;
 			sourceTree = "<group>";
@@ -556,8 +570,10 @@
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,
 				207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */,
+				207F4FBF24B7DF690044E1B7 /* SearchRequirementsListView.swift in Sources */,
 				20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */,
 				20B7C7A624AFC5AB0098BBF6 /* ContentView.swift in Sources */,
+				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
 				2093C38024B56745001C6C5F /* ProjectListCell.swift in Sources */,
 				2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */,
 				20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */,

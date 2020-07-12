@@ -47,7 +47,7 @@ struct ProjectsScreenFooterView: View {
                 CreateProjectView()
             })
         }
-        .padding(.horizontal)
+        .padding(.top, 5)
     }
 }
 

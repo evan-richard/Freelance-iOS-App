@@ -12,14 +12,15 @@ struct ProjectsScreen: View {
     @ObservedObject var projectListVM: ProjectListViewModel = ProjectListViewModel()
     
     @State private var searchString: String = ""
+    @State private var isSearching: Bool = false
     @State private var isFilterActive: Bool = false
     @State private var isCreateProjectOpen: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(searchString: $searchString)
-                ProjectListView(projectListVM: projectListVM)
+                SearchBar(searchString: $searchString, isSearching: $isSearching)
+                ProjectListView(projectListVM: projectListVM, searchString: $searchString)
                 Spacer()
                 ProjectsScreenFooterView(isFilterActive: $isFilterActive, isCreateProjectOpen: $isCreateProjectOpen, numberOfProjects: $projectListVM.numberOfProjects)
             }

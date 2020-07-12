@@ -11,10 +11,18 @@ import SwiftUI
 struct ProjectListView: View {
     @ObservedObject var projectListVM: ProjectListViewModel
     
+    @Binding var searchString: String
+    
     @State private var selectedProjectId: String?
     
     var body: some View {
-        List(projectListVM.projectCellViewModels) { projectCellVM in
+        List(projectListVM.projectCellViewModels.filter({ projectCellVM in
+            if searchString != "" {
+                return projectCellVM.appName.lowercased().contains(searchString.lowercased()) || projectCellVM.customerName.lowercased().contains(searchString.lowercased())
+            } else {
+                return true
+            }
+        })) { projectCellVM in
             NavigationLink(destination: OverviewScreen(), tag: projectCellVM.projectId,
             selection: self.selectedProjectBinding()) {
                 ProjectListCell(projectCellVM: projectCellVM)
@@ -38,6 +46,6 @@ struct ProjectListView: View {
 struct ProjectListView_Previews: PreviewProvider {
     static var previews: some View {
         let projectListVM: ProjectListViewModel = ProjectListViewModel()
-        return ProjectListView(projectListVM: projectListVM)
+        return ProjectListView(projectListVM: projectListVM, searchString: Binding.constant(""))
     }
 }
