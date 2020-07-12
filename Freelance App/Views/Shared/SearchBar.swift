@@ -19,7 +19,6 @@ struct SearchBar: View {
                 TextField("Search", text: $searchString)
                 
                 if !searchString.isEmpty {
-                    Spacer()
                     Button(action: {
                         self.searchString = ""
                     }) {

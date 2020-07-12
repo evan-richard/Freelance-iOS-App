@@ -10,7 +10,12 @@
 		207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */; };
 		207F4FBA24B758220044E1B7 /* RequirementsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */; };
 		207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */; };
-		207F4FBF24B7DF690044E1B7 /* SearchRequirementsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */; };
+		207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC224BB6F6F0044E1B7 /* NavigationListView.swift */; };
+		207F4FC524BB6FD50044E1B7 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */; };
+		207F4FC824BB73760044E1B7 /* RequirementDetailTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */; };
+		207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */; };
+		207F4FD124BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */; };
+		207F4FD424BB81060044E1B7 /* RequirementEditAssignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -69,7 +74,12 @@
 		207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailViewModel.swift; sourceTree = "<group>"; };
 		207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementsDetailView.swift; sourceTree = "<group>"; };
 		207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardHelper.swift; sourceTree = "<group>"; };
-		207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequirementsListView.swift; sourceTree = "<group>"; };
+		207F4FC224BB6F6F0044E1B7 /* NavigationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationListView.swift; sourceTree = "<group>"; };
+		207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
+		207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailTitleBar.swift; sourceTree = "<group>"; };
+		207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailSectionView.swift; sourceTree = "<group>"; };
+		207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementSimpleSectionView.swift; sourceTree = "<group>"; };
+		207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementEditAssignee.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -147,6 +157,32 @@
 				207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		207F4FC624BB734E0044E1B7 /* RequirementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */,
+				207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */,
+			);
+			path = RequirementDetail;
+			sourceTree = "<group>";
+		};
+		207F4FCD24BB7D1B0044E1B7 /* RequirementDetailSections */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */,
+				207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */,
+			);
+			path = RequirementDetailSections;
+			sourceTree = "<group>";
+		};
+		207F4FD224BB80DB0044E1B7 /* RequirementDetailEditSection */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */,
+			);
+			path = RequirementDetailEditSection;
 			sourceTree = "<group>";
 		};
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
@@ -275,6 +311,8 @@
 			isa = PBXGroup;
 			children = (
 				20FCE44F24AFDC0A00D2C270 /* OverviewScreen.swift */,
+				207F4FC224BB6F6F0044E1B7 /* NavigationListView.swift */,
+				207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */,
 			);
 			path = OverviewScreen;
 			sourceTree = "<group>";
@@ -282,11 +320,12 @@
 		20FCE45524AFE22300D2C270 /* RequirementsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				207F4FD224BB80DB0044E1B7 /* RequirementDetailEditSection */,
+				207F4FCD24BB7D1B0044E1B7 /* RequirementDetailSections */,
+				207F4FC624BB734E0044E1B7 /* RequirementDetail */,
 				20FCE45624AFE23700D2C270 /* RequirementsScreen.swift */,
 				20FCE45F24B0CFA700D2C270 /* RequirementListRowItem.swift */,
 				20FCE46324B1408800D2C270 /* RequirementsList.swift */,
-				207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */,
-				207F4FBE24B7DF690044E1B7 /* SearchRequirementsListView.swift */,
 			);
 			path = RequirementsScreen;
 			sourceTree = "<group>";
@@ -569,10 +608,12 @@
 				2093C38424B5735E001C6C5F /* RequirementsStore.swift in Sources */,
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,
+				207F4FD124BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift in Sources */,
 				207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */,
-				207F4FBF24B7DF690044E1B7 /* SearchRequirementsListView.swift in Sources */,
 				20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */,
 				20B7C7A624AFC5AB0098BBF6 /* ContentView.swift in Sources */,
+				207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */,
+				207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
 				2093C38024B56745001C6C5F /* ProjectListCell.swift in Sources */,
 				2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */,
@@ -581,6 +622,7 @@
 				207F4FBA24B758220044E1B7 /* RequirementsDetailView.swift in Sources */,
 				2093C38C24B6C1C4001C6C5F /* RequirementCellViewModel.swift in Sources */,
 				20FCE45024AFDC0A00D2C270 /* OverviewScreen.swift in Sources */,
+				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBar.swift in Sources */,
 				20FCE45224AFDCF100D2C270 /* CreateProjectView.swift in Sources */,
 				2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */,
 				2093C38E24B6C535001C6C5F /* ProjectViewModel.swift in Sources */,
@@ -590,6 +632,8 @@
 				20FCE45724AFE23700D2C270 /* RequirementsScreen.swift in Sources */,
 				20FCE46024B0CFA700D2C270 /* RequirementListRowItem.swift in Sources */,
 				2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */,
+				207F4FD424BB81060044E1B7 /* RequirementEditAssignee.swift in Sources */,
+				207F4FC524BB6FD50044E1B7 /* ProjectDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

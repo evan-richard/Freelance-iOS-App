@@ -24,7 +24,7 @@ struct RequirementListRowItem: View {
                 .font(requirementCellVM.font)
         })
         .sheet(isPresented: self.$isRequirementDetailOpen, content: {
-            RequirementsDetailView(requirementTitle: self.requirementCellVM.title)
+            RequirementsDetailView(requirementTitle: self.requirementCellVM.title, isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
         })
     }
 }

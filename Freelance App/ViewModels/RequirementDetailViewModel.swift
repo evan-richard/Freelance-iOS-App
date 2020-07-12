@@ -12,6 +12,7 @@ import Combine
 
 class RequirementDetailViewModel: ObservableObject {
     @Published var title: String = ""
+    @Published var titleWithPrefix = ""
     @Published var status: String = ""
     @Published var detailList: [String] = [String]()
     
@@ -21,6 +22,7 @@ class RequirementDetailViewModel: ObservableObject {
     init(requirementTitle: String) {
         if let selectedRequirement: Requirement = getRequirementFromTitle(requirementTitle: requirementTitle) {
             self.title = selectedRequirement.title
+            self.titleWithPrefix = requirementTitle
 //            self.status = selectedRequirement.status
 //            self.detailList = selectedRequirement.detailList
         }
