@@ -20,22 +20,26 @@ class ProjectMembersStore: ObservableObject {
     }
     
     private func loadProjectMembersList(grantedUsers: [String]) -> Void {
-//        db.collection("users").whereField("id", in: grantedUsers).getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                self.projectMembers = querySnapshot!.documents.compactMap { document -> User? in
-//                    try? document.data(as: User.self)
-//                }
-//            }
-//        }
-        self.projectMembers = [
-            User(id: "test1", displayName: "Developer 1", type: "developer"),
-            User(id: "test2", displayName: "Developer 2", type: "developer"),
-            User(id: "test3", displayName: "Developer 3", type: "developer"),
-            User(id: "test4", displayName: "Client 1", type: "client"),
-            User(id: "test5", displayName: "Client 2", type: "client"),
-            User(id: "test6", displayName: "Client 3", type: "client")
-        ]
+        db.collection("users").whereField("id", in: grantedUsers).addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.projectMembers = querySnapshot!.documents.compactMap { document -> User? in
+                    try? document.data(as: User.self)
+                }
+                .sorted(by: { (user1, user2) in
+                    user1.displayName!.compare(user2.displayName!).rawValue < 0
+                })
+            }
+        }
+        
+//        self.projectMembers = [
+//            User(id: "test1", displayName: "Developer 1", type: "developer"),
+//            User(id: "test2", displayName: "Developer 2", type: "developer"),
+//            User(id: "test3", displayName: "Developer 3", type: "developer"),
+//            User(id: "test4", displayName: "Client 1", type: "client"),
+//            User(id: "test5", displayName: "Client 2", type: "client"),
+//            User(id: "test6", displayName: "Client 3", type: "client")
+//        ]
     }
 }

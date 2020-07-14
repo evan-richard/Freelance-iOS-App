@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct RequirementDetailSectionView: View {
+    @ObservedObject var requirementDetailVM: RequirementDetailViewModel
     @State private var isEditOpen: Bool = false
+    @Binding var sectionValueId: String
     
     var sectionTitle: String
-    
-    @Binding var sectionValueId: String
     
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct RequirementDetailSectionView: View {
     private func getViewForSection() -> some View {
         switch self.sectionTitle {
             case "Assignee":
-                return AnyView(RequirementEditAssignee(isEditOpen: $isEditOpen, sectionValueId: $sectionValueId))
+                return AnyView(RequirementEditAssignee(requirementDetailVM: requirementDetailVM, isEditOpen: $isEditOpen, sectionValueId: $sectionValueId))
             default:
                 return AnyView(WorkInProgressView())
         }
@@ -46,6 +46,6 @@ struct RequirementDetailSectionView: View {
 
 struct RequirementDetailSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementDetailSectionView(sectionTitle: "Assignee", sectionValueId: Binding.constant("test1"))
+        RequirementDetailSectionView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), sectionValueId: Binding.constant("test1"), sectionTitle: "Assignee")
     }
 }

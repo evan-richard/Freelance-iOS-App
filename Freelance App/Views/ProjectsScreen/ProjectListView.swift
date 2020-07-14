@@ -10,10 +10,8 @@ import SwiftUI
 
 struct ProjectListView: View {
     @ObservedObject var projectListVM: ProjectListViewModel
-    
-    @Binding var searchString: String
-    
     @State private var selectedProjectId: String?
+    @Binding var searchString: String
     
     var body: some View {
         List(projectListVM.projectCellViewModels.filter({ projectCellVM in

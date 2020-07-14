@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RequirementListRowItem: View {
     @ObservedObject var requirementCellVM: RequirementCellViewModel
-    
     @State private var isRequirementDetailOpen: Bool = false
     
     var body: some View {

@@ -18,15 +18,17 @@ class ProjectMemberListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.projectMembersStore?.$projectMembers.map { projectMembers in
-            projectMembers.map { projectMember in
-                ProjectMemberCellViewModel(
-                    projectMemberId: projectMember.id,
-                    displayName: projectMember.displayName ?? ""
-                )
+        self.appDelegate.projectMembersStore?.$projectMembers
+            .map { projectMembers in
+                projectMembers.map { projectMember in
+                    ProjectMemberCellViewModel(
+                        projectMemberId: projectMember.id,
+                        displayName: projectMember.displayName ?? ""
+                    )
             }
         }
         .assign(to: \.projectMemberCellViewModels, on: self)
         .store(in: &cancellables)
+        self.projectMemberCellViewModels.insert(ProjectMemberCellViewModel(projectMemberId: "", displayName: "Unassigned"), at: 0)
     }
 }

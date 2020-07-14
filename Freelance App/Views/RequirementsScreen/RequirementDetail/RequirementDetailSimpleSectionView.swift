@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct RequirementDetailSimpleSectionView: View {
-    var sectionTitle: String
-    
+    @ObservedObject var requirementDetailVM: RequirementDetailViewModel
     @Binding var sectionValue: String
     @Binding var sectionValueId: String
     
+    var sectionTitle: String
+    
     var body: some View {
         VStack(alignment: .leading) {
-            RequirementDetailSectionView(sectionTitle: sectionTitle, sectionValueId: $sectionValueId)
+            RequirementDetailSectionView(requirementDetailVM: requirementDetailVM, sectionValueId: $sectionValueId, sectionTitle: sectionTitle)
             Text(sectionValue)
                 .font(.body)
                 .foregroundColor(.secondary)
@@ -26,6 +27,6 @@ struct RequirementDetailSimpleSectionView: View {
 
 struct RequirementDetailSimpleSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementDetailSimpleSectionView(sectionTitle: "Assignee", sectionValue: Binding.constant("Evan Richard"), sectionValueId: Binding.constant("test1"))
+        RequirementDetailSimpleSectionView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), sectionValue: Binding.constant("Evan Richard"), sectionValueId: Binding.constant("test1"), sectionTitle: "Assignee")
     }
 }

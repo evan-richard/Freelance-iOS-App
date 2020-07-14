@@ -10,7 +10,6 @@ import SwiftUI
 
 struct LoginScreen: View {
     @ObservedObject var loginVM: LoginViewModel
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loading = false

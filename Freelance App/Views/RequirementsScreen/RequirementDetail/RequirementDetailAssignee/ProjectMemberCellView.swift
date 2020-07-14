@@ -10,17 +10,16 @@ import SwiftUI
 
 struct ProjectMemberCellView: View {
     @ObservedObject var projectMemberCellVM: ProjectMemberCellViewModel
-    
-    @Binding var sectionValueId: String
+    @Binding var selectedMemberId: String
     
     var body: some View {
         Button(action: {
-            self.sectionValueId = self.projectMemberCellVM.projectMemberId
+            self.selectedMemberId = self.projectMemberCellVM.projectMemberId
         }) {
             HStack {
                 Text(projectMemberCellVM.displayName)
                 Spacer()
-                if sectionValueId == projectMemberCellVM.projectMemberId {
+                if selectedMemberId == projectMemberCellVM.projectMemberId {
                     Image(systemName: "checkmark")
                         .foregroundColor(.purple)
                 }
@@ -31,6 +30,6 @@ struct ProjectMemberCellView: View {
 
 struct ProjectMemberCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectMemberCellView(projectMemberCellVM: ProjectMemberCellViewModel(projectMemberId: "test1", displayName: "Evan Richard"), sectionValueId: Binding.constant("test1"))
+        ProjectMemberCellView(projectMemberCellVM: ProjectMemberCellViewModel(projectMemberId: "test1", displayName: "Evan Richard"), selectedMemberId: Binding.constant("test1"))
     }
 }

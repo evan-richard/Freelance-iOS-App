@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ProjectsScreen: View {
     @ObservedObject var projectListVM: ProjectListViewModel = ProjectListViewModel()
-    
     @State private var searchString: String = ""
     @State private var isSearching: Bool = false
     @State private var isFilterActive: Bool = false

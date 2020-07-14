@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RequirementsList: View {
     @ObservedObject var requirementListVM: RequirementListViewModel = RequirementListViewModel()
-    
     @Binding var searchString: String
     
     var body: some View {

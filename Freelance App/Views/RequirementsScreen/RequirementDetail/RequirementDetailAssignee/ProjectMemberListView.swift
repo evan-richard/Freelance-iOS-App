@@ -10,9 +10,8 @@ import SwiftUI
 
 struct ProjectMemberListView: View {
     @ObservedObject var projectMemberListVM: ProjectMemberListViewModel
-    
     @Binding var searchString: String
-    @Binding var sectionValueId: String
+    @Binding var selectedMemberId: String
     
     var body: some View {
         List(projectMemberListVM.projectMemberCellViewModels.filter({ projectMemberCellVM in
@@ -22,13 +21,13 @@ struct ProjectMemberListView: View {
                 return true
             }
         })) { projectMemberCellVM in
-            ProjectMemberCellView(projectMemberCellVM: projectMemberCellVM, sectionValueId: self.$sectionValueId)
+            ProjectMemberCellView(projectMemberCellVM: projectMemberCellVM, selectedMemberId: self.$selectedMemberId)
         }
     }
 }
 
 struct ProjectMemberListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectMemberListView(projectMemberListVM: ProjectMemberListViewModel(), searchString: Binding.constant(""), sectionValueId: Binding.constant("test1"))
+        ProjectMemberListView(projectMemberListVM: ProjectMemberListViewModel(), searchString: Binding.constant(""), selectedMemberId: Binding.constant("test1"))
     }
 }

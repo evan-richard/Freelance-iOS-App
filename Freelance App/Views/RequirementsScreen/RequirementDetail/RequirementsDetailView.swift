@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RequirementsDetailView: View {
     @ObservedObject private var requirementDetailVM: RequirementDetailViewModel
-    
     @Binding var isRequirementDetailViewOpen: Bool
     
     init(requirementTitle: String, isRequirementDetailViewOpen: Binding<Bool>) {
@@ -21,9 +20,13 @@ struct RequirementsDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
             RequirementDetailTitleBar(isRequirementDetailViewOpen: $isRequirementDetailViewOpen ,requirementDetailTitleBar: requirementDetailVM.titleWithPrefix)
-            RequirementDetailSimpleSectionView(sectionTitle: "Assignee", sectionValue: $requirementDetailVM.assignee, sectionValueId: $requirementDetailVM.assigneeId)
-            RequirementDetailSimpleSectionView(sectionTitle: "Estimated Sprint", sectionValue: Binding.constant("Sprint 3"), sectionValueId: Binding.constant("Sprint 3"))
-            RequirementDetailSimpleSectionView(sectionTitle: "Status", sectionValue: $requirementDetailVM.status, sectionValueId: $requirementDetailVM.status)
+            
+            RequirementDetailSimpleSectionView(requirementDetailVM: requirementDetailVM, sectionValue: $requirementDetailVM.assignee, sectionValueId: $requirementDetailVM.assigneeId, sectionTitle: "Assignee")
+            
+            RequirementDetailSimpleSectionView(requirementDetailVM: requirementDetailVM, sectionValue: Binding.constant("Sprint 3"), sectionValueId: Binding.constant("Sprint 3"), sectionTitle: "Estimated Sprint")
+            
+            RequirementDetailSimpleSectionView(requirementDetailVM: requirementDetailVM, sectionValue: $requirementDetailVM.status, sectionValueId: $requirementDetailVM.status, sectionTitle: "Status")
+            
             Spacer()
         }
         .padding()
