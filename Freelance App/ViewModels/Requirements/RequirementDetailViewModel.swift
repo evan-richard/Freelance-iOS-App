@@ -14,6 +14,8 @@ class RequirementDetailViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var titleWithPrefix = ""
     @Published var status: String = ""
+    @Published var assignee: String = ""
+    @Published var assigneeId: String = ""
     @Published var detailList: [String] = [String]()
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -23,8 +25,9 @@ class RequirementDetailViewModel: ObservableObject {
         if let selectedRequirement: Requirement = getRequirementFromTitle(requirementTitle: requirementTitle) {
             self.title = selectedRequirement.title
             self.titleWithPrefix = requirementTitle
-//            self.status = selectedRequirement.status
-//            self.detailList = selectedRequirement.detailList
+            self.status = selectedRequirement.status
+            self.assignee = selectedRequirement.assignee ?? "None"
+            self.assigneeId = selectedRequirement.assigneeId ?? ""
         }
     }
     

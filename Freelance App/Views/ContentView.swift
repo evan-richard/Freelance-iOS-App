@@ -9,8 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var loginVM: LoginViewModel = LoginViewModel()
+    
     var body: some View {
-        Text("Hello, World!")
+        Group {
+            if (loginVM.isAuthenticated) {
+                ProjectsScreen()
+            } else {
+                LoginScreen(loginVM: loginVM)
+            }
+        }
     }
 }
 

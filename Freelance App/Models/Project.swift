@@ -9,7 +9,7 @@ import Foundation
 
 struct Project: Identifiable, Codable {
     var id: String
-    var userId: String
+    var grantedUsers: [String]
     var appName: String
     var customerName: String
     var description: String?

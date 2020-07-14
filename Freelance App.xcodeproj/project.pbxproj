@@ -14,8 +14,18 @@
 		207F4FC524BB6FD50044E1B7 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */; };
 		207F4FC824BB73760044E1B7 /* RequirementDetailTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */; };
 		207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */; };
-		207F4FD124BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */; };
 		207F4FD424BB81060044E1B7 /* RequirementEditAssignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */; };
+		207F4FD724BD00B70044E1B7 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD624BD00B70044E1B7 /* LoginScreen.swift */; };
+		207F4FD924BD026B0044E1B7 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FD824BD026B0044E1B7 /* SessionStore.swift */; };
+		207F4FDB24BD02ED0044E1B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FDA24BD02ED0044E1B7 /* User.swift */; };
+		207F4FDD24BD0EC90044E1B7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FDC24BD0EC90044E1B7 /* LoginViewModel.swift */; };
+		207F4FDF24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FDE24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift */; };
+		207F4FE124BD39830044E1B7 /* ProjectMembersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FE024BD39830044E1B7 /* ProjectMembersStore.swift */; };
+		207F4FE824BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FE724BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift */; };
+		207F4FEB24BD3FF90044E1B7 /* ProjectMemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEA24BD3FF90044E1B7 /* ProjectMemberListView.swift */; };
+		207F4FED24BD407A0044E1B7 /* ProjectMemberCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEC24BD407A0044E1B7 /* ProjectMemberCellView.swift */; };
+		207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */; };
+		207F4FF124BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -78,8 +88,18 @@
 		207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailTitleBar.swift; sourceTree = "<group>"; };
 		207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailSectionView.swift; sourceTree = "<group>"; };
-		207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementSimpleSectionView.swift; sourceTree = "<group>"; };
 		207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementEditAssignee.swift; sourceTree = "<group>"; };
+		207F4FD624BD00B70044E1B7 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		207F4FD824BD026B0044E1B7 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		207F4FDA24BD02ED0044E1B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		207F4FDC24BD0EC90044E1B7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		207F4FDE24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMemberListViewModel.swift; sourceTree = "<group>"; };
+		207F4FE024BD39830044E1B7 /* ProjectMembersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMembersStore.swift; sourceTree = "<group>"; };
+		207F4FE724BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMemberCellViewModel.swift; sourceTree = "<group>"; };
+		207F4FEA24BD3FF90044E1B7 /* ProjectMemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMemberListView.swift; sourceTree = "<group>"; };
+		207F4FEC24BD407A0044E1B7 /* ProjectMemberCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMemberCellView.swift; sourceTree = "<group>"; };
+		207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkInProgressView.swift; sourceTree = "<group>"; };
+		207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailSimpleSectionView.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -162,38 +182,85 @@
 		207F4FC624BB734E0044E1B7 /* RequirementDetail */ = {
 			isa = PBXGroup;
 			children = (
+				207F4FE924BD3F950044E1B7 /* RequirementDetailAssignee */,
 				207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */,
 				207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */,
+				207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */,
+				207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */,
 			);
 			path = RequirementDetail;
 			sourceTree = "<group>";
 		};
-		207F4FCD24BB7D1B0044E1B7 /* RequirementDetailSections */ = {
+		207F4FD524BD009B0044E1B7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */,
-				207F4FD024BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift */,
+				207F4FD624BD00B70044E1B7 /* LoginScreen.swift */,
 			);
-			path = RequirementDetailSections;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		207F4FD224BB80DB0044E1B7 /* RequirementDetailEditSection */ = {
+		207F4FE224BD3DEA0044E1B7 /* Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */,
+				2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */,
+				2093C38724B6C189001C6C5F /* RequirementListViewModel.swift */,
+			);
+			path = Requirements;
+			sourceTree = "<group>";
+		};
+		207F4FE324BD3E090044E1B7 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */,
+				2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		207F4FE424BD3E1A0044E1B7 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				2093C38D24B6C535001C6C5F /* ProjectViewModel.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		207F4FE524BD3E280044E1B7 /* ProjectMembers */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FDE24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift */,
+				207F4FE724BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift */,
+			);
+			path = ProjectMembers;
+			sourceTree = "<group>";
+		};
+		207F4FE624BD3E4D0044E1B7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FDC24BD0EC90044E1B7 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		207F4FE924BD3F950044E1B7 /* RequirementDetailAssignee */ = {
 			isa = PBXGroup;
 			children = (
 				207F4FD324BB81060044E1B7 /* RequirementEditAssignee.swift */,
+				207F4FEA24BD3FF90044E1B7 /* ProjectMemberListView.swift */,
+				207F4FEC24BD407A0044E1B7 /* ProjectMemberCellView.swift */,
 			);
-			path = RequirementDetailEditSection;
+			path = RequirementDetailAssignee;
 			sourceTree = "<group>";
 		};
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */,
-				2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */,
-				2093C38724B6C189001C6C5F /* RequirementListViewModel.swift */,
-				2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */,
-				2093C38D24B6C535001C6C5F /* ProjectViewModel.swift */,
-				207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */,
+				207F4FE624BD3E4D0044E1B7 /* Login */,
+				207F4FE524BD3E280044E1B7 /* ProjectMembers */,
+				207F4FE424BD3E1A0044E1B7 /* Overview */,
+				207F4FE324BD3E090044E1B7 /* Projects */,
+				207F4FE224BD3DEA0044E1B7 /* Requirements */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,7 +297,6 @@
 				20B7C7D524AFCEA50098BBF6 /* Views */,
 				20B7C79E24AFC5AB0098BBF6 /* AppDelegate.swift */,
 				20B7C7A024AFC5AB0098BBF6 /* SceneDelegate.swift */,
-				20B7C7A524AFC5AB0098BBF6 /* ContentView.swift */,
 				20B7C7A724AFC5AE0098BBF6 /* Assets.xcassets */,
 				20B7C7AC24AFC5AE0098BBF6 /* LaunchScreen.storyboard */,
 				20B7C7AF24AFC5AE0098BBF6 /* Info.plist */,
@@ -270,6 +336,8 @@
 		20B7C7D524AFCEA50098BBF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20B7C7A524AFC5AB0098BBF6 /* ContentView.swift */,
+				207F4FD524BD009B0044E1B7 /* Login */,
 				20FCE45524AFE22300D2C270 /* RequirementsScreen */,
 				20FCE44E24AFDBF100D2C270 /* OverviewScreen */,
 				20B7C7D724AFCECD0098BBF6 /* ProjectsScreen */,
@@ -282,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				20B7C7D324AFC86C0098BBF6 /* SearchBar.swift */,
+				207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -303,6 +372,7 @@
 			children = (
 				20B7C7DB24AFD1330098BBF6 /* Project.swift */,
 				20FCE46124B0D6B400D2C270 /* Requirement.swift */,
+				207F4FDA24BD02ED0044E1B7 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -320,8 +390,6 @@
 		20FCE45524AFE22300D2C270 /* RequirementsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FD224BB80DB0044E1B7 /* RequirementDetailEditSection */,
-				207F4FCD24BB7D1B0044E1B7 /* RequirementDetailSections */,
 				207F4FC624BB734E0044E1B7 /* RequirementDetail */,
 				20FCE45624AFE23700D2C270 /* RequirementsScreen.swift */,
 				20FCE45F24B0CFA700D2C270 /* RequirementListRowItem.swift */,
@@ -335,6 +403,8 @@
 			children = (
 				20FCE45924AFED3700D2C270 /* ProjectsStore.swift */,
 				2093C38324B5735E001C6C5F /* RequirementsStore.swift */,
+				207F4FD824BD026B0044E1B7 /* SessionStore.swift */,
+				207F4FE024BD39830044E1B7 /* ProjectMembersStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -605,23 +675,31 @@
 				2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */,
 				20B7C7D224AFC6240098BBF6 /* ProjectsScreen.swift in Sources */,
 				20FCE46424B1408800D2C270 /* RequirementsList.swift in Sources */,
+				207F4FF124BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift in Sources */,
 				2093C38424B5735E001C6C5F /* RequirementsStore.swift in Sources */,
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,
-				207F4FD124BB7D9E0044E1B7 /* RequirementSimpleSectionView.swift in Sources */,
 				207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */,
+				207F4FDD24BD0EC90044E1B7 /* LoginViewModel.swift in Sources */,
+				207F4FE824BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift in Sources */,
 				20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */,
 				20B7C7A624AFC5AB0098BBF6 /* ContentView.swift in Sources */,
+				207F4FED24BD407A0044E1B7 /* ProjectMemberCellView.swift in Sources */,
+				207F4FEB24BD3FF90044E1B7 /* ProjectMemberListView.swift in Sources */,
 				207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */,
 				207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
+				207F4FDB24BD02ED0044E1B7 /* User.swift in Sources */,
+				207F4FE124BD39830044E1B7 /* ProjectMembersStore.swift in Sources */,
 				2093C38024B56745001C6C5F /* ProjectListCell.swift in Sources */,
 				2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */,
 				20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */,
+				207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */,
 				20FCE45A24AFED3700D2C270 /* ProjectsStore.swift in Sources */,
 				207F4FBA24B758220044E1B7 /* RequirementsDetailView.swift in Sources */,
 				2093C38C24B6C1C4001C6C5F /* RequirementCellViewModel.swift in Sources */,
 				20FCE45024AFDC0A00D2C270 /* OverviewScreen.swift in Sources */,
+				207F4FD724BD00B70044E1B7 /* LoginScreen.swift in Sources */,
 				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBar.swift in Sources */,
 				20FCE45224AFDCF100D2C270 /* CreateProjectView.swift in Sources */,
 				2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */,
@@ -631,6 +709,8 @@
 				20B7C7DC24AFD1330098BBF6 /* Project.swift in Sources */,
 				20FCE45724AFE23700D2C270 /* RequirementsScreen.swift in Sources */,
 				20FCE46024B0CFA700D2C270 /* RequirementListRowItem.swift in Sources */,
+				207F4FD924BD026B0044E1B7 /* SessionStore.swift in Sources */,
+				207F4FDF24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift in Sources */,
 				2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */,
 				207F4FD424BB81060044E1B7 /* RequirementEditAssignee.swift in Sources */,
 				207F4FC524BB6FD50044E1B7 /* ProjectDetailView.swift in Sources */,

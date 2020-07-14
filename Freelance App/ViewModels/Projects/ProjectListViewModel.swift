@@ -18,23 +18,26 @@ class ProjectListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
+        let userId: String = self.appDelegate.sessionStore?.session?.id ?? ""
+        self.appDelegate.projectsStore = ProjectsStore(userId: userId)
+        
         self.appDelegate.projectsStore!.$projects.map { projects in
-            projects.map { project in
+            self.numberOfProjects = projects.count
+            return projects.map { project in
                 ProjectCellViewModel(projectId: project.id, appName: project.appName, customerName: project.customerName)
             }
         }
         .assign(to: \.projectCellViewModels, on: self)
         .store(in: &cancellables)
-        self.numberOfProjects = self.projectCellViewModels.count
     }
     
     func setCurrentProject(projectId: String) {
-        self.appDelegate.projectsStore!
-            .setCurrentProject(project: self.appDelegate.projectsStore!.projects
-                .first(where: { project in
-                    project.id == projectId
-                })
-            )
-        self.appDelegate.requirementsStore = RequirementsStore(projectId: projectId)
+        if let currentProject: Project = self.appDelegate.projectsStore?.projects.first(where: { project in
+            project.id == projectId
+        }) {
+            self.appDelegate.projectsStore?.setCurrentProject(project: currentProject)
+            self.appDelegate.requirementsStore = RequirementsStore(projectId: projectId)
+            self.appDelegate.projectMembersStore = ProjectMembersStore(grantedUsers: currentProject.grantedUsers)
+        }
     }
 }

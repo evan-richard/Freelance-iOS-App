@@ -13,6 +13,8 @@ struct RequirementDetailSectionView: View {
     
     var sectionTitle: String
     
+    @Binding var sectionValueId: String
+    
     var body: some View {
         VStack {
             HStack {
@@ -35,15 +37,15 @@ struct RequirementDetailSectionView: View {
     private func getViewForSection() -> some View {
         switch self.sectionTitle {
             case "Assignee":
-                return RequirementEditAssignee()
+                return AnyView(RequirementEditAssignee(isEditOpen: $isEditOpen, sectionValueId: $sectionValueId))
             default:
-                return RequirementEditAssignee()
+                return AnyView(WorkInProgressView())
         }
     }
 }
 
 struct RequirementDetailSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementDetailSectionView(sectionTitle: "Assignee")
+        RequirementDetailSectionView(sectionTitle: "Assignee", sectionValueId: Binding.constant("test1"))
     }
 }

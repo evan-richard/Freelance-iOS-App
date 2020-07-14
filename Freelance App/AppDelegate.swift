@@ -13,13 +13,14 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var sessionStore: SessionStore? = nil
     var projectsStore: ProjectsStore? = nil
     var requirementsStore: RequirementsStore? = nil
+    var projectMembersStore: ProjectMembersStore? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        projectsStore = ProjectsStore()
         return true
     }
 

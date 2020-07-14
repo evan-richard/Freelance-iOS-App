@@ -43,9 +43,10 @@ struct SearchBar: View {
                         self.searchString = ""
                         self.hideKeyboard()
                     }
-                }, label: {
+                }) {
                     Text("Cancel")
-                })
+                }
+                .accentColor(.purple)
             }
         }
         .frame(height: 40)

@@ -21,9 +21,9 @@ struct RequirementsDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
             RequirementDetailTitleBar(isRequirementDetailViewOpen: $isRequirementDetailViewOpen ,requirementDetailTitleBar: requirementDetailVM.titleWithPrefix)
-            RequirementSimpleSectionView(sectionName: "Assignee", sectionValue: "Evan Richard")
-            RequirementSimpleSectionView(sectionName: "Estimated Sprint", sectionValue: "Sprint 3")
-            RequirementSimpleSectionView(sectionName: "Status", sectionValue: "In Progress")
+            RequirementDetailSimpleSectionView(sectionTitle: "Assignee", sectionValue: $requirementDetailVM.assignee, sectionValueId: $requirementDetailVM.assigneeId)
+            RequirementDetailSimpleSectionView(sectionTitle: "Estimated Sprint", sectionValue: Binding.constant("Sprint 3"), sectionValueId: Binding.constant("Sprint 3"))
+            RequirementDetailSimpleSectionView(sectionTitle: "Status", sectionValue: $requirementDetailVM.status, sectionValueId: $requirementDetailVM.status)
             Spacer()
         }
         .padding()
