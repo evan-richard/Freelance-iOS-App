@@ -35,13 +35,17 @@ class RequirementDetailViewModel: ObservableObject {
     }
     
     func updateAssignee(assigneeId: String) {
-        if let assignee: User = self.appDelegate.projectMembersStore?.projectMembers.first(where: { member in
-            member.id == assigneeId
-        }) {
-            if self.selectedRequirement != nil {
-                self.appDelegate.requirementsStore?.updateRequirementAssignee(requirement: self.selectedRequirement!, assignee: assignee)
-                self.assignee = assignee.displayName ?? "None"
-                self.assigneeId = assignee.id
+        if self.selectedRequirement != nil {
+            if let assignee: User = self.appDelegate.projectMembersStore?.projectMembers.first(where: { member in
+                member.id == assigneeId
+            }) {
+                    self.appDelegate.requirementsStore?.updateRequirementAssignee(requirement: self.selectedRequirement!, assignee: assignee)
+                    self.assignee = assignee.displayName ?? "None"
+                    self.assigneeId = assignee.id
+            } else {
+                self.appDelegate.requirementsStore?.removeRequirementAssignee(requirement: self.selectedRequirement!)
+                self.assignee = "None"
+                self.assigneeId = ""
             }
         }
     }

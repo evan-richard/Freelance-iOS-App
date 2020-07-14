@@ -39,6 +39,19 @@ class RequirementsStore: ObservableObject {
 //        }
     }
     
+    func removeRequirementAssignee(requirement: Requirement) {
+        db.collection("requirements").document(requirement.id).updateData([
+            "assignee": FieldValue.delete(),
+            "assigneeId": FieldValue.delete()
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
     private func loadRequirementsList(projectId: String) -> Void {
         db.collection("requirements").whereField("projectId", isEqualTo: projectId).addSnapshotListener { (querySnapshot, err) in
             if let err = err {
