@@ -26,6 +26,7 @@
 		207F4FED24BD407A0044E1B7 /* ProjectMemberCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEC24BD407A0044E1B7 /* ProjectMemberCellView.swift */; };
 		207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */; };
 		207F4FF124BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */; };
+		207F4FF424BE980D0044E1B7 /* CoreConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF324BE980D0044E1B7 /* CoreConstants.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -100,6 +101,7 @@
 		207F4FEC24BD407A0044E1B7 /* ProjectMemberCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMemberCellView.swift; sourceTree = "<group>"; };
 		207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkInProgressView.swift; sourceTree = "<group>"; };
 		207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailSimpleSectionView.swift; sourceTree = "<group>"; };
+		207F4FF324BE980D0044E1B7 /* CoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreConstants.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 			path = RequirementDetailAssignee;
 			sourceTree = "<group>";
 		};
+		207F4FF224BE97F90044E1B7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FF324BE980D0044E1B7 /* CoreConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +300,7 @@
 		20B7C79D24AFC5AB0098BBF6 /* Freelance App */ = {
 			isa = PBXGroup;
 			children = (
+				207F4FF224BE97F90044E1B7 /* Constants */,
 				207F4FBB24B7DA180044E1B7 /* Helpers */,
 				2093C37424B529D4001C6C5F /* ViewModels */,
 				20FCE45824AFED1500D2C270 /* Store */,
@@ -688,6 +699,7 @@
 				207F4FEB24BD3FF90044E1B7 /* ProjectMemberListView.swift in Sources */,
 				207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */,
 				207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */,
+				207F4FF424BE980D0044E1B7 /* CoreConstants.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
 				207F4FDB24BD02ED0044E1B7 /* User.swift in Sources */,
 				207F4FE124BD39830044E1B7 /* ProjectMembersStore.swift in Sources */,

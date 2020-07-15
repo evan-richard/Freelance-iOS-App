@@ -16,16 +16,20 @@ class SessionStore : ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
     
     init() {
-        self.listen()
-        
-//        self.session = User(
-//            id: "test1",
-//            email: "test@email.com"
-//        )
+        if CoreConstants.USE_FIRESTORE {
+            self.listen()
+        } else {
+            self.session = User(
+                id: "test1",
+                email: "test@email.com"
+            )
+        }
     }
     
     deinit {
-        self.unbind()
+        if CoreConstants.USE_FIRESTORE {
+            self.unbind()
+        }
     }
 
     func listen () {

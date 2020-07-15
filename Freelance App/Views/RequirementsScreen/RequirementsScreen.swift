@@ -11,6 +11,8 @@ import SwiftUI
 struct RequirementsScreen: View {
     @State private var isSearching: Bool = false
     @State private var searchString: String = ""
+    @State private var isRequirementDetailOpen: Bool = false
+    @State private var selectedRequirementTitle: String = ""
     
     var body: some View {
         VStack {
@@ -18,7 +20,7 @@ struct RequirementsScreen: View {
                 SearchBar(searchString: $searchString, isSearching: $isSearching)
                 .navigationBarTitle("Requirements", displayMode: .inline)
             }
-            RequirementsList(searchString: $searchString)
+            RequirementsList(searchString: $searchString, selectedRequirementTitle: $selectedRequirementTitle, isRequirementDetailOpen: $isRequirementDetailOpen)
             .navigationBarTitle("Requirements", displayMode: .large)
             .navigationBarItems(trailing:
                 HStack(spacing: 35) {
@@ -41,8 +43,11 @@ struct RequirementsScreen: View {
                     }
                 }
             )
-            }
+        }
         .padding()
+        .sheet(isPresented: self.$isRequirementDetailOpen, content: {
+            RequirementsDetailView(requirementTitle: self.selectedRequirementTitle, isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
+        })
     }
 }
 

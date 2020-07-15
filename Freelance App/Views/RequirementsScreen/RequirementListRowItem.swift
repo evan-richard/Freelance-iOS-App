@@ -10,11 +10,13 @@ import SwiftUI
 
 struct RequirementListRowItem: View {
     @ObservedObject var requirementCellVM: RequirementCellViewModel
-    @State private var isRequirementDetailOpen: Bool = false
+    @Binding var selectedRequirementTitle: String
+    @Binding var isRequirementDetailOpen: Bool
     
     var body: some View {
         Button(action: {
-            self.isRequirementDetailOpen = true
+            self.isRequirementDetailOpen.toggle()
+            self.selectedRequirementTitle = self.requirementCellVM.title
         }, label: {
             Text(requirementCellVM.title)
                 .foregroundColor(.purple)
@@ -22,14 +24,11 @@ struct RequirementListRowItem: View {
                 .padding(.vertical, 8)
                 .font(requirementCellVM.font)
         })
-        .sheet(isPresented: self.$isRequirementDetailOpen, content: {
-            RequirementsDetailView(requirementTitle: self.requirementCellVM.title, isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
-        })
     }
 }
 
 struct RequirementListRowItem_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementListRowItem(requirementCellVM: RequirementCellViewModel(title: "2. About Page"))
+        RequirementListRowItem(requirementCellVM: RequirementCellViewModel(title: "2. About Page"), selectedRequirementTitle: Binding.constant(""), isRequirementDetailOpen: Binding.constant(false))
     }
 }
