@@ -27,6 +27,12 @@
 		207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */; };
 		207F4FF124BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */; };
 		207F4FF424BE980D0044E1B7 /* CoreConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF324BE980D0044E1B7 /* CoreConstants.swift */; };
+		207F4FF624BE9E4D0044E1B7 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF524BE9E4D0044E1B7 /* UserConstants.swift */; };
+		207F4FF924BEA24E0044E1B7 /* RequirementEditStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FF824BEA24E0044E1B7 /* RequirementEditStatus.swift */; };
+		207F4FFB24BEA2A30044E1B7 /* RequirementStatusConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FFA24BEA2A30044E1B7 /* RequirementStatusConstants.swift */; };
+		207F500324BFC3C50044E1B7 /* PickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F500224BFC3C50044E1B7 /* PickList.swift */; };
+		207F500524BFC3D40044E1B7 /* PickListOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F500424BFC3D40044E1B7 /* PickListOption.swift */; };
+		207F500724BFC4560044E1B7 /* PickListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F500624BFC4560044E1B7 /* PickListItem.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -102,6 +108,12 @@
 		207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkInProgressView.swift; sourceTree = "<group>"; };
 		207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailSimpleSectionView.swift; sourceTree = "<group>"; };
 		207F4FF324BE980D0044E1B7 /* CoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreConstants.swift; sourceTree = "<group>"; };
+		207F4FF524BE9E4D0044E1B7 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		207F4FF824BEA24E0044E1B7 /* RequirementEditStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementEditStatus.swift; sourceTree = "<group>"; };
+		207F4FFA24BEA2A30044E1B7 /* RequirementStatusConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementStatusConstants.swift; sourceTree = "<group>"; };
+		207F500224BFC3C50044E1B7 /* PickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickList.swift; sourceTree = "<group>"; };
+		207F500424BFC3D40044E1B7 /* PickListOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickListOption.swift; sourceTree = "<group>"; };
+		207F500624BFC4560044E1B7 /* PickListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickListItem.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -184,11 +196,9 @@
 		207F4FC624BB734E0044E1B7 /* RequirementDetail */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FE924BD3F950044E1B7 /* RequirementDetailAssignee */,
+				207F500124BFC0650044E1B7 /* RequirementDetailSection */,
 				207F4FB924B758220044E1B7 /* RequirementsDetailView.swift */,
 				207F4FC724BB73760044E1B7 /* RequirementDetailTitleBar.swift */,
-				207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */,
-				207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */,
 			);
 			path = RequirementDetail;
 			sourceTree = "<group>";
@@ -258,16 +268,62 @@
 		207F4FF224BE97F90044E1B7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FF324BE980D0044E1B7 /* CoreConstants.swift */,
+				207F4FFE24BEA2BC0044E1B7 /* Requirements */,
+				207F4FFD24BEA2B60044E1B7 /* User */,
+				207F4FFC24BEA2A80044E1B7 /* Core */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		207F4FF724BEA2320044E1B7 /* RequirementDetailStatus */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FF824BEA24E0044E1B7 /* RequirementEditStatus.swift */,
+			);
+			path = RequirementDetailStatus;
+			sourceTree = "<group>";
+		};
+		207F4FFC24BEA2A80044E1B7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FF324BE980D0044E1B7 /* CoreConstants.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		207F4FFD24BEA2B60044E1B7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FF524BE9E4D0044E1B7 /* UserConstants.swift */,
+			);
+			name = User;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		207F4FFE24BEA2BC0044E1B7 /* Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FFA24BEA2A30044E1B7 /* RequirementStatusConstants.swift */,
+			);
+			path = Requirements;
+			sourceTree = "<group>";
+		};
+		207F500124BFC0650044E1B7 /* RequirementDetailSection */ = {
+			isa = PBXGroup;
+			children = (
+				207F4FE924BD3F950044E1B7 /* RequirementDetailAssignee */,
+				207F4FF724BEA2320044E1B7 /* RequirementDetailStatus */,
+				207F4FF024BD51CA0044E1B7 /* RequirementDetailSimpleSectionView.swift */,
+				207F4FC924BB78020044E1B7 /* RequirementDetailSectionView.swift */,
+			);
+			path = RequirementDetailSection;
 			sourceTree = "<group>";
 		};
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FE624BD3E4D0044E1B7 /* Login */,
 				207F4FE524BD3E280044E1B7 /* ProjectMembers */,
+				207F4FE624BD3E4D0044E1B7 /* Login */,
 				207F4FE424BD3E1A0044E1B7 /* Overview */,
 				207F4FE324BD3E090044E1B7 /* Projects */,
 				207F4FE224BD3DEA0044E1B7 /* Requirements */,
@@ -362,6 +418,8 @@
 			children = (
 				20B7C7D324AFC86C0098BBF6 /* SearchBar.swift */,
 				207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */,
+				207F500224BFC3C50044E1B7 /* PickList.swift */,
+				207F500424BFC3D40044E1B7 /* PickListOption.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -384,6 +442,7 @@
 				20B7C7DB24AFD1330098BBF6 /* Project.swift */,
 				20FCE46124B0D6B400D2C270 /* Requirement.swift */,
 				207F4FDA24BD02ED0044E1B7 /* User.swift */,
+				207F500624BFC4560044E1B7 /* PickListItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -694,7 +753,10 @@
 				207F4FDD24BD0EC90044E1B7 /* LoginViewModel.swift in Sources */,
 				207F4FE824BD3E7E0044E1B7 /* ProjectMemberCellViewModel.swift in Sources */,
 				20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */,
+				207F500524BFC3D40044E1B7 /* PickListOption.swift in Sources */,
 				20B7C7A624AFC5AB0098BBF6 /* ContentView.swift in Sources */,
+				207F500724BFC4560044E1B7 /* PickListItem.swift in Sources */,
+				207F500324BFC3C50044E1B7 /* PickList.swift in Sources */,
 				207F4FED24BD407A0044E1B7 /* ProjectMemberCellView.swift in Sources */,
 				207F4FEB24BD3FF90044E1B7 /* ProjectMemberListView.swift in Sources */,
 				207F4FCA24BB78020044E1B7 /* RequirementDetailSectionView.swift in Sources */,
@@ -709,7 +771,9 @@
 				207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */,
 				20FCE45A24AFED3700D2C270 /* ProjectsStore.swift in Sources */,
 				207F4FBA24B758220044E1B7 /* RequirementsDetailView.swift in Sources */,
+				207F4FFB24BEA2A30044E1B7 /* RequirementStatusConstants.swift in Sources */,
 				2093C38C24B6C1C4001C6C5F /* RequirementCellViewModel.swift in Sources */,
+				207F4FF924BEA24E0044E1B7 /* RequirementEditStatus.swift in Sources */,
 				20FCE45024AFDC0A00D2C270 /* OverviewScreen.swift in Sources */,
 				207F4FD724BD00B70044E1B7 /* LoginScreen.swift in Sources */,
 				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBar.swift in Sources */,
@@ -721,6 +785,7 @@
 				20B7C7DC24AFD1330098BBF6 /* Project.swift in Sources */,
 				20FCE45724AFE23700D2C270 /* RequirementsScreen.swift in Sources */,
 				20FCE46024B0CFA700D2C270 /* RequirementListRowItem.swift in Sources */,
+				207F4FF624BE9E4D0044E1B7 /* UserConstants.swift in Sources */,
 				207F4FD924BD026B0044E1B7 /* SessionStore.swift in Sources */,
 				207F4FDF24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift in Sources */,
 				2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */,

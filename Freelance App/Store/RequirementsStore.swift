@@ -63,6 +63,26 @@ class RequirementsStore: ObservableObject {
         }
     }
     
+    func updateRequirementStatus(requirement: Requirement, status: String) {
+        if CoreConstants.USE_FIRESTORE {
+            db.collection("requirements").document(requirement.id).updateData([
+                "status": status
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        } else {
+            if let i: Int = self.requirements.firstIndex(where: { req in
+                req.id == requirement.id
+            }) {
+                self.requirements[i].status = status
+            }
+        }
+    }
+    
     private func loadRequirementsList(projectId: String) -> Void {
         if CoreConstants.USE_FIRESTORE {
             db.collection("requirements").whereField("projectId", isEqualTo: projectId).addSnapshotListener { (querySnapshot, err) in

@@ -50,6 +50,13 @@ class RequirementDetailViewModel: ObservableObject {
         }
     }
     
+    func updateStatus(status: String) {
+        if self.selectedRequirement != nil {
+            self.appDelegate.requirementsStore?.updateRequirementStatus(requirement: self.selectedRequirement!, status: status)
+            self.status = status
+        }
+    }
+    
     private func getRequirementFromTitle(requirementTitle: String) -> Requirement? {
         var selectedRequirement: Requirement? = nil
         

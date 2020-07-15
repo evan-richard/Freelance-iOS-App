@@ -30,6 +30,7 @@ struct RequirementsDetailView: View {
             Spacer()
         }
         .padding()
+        .padding(.top)
     }
 }
 

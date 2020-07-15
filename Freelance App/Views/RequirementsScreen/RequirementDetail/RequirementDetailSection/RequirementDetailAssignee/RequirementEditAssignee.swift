@@ -39,6 +39,7 @@ struct RequirementEditAssignee: View {
         .onAppear {
             self.selectedMemberId = self.sectionValueId
         }
+        .padding(.top)
         
     }
     

@@ -14,14 +14,17 @@ struct ProjectMemberListView: View {
     @Binding var selectedMemberId: String
     
     var body: some View {
-        List(projectMemberListVM.projectMemberCellViewModels.filter({ projectMemberCellVM in
-            if searchString != "" {
-                return projectMemberCellVM.displayName.lowercased().contains(searchString.lowercased())
-            } else {
-                return true
+        VStack {
+            List(projectMemberListVM.projectMemberCellViewModels.filter({ projectMemberCellVM in
+                if searchString != "" {
+                    return projectMemberCellVM.displayName.lowercased().contains(searchString.lowercased())
+                } else {
+                    return true
+                }
+            })) { projectMemberCellVM in
+                ProjectMemberCellView(projectMemberCellVM: projectMemberCellVM, selectedMemberId: self.$selectedMemberId)
             }
-        })) { projectMemberCellVM in
-            ProjectMemberCellView(projectMemberCellVM: projectMemberCellVM, selectedMemberId: self.$selectedMemberId)
+            Spacer()
         }
     }
 }

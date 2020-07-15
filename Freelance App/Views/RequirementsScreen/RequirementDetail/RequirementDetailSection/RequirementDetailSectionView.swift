@@ -32,12 +32,15 @@ struct RequirementDetailSectionView: View {
         .sheet(isPresented: $isEditOpen) {
             self.getViewForSection()
         }
+        .padding(.top)
     }
     
     private func getViewForSection() -> some View {
         switch self.sectionTitle {
             case "Assignee":
                 return AnyView(RequirementEditAssignee(requirementDetailVM: requirementDetailVM, isEditOpen: $isEditOpen, sectionValueId: $sectionValueId))
+            case "Status":
+                return AnyView(RequirementEditStatus(requirementDetailVM: requirementDetailVM, isEditOpen: $isEditOpen, sectionValueId: $sectionValueId))
             default:
                 return AnyView(WorkInProgressView())
         }
