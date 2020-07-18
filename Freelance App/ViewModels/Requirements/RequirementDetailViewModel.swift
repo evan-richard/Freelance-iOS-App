@@ -16,7 +16,7 @@ class RequirementDetailViewModel: ObservableObject {
     @Published var status: String = ""
     @Published var assignee: String = ""
     @Published var assigneeId: String = ""
-    @Published var detailList: [String] = [String]()
+    @Published var features: [String]?
     
     private var selectedRequirement: Requirement?
     
@@ -31,6 +31,7 @@ class RequirementDetailViewModel: ObservableObject {
             self.status = selectedRequirement.status
             self.assignee = selectedRequirement.assignee ?? "None"
             self.assigneeId = selectedRequirement.assigneeId ?? ""
+            self.features = selectedRequirement.features
         }
     }
     

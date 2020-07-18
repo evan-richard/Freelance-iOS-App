@@ -97,12 +97,12 @@ class RequirementsStore: ObservableObject {
         } else {
             self.requirements = [
                 Requirement(id: "1", projectId: "123", title: "Landing Page", status: "In Progress", assignee: "Developer 1", assigneeId: "test1", childReqIds: ["2", "3", "4"]),
-                Requirement(id: "2", projectId: "123", title: "Navigation Bar", status: "To-Do"),
+                Requirement(id: "2", projectId: "123", title: "Navigation Bar", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"]),
                 Requirement(id: "3", projectId: "123", title: "Website Logo", status: "In Progress", assignee: "Developer 2", assigneeId: "test2"),
                 Requirement(id: "4", projectId: "123", title: "Video Thumbclip", status: "To-Do"),
                 Requirement(id: "5", projectId: "123", title: "About Page", status: "To-Do", childReqIds: ["6"]),
                 Requirement(id: "6", projectId: "123", title: "Biography", status: "To-Do", childReqIds: ["7", "8"]),
-                Requirement(id: "7", projectId: "123", title: "Mission Statement", status: "To-Do"),
+                Requirement(id: "7", projectId: "123", title: "Mission Statement", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"]),
                 Requirement(id: "8", projectId: "123", title: "Company History", status: "To-Do"),
                 Requirement(id: "9", projectId: "123", title: "Portfolio", status: "To-Do")
             ]
