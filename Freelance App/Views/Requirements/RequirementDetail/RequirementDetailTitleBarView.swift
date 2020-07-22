@@ -21,8 +21,7 @@ struct RequirementDetailTitleBarView: View {
             Button(action: {
                 self.isRequirementDetailViewOpen.toggle()
             }) {
-                Text("Done")
-                    .fontWeight(.semibold)
+                ReusableTextButtonView(label: "Done")
             }
             .accentColor(.purple)
         }

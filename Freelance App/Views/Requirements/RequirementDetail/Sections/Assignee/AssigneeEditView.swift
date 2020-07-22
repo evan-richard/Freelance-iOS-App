@@ -29,7 +29,6 @@ struct AssigneeEditView: View {
         .onAppear {
             self.selectedMemberId = self.requirementDetailVM.assigneeId
         }
-        .padding(.top)
         
     }
     

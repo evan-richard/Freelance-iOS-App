@@ -11,9 +11,11 @@ import SwiftUI
 struct OverviewView: View {
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 40) {
+        VStack(alignment: .leading) {
             ProjectDetailView()
+            Spacer()
             NavigationListView()
+                .padding(.bottom, 20)
         }
         .navigationBarTitle("Overview", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {

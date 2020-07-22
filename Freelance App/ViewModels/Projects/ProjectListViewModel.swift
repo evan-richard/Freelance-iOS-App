@@ -38,6 +38,7 @@ class ProjectListViewModel: ObservableObject {
             self.appDelegate.projectsStore?.setCurrentProject(project: currentProject)
             self.appDelegate.requirementsStore = RequirementsStore(projectId: projectId)
             self.appDelegate.projectMembersStore = ProjectMembersStore(grantedUsers: currentProject.grantedUsers)
+            self.appDelegate.discussionsStore = DiscussionsStore(projectId: projectId)
         }
     }
 }

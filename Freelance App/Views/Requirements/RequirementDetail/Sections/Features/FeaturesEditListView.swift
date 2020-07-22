@@ -9,14 +9,49 @@
 import SwiftUI
 
 struct FeaturesEditListView: View {
+    @State private var newFeature: String = ""
     @Binding var features: [String]
     
+    var minusIcon: AnyView = AnyView(
+        Image(systemName: "i.circle")
+            .foregroundColor(.red)
+            .rotationEffect(.degrees(90))
+    )
+    
+    var plusIcon: AnyView = AnyView(
+        Image(systemName: "plus.circle")
+            .foregroundColor(.green)
+    )
+    
     var body: some View {
-        VStack {
-            ForEach(features, id: \.self) { feature in
-                FeaturesEditListItemView()
+        ScrollView {
+            VStack(alignment: .leading) {
+                if (self.features.count > 0) {
+                    ForEach(features.indices, id: \.self) { idx in
+                        FeaturesEditListItemView(newFeature: self.$features[idx],
+                                                 index: idx,
+                                                 editIcon: self.minusIcon,
+                                                 action: { self.deleteRow(idx: idx) })
+                    }
+                }
+                FeaturesEditListItemView(newFeature: $newFeature,
+                                         index: self.features.count,
+                                         editIcon: plusIcon,
+                                         action: addRow)
+                Divider()
             }
         }
+    }
+    
+    private func deleteRow(idx: Int) -> Void {
+        print(idx + 1)
+        print(self.features[idx])
+        self.features.remove(at: idx)
+    }
+    
+    private func addRow() -> Void {
+        self.features.append(self.newFeature)
+        self.newFeature = ""
     }
 }
 

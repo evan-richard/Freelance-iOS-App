@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct FeaturesListItemView: View {
+    var index: Int
     var feature: String
     
     var body: some View {
         HStack() {
             // Bullet point preprended to feature
-            Text("\u{2022} \(feature)")
+            Text("\(index + 1). \(feature)")
                 .foregroundColor(.secondary)
                 .lineLimit(5)
         }
@@ -23,6 +24,6 @@ struct FeaturesListItemView: View {
 
 struct FeaturesListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesListItemView(feature: "Feature 1 description goes here")
+        FeaturesListItemView(index: 1, feature: "Feature 1 description goes here")
     }
 }

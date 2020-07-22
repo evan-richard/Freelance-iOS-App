@@ -18,12 +18,10 @@ struct EditSectionHeaderView: View {
                 .font(.title)
             Spacer()
             Button(action: action) {
-                Text("Save")
-                    .fontWeight(.semibold)
+                ReusableTextButtonView(label: "Save")
             }
             .accentColor(.purple)
         }
-        .padding()
     }
 }
 

@@ -12,29 +12,19 @@ struct NavigationListView: View {
     
     private let navigationLinks: [String] = [
         "Requirements",
-        "Discussions",
+        "Discussion",
         "Milestones",
-        "Timesheet",
         "Designs",
+        "Timesheet",
         "Supporting Documents"
     ]
     
     var body: some View {
-        List(navigationLinks, id: \.self) { link in
-            NavigationLink(destination: self.getViewFromLink(link: link)) {
-                Text(link)
-                    .fontWeight(.semibold)
+        VStack(alignment: .leading, spacing: 0) {
+            ForEach(navigationLinks, id: \.self) { link in
+                NavigationListItemView(label: link)
             }
-            .padding(.vertical, 8)
-        }
-    }
-    
-    private func getViewFromLink(link: String) -> some View {
-        switch link {
-            case "Requirements":
-                return AnyView(RequirementsView())
-            default:
-                return AnyView(WorkInProgressView())
+            Divider()
         }
     }
 }

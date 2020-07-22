@@ -10,15 +10,22 @@ import SwiftUI
 
 struct FeaturesEditView: View {
     @ObservedObject var requirementDetailVM: RequirementDetailViewModel
+    @State private var editFeaturesList: [String] = []
     @Binding var isEditOpen: Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 40) {
             EditSectionHeaderView(label: "Features",action: {
                 self.isEditOpen.toggle()
-//                self.requirementDetailVM.updateAssignee(assigneeId: self.selectedMemberId)
+                self.requirementDetailVM.updateFeatures(features: self.editFeaturesList)
             })
+            FeaturesEditListView(features: self.$editFeaturesList)
+            Spacer()
         }
+        .padding()
+        .onAppear(perform: {
+            self.editFeaturesList = self.requirementDetailVM.features
+        })
     }
 }
 

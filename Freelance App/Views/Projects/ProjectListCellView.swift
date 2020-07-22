@@ -12,14 +12,11 @@ struct ProjectListCellView: View {
     @ObservedObject var projectCellVM: ProjectCellViewModel
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(projectCellVM.appName).fontWeight(.semibold)
-                Text(projectCellVM.customerName).font(.subheadline).foregroundColor(.secondary)
-            }
-            .padding(.vertical, 8)
-            Spacer()
+        VStack(alignment: .leading, spacing: 4) {
+            Text(projectCellVM.appName).fontWeight(.semibold)
+            Text(projectCellVM.customerName).font(.subheadline).foregroundColor(.secondary)
         }
+        .padding(.vertical, 8)
     }
 }
 

@@ -17,10 +17,6 @@ class ProjectCellViewModel: ObservableObject, Identifiable  {
     
     private var cancellables = Set<AnyCancellable>()
     
-    static func newGenericItem() -> ProjectCellViewModel {
-        ProjectCellViewModel(projectId: "", appName: "", customerName: "")
-    }
-    
     init(projectId: String, appName: String, customerName: String) {
         id = UUID()
         self.projectId = projectId

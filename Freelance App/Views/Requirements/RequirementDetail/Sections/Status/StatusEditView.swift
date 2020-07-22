@@ -20,15 +20,18 @@ struct StatusEditView: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 50) {
             EditSectionHeaderView(label: "Status", action: {
                 self.isEditOpen.toggle()
                 self.requirementDetailVM.updateStatus(status: self.selectedLabel)
             })
-            PickListView(selectedLabel: self.$selectedLabel, optionList: statusOptions)
-            Text("A status lets others track your progress. Maintain deadlines by updating the status of each requirement consistently and accurately.")
-                .font(.caption)
                 .padding(.horizontal)
+            VStack(alignment: .leading) {
+                PickListView(selectedLabel: self.$selectedLabel, optionList: statusOptions)
+                Text("A status lets others track your progress. Maintain deadlines by updating the status of each requirement consistently and accurately.")
+                    .font(.caption)
+                    .padding(.horizontal)
+            }
             Spacer()
         }
         .padding(.top)

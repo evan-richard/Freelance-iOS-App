@@ -18,10 +18,6 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
     
     private var cancellables = Set<AnyCancellable>()
     
-    static func newGenericItem() -> RequirementCellViewModel {
-        RequirementCellViewModel(title: "")
-    }
-    
     init(title: String) {
         id = UUID()
         self.title = title

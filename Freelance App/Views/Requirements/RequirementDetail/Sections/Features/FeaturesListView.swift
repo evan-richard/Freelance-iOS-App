@@ -14,8 +14,8 @@ struct FeaturesListView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if features != nil && features!.count > 0 {
-                ForEach(features!, id: \.self) { feature in
-                    FeaturesListItemView(feature: feature)
+                ForEach(features!.indices, id: \.self) { idx in
+                    FeaturesListItemView(index: idx, feature: self.features![idx])
                 }
             } else {
                 Text("None")

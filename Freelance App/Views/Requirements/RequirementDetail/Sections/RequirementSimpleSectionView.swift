@@ -44,7 +44,7 @@ struct RequirementSimpleSectionView: View {
             case "Status":
                 return requirementDetailVM.status
             default:
-                return ""
+                return "None"
         }
     }
 }

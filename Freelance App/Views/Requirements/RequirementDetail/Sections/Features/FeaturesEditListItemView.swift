@@ -9,13 +9,28 @@
 import SwiftUI
 
 struct FeaturesEditListItemView: View {
+    @Binding var newFeature: String
+    
+    var index: Int
+    var editIcon: AnyView
+    var action: () -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 12) {
+            Divider()
+            HStack {
+                Text("\(index + 1).")
+                TextField("Add a new feature", text: $newFeature)
+                Button(action: action) {
+                    editIcon
+                }
+            }
+        }
     }
 }
 
 struct FeaturesEditListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesEditListItemView()
+        FeaturesEditListItemView(newFeature: Binding.constant("Feature that is under edit"), index: 1, editIcon: AnyView(Image(systemName: "plus.circle")), action: {})
     }
 }

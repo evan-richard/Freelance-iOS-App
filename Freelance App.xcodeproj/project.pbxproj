@@ -37,6 +37,7 @@
 		208A9E1E24C33BB6000D07BD /* EditSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A9E1D24C33BB6000D07BD /* EditSectionHeaderView.swift */; };
 		208A9E2024C33E01000D07BD /* FeaturesEditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A9E1F24C33E01000D07BD /* FeaturesEditListView.swift */; };
 		208A9E2224C33E1C000D07BD /* FeaturesEditListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A9E2124C33E1C000D07BD /* FeaturesEditListItemView.swift */; };
+		208A9E2424C4A6BC000D07BD /* NavigationListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208A9E2324C4A6BC000D07BD /* NavigationListItemView.swift */; };
 		2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */; };
 		2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */; };
 		2093C37E24B5398B001C6C5F /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C37D24B5398B001C6C5F /* ProjectListView.swift */; };
@@ -46,6 +47,16 @@
 		2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C38724B6C189001C6C5F /* RequirementListViewModel.swift */; };
 		2093C38C24B6C1C4001C6C5F /* RequirementCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */; };
 		2093C38E24B6C535001C6C5F /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093C38D24B6C535001C6C5F /* ProjectViewModel.swift */; };
+		20A5EC7724C51C1000CEB744 /* ReusableTextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC7624C51C1000CEB744 /* ReusableTextButtonView.swift */; };
+		20A5EC7A24C7B3FF00CEB744 /* DiscussionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC7924C7B3FF00CEB744 /* DiscussionsView.swift */; };
+		20A5EC7C24C7C2F900CEB744 /* DiscussionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC7B24C7C2F900CEB744 /* DiscussionsListView.swift */; };
+		20A5EC7E24C7C32300CEB744 /* DiscussionsListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC7D24C7C32300CEB744 /* DiscussionsListCellView.swift */; };
+		20A5EC8024C7C33000CEB744 /* DiscussionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC7F24C7C33000CEB744 /* DiscussionsFooterView.swift */; };
+		20A5EC8324C7C39900CEB744 /* Discussion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8224C7C39900CEB744 /* Discussion.swift */; };
+		20A5EC8524C7C3A900CEB744 /* DiscussionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8424C7C3A900CEB744 /* DiscussionMessage.swift */; };
+		20A5EC8724C7C4A800CEB744 /* DiscussionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */; };
+		20A5EC8924C7C4B600CEB744 /* DiscussionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */; };
+		20A5EC8B24C7C5FC00CEB744 /* DiscussionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8A24C7C5FC00CEB744 /* DiscussionsStore.swift */; };
 		20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C79E24AFC5AB0098BBF6 /* AppDelegate.swift */; };
 		20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7A024AFC5AB0098BBF6 /* SceneDelegate.swift */; };
 		20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7A224AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld */; };
@@ -125,6 +136,7 @@
 		208A9E1D24C33BB6000D07BD /* EditSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSectionHeaderView.swift; sourceTree = "<group>"; };
 		208A9E1F24C33E01000D07BD /* FeaturesEditListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesEditListView.swift; sourceTree = "<group>"; };
 		208A9E2124C33E1C000D07BD /* FeaturesEditListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesEditListItemView.swift; sourceTree = "<group>"; };
+		208A9E2324C4A6BC000D07BD /* NavigationListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationListItemView.swift; sourceTree = "<group>"; };
 		2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 		2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 		2093C37D24B5398B001C6C5F /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -134,6 +146,16 @@
 		2093C38724B6C189001C6C5F /* RequirementListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementListViewModel.swift; sourceTree = "<group>"; };
 		2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementCellViewModel.swift; sourceTree = "<group>"; };
 		2093C38D24B6C535001C6C5F /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
+		20A5EC7624C51C1000CEB744 /* ReusableTextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextButtonView.swift; sourceTree = "<group>"; };
+		20A5EC7924C7B3FF00CEB744 /* DiscussionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsView.swift; sourceTree = "<group>"; };
+		20A5EC7B24C7C2F900CEB744 /* DiscussionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsListView.swift; sourceTree = "<group>"; };
+		20A5EC7D24C7C32300CEB744 /* DiscussionsListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsListCellView.swift; sourceTree = "<group>"; };
+		20A5EC7F24C7C33000CEB744 /* DiscussionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsFooterView.swift; sourceTree = "<group>"; };
+		20A5EC8224C7C39900CEB744 /* Discussion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discussion.swift; sourceTree = "<group>"; };
+		20A5EC8424C7C3A900CEB744 /* DiscussionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionMessage.swift; sourceTree = "<group>"; };
+		20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionListViewModel.swift; sourceTree = "<group>"; };
+		20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCellViewModel.swift; sourceTree = "<group>"; };
+		20A5EC8A24C7C5FC00CEB744 /* DiscussionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsStore.swift; sourceTree = "<group>"; };
 		20B7C79B24AFC5AB0098BBF6 /* Freelance App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Freelance App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B7C79E24AFC5AB0098BBF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B7C7A024AFC5AB0098BBF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,8 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */,
-				2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */,
 				2093C38724B6C189001C6C5F /* RequirementListViewModel.swift */,
+				2093C38B24B6C1C4001C6C5F /* RequirementCellViewModel.swift */,
 			);
 			path = Requirements;
 			sourceTree = "<group>";
@@ -238,8 +260,8 @@
 		207F4FE324BD3E090044E1B7 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */,
 				2093C37924B52D63001C6C5F /* ProjectListViewModel.swift */,
+				2093C37B24B52EDD001C6C5F /* ProjectCellViewModel.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -282,9 +304,9 @@
 		207F4FF224BE97F90044E1B7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				207F4FFC24BEA2A80044E1B7 /* Core */,
 				207F4FFE24BEA2BC0044E1B7 /* Requirements */,
 				207F4FFD24BEA2B60044E1B7 /* User */,
-				207F4FFC24BEA2A80044E1B7 /* Core */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -338,13 +360,34 @@
 		2093C37424B529D4001C6C5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				207F4FE524BD3E280044E1B7 /* ProjectMembers */,
 				207F4FE624BD3E4D0044E1B7 /* Login */,
-				207F4FE424BD3E1A0044E1B7 /* Overview */,
 				207F4FE324BD3E090044E1B7 /* Projects */,
+				207F4FE424BD3E1A0044E1B7 /* Overview */,
 				207F4FE224BD3DEA0044E1B7 /* Requirements */,
+				207F4FE524BD3E280044E1B7 /* ProjectMembers */,
+				20A5EC8124C7C37D00CEB744 /* Discussions */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		20A5EC7824C7B3BB00CEB744 /* Discussions */ = {
+			isa = PBXGroup;
+			children = (
+				20A5EC7924C7B3FF00CEB744 /* DiscussionsView.swift */,
+				20A5EC7B24C7C2F900CEB744 /* DiscussionsListView.swift */,
+				20A5EC7D24C7C32300CEB744 /* DiscussionsListCellView.swift */,
+				20A5EC7F24C7C33000CEB744 /* DiscussionsFooterView.swift */,
+			);
+			path = Discussions;
+			sourceTree = "<group>";
+		};
+		20A5EC8124C7C37D00CEB744 /* Discussions */ = {
+			isa = PBXGroup;
+			children = (
+				20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */,
+				20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */,
+			);
+			path = Discussions;
 			sourceTree = "<group>";
 		};
 		20B7C79224AFC5AA0098BBF6 = {
@@ -421,9 +464,10 @@
 			children = (
 				20B7C7A524AFC5AB0098BBF6 /* ContentView.swift */,
 				207F4FD524BD009B0044E1B7 /* Login */,
-				20FCE45524AFE22300D2C270 /* Requirements */,
-				20FCE44E24AFDBF100D2C270 /* Overview */,
 				20B7C7D724AFCECD0098BBF6 /* Projects */,
+				20FCE44E24AFDBF100D2C270 /* Overview */,
+				20FCE45524AFE22300D2C270 /* Requirements */,
+				20A5EC7824C7B3BB00CEB744 /* Discussions */,
 				20B7C7D624AFCEC70098BBF6 /* Shared */,
 			);
 			path = Views;
@@ -436,6 +480,7 @@
 				207F4FEE24BD41CC0044E1B7 /* WorkInProgressView.swift */,
 				207F500224BFC3C50044E1B7 /* PickListView.swift */,
 				207F500424BFC3D40044E1B7 /* PickListOptionView.swift */,
+				20A5EC7624C51C1000CEB744 /* ReusableTextButtonView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -444,10 +489,10 @@
 			isa = PBXGroup;
 			children = (
 				20B7C7D124AFC6240098BBF6 /* ProjectsView.swift */,
-				20FCE45124AFDCF100D2C270 /* CreateProjectView.swift */,
-				20FCE45B24AFEFE600D2C270 /* ProjectsFooterView.swift */,
 				2093C37D24B5398B001C6C5F /* ProjectListView.swift */,
 				2093C37F24B56745001C6C5F /* ProjectListCellView.swift */,
+				20FCE45124AFDCF100D2C270 /* CreateProjectView.swift */,
+				20FCE45B24AFEFE600D2C270 /* ProjectsFooterView.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -459,6 +504,8 @@
 				20FCE46124B0D6B400D2C270 /* Requirement.swift */,
 				207F4FDA24BD02ED0044E1B7 /* User.swift */,
 				207F500624BFC4560044E1B7 /* PickListItem.swift */,
+				20A5EC8224C7C39900CEB744 /* Discussion.swift */,
+				20A5EC8424C7C3A900CEB744 /* DiscussionMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -480,8 +527,9 @@
 			isa = PBXGroup;
 			children = (
 				20FCE44F24AFDC0A00D2C270 /* OverviewView.swift */,
-				207F4FC224BB6F6F0044E1B7 /* NavigationListView.swift */,
 				207F4FC424BB6FD50044E1B7 /* ProjectDetailView.swift */,
+				207F4FC224BB6F6F0044E1B7 /* NavigationListView.swift */,
+				208A9E2324C4A6BC000D07BD /* NavigationListItemView.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -504,6 +552,7 @@
 				2093C38324B5735E001C6C5F /* RequirementsStore.swift */,
 				207F4FD824BD026B0044E1B7 /* SessionStore.swift */,
 				207F4FE024BD39830044E1B7 /* ProjectMembersStore.swift */,
+				20A5EC8A24C7C5FC00CEB744 /* DiscussionsStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -793,19 +842,28 @@
 				207F4FCA24BB78020044E1B7 /* RequirementSectionView.swift in Sources */,
 				207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */,
 				207F4FF424BE980D0044E1B7 /* CoreConstants.swift in Sources */,
+				20A5EC7E24C7C32300CEB744 /* DiscussionsListCellView.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
+				20A5EC8324C7C39900CEB744 /* Discussion.swift in Sources */,
 				208A9E2024C33E01000D07BD /* FeaturesEditListView.swift in Sources */,
 				207F4FDB24BD02ED0044E1B7 /* User.swift in Sources */,
+				20A5EC8524C7C3A900CEB744 /* DiscussionMessage.swift in Sources */,
 				207F4FE124BD39830044E1B7 /* ProjectMembersStore.swift in Sources */,
+				20A5EC7724C51C1000CEB744 /* ReusableTextButtonView.swift in Sources */,
 				2093C38024B56745001C6C5F /* ProjectListCellView.swift in Sources */,
 				2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */,
 				208A9E1C24C33B4C000D07BD /* FeaturesEditView.swift in Sources */,
 				20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */,
 				20EDFF9B24C204E700A56DCC /* FeaturesListItemView.swift in Sources */,
 				207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */,
+				20A5EC8B24C7C5FC00CEB744 /* DiscussionsStore.swift in Sources */,
+				208A9E2424C4A6BC000D07BD /* NavigationListItemView.swift in Sources */,
 				20FCE45A24AFED3700D2C270 /* ProjectsStore.swift in Sources */,
 				207F4FBA24B758220044E1B7 /* RequirementDetailView.swift in Sources */,
+				20A5EC7A24C7B3FF00CEB744 /* DiscussionsView.swift in Sources */,
 				207F4FFB24BEA2A30044E1B7 /* RequirementStatusConstants.swift in Sources */,
+				20A5EC7C24C7C2F900CEB744 /* DiscussionsListView.swift in Sources */,
+				20A5EC8724C7C4A800CEB744 /* DiscussionListViewModel.swift in Sources */,
 				2093C38C24B6C1C4001C6C5F /* RequirementCellViewModel.swift in Sources */,
 				207F4FF924BEA24E0044E1B7 /* StatusEditView.swift in Sources */,
 				20FCE45024AFDC0A00D2C270 /* OverviewView.swift in Sources */,
@@ -813,6 +871,7 @@
 				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBarView.swift in Sources */,
 				20FCE45224AFDCF100D2C270 /* CreateProjectView.swift in Sources */,
 				2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */,
+				20A5EC8924C7C4B600CEB744 /* DiscussionCellViewModel.swift in Sources */,
 				20EDFF9924C201D500A56DCC /* FeaturesListView.swift in Sources */,
 				2093C38E24B6C535001C6C5F /* ProjectViewModel.swift in Sources */,
 				20B7C7D424AFC86C0098BBF6 /* SearchBarView.swift in Sources */,
@@ -825,6 +884,7 @@
 				207F4FD924BD026B0044E1B7 /* SessionStore.swift in Sources */,
 				207F4FDF24BD35FE0044E1B7 /* ProjectMemberListViewModel.swift in Sources */,
 				2093C37A24B52D63001C6C5F /* ProjectListViewModel.swift in Sources */,
+				20A5EC8024C7C33000CEB744 /* DiscussionsFooterView.swift in Sources */,
 				207F4FD424BB81060044E1B7 /* AssigneeEditView.swift in Sources */,
 				207F4FC524BB6FD50044E1B7 /* ProjectDetailView.swift in Sources */,
 			);
