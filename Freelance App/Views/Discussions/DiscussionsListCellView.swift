@@ -11,9 +11,17 @@ import FirebaseFirestore
 
 struct DiscussionsListCellView: View {
     @ObservedObject var discussionCellVM: DiscussionCellViewModel
+    @Binding var isMessagesSheetOpen: Bool
+    @Binding var selectedDiscussionId: String
+    
+    var selectAction: () -> Void
     
     var body: some View {
-        HStack {
+        Button(action: {
+            self.selectedDiscussionId = self.discussionCellVM.discussionId
+            self.isMessagesSheetOpen.toggle()
+            self.selectAction()
+        }) {
             VStack(alignment: .leading, spacing: 6) {
                 Text(discussionCellVM.title).fontWeight(.semibold)
                     .lineLimit(1)
@@ -23,14 +31,13 @@ struct DiscussionsListCellView: View {
                     .lineLimit(1)
             }
             .padding(.vertical, 8)
-            Spacer()
         }
     }
 }
 
 struct DiscussionsListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        DiscussionsListCellView(discussionCellVM: DiscussionCellViewModel(title: "Map Zoom Capabilities", lastMessageAuthor: "Donna Torelli", lastMessageText: "We can show the entire portion if you would like but I don't think it is necessary.")
+        DiscussionsListCellView(discussionCellVM: DiscussionCellViewModel(discussionId: "1", title: "Map Zoom Capabilities", lastMessageAuthor: "Donna Torelli", lastMessageText: "We can show the entire portion if you would like but I don't think it is necessary."), isMessagesSheetOpen: Binding.constant(false), selectedDiscussionId: Binding.constant(""), selectAction: {}
         )
     }
 }

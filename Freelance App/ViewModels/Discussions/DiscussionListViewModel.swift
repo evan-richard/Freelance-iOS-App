@@ -21,6 +21,7 @@ class DiscussionListViewModel: ObservableObject {
             .map { discussions in
                 discussions.map { discussion in
                     DiscussionCellViewModel(
+                        discussionId: discussion.id,
                         title: discussion.title,
                         lastMessageAuthor: discussion.lastMessageAuthor,
                         lastMessageText: discussion.lastMessageText
@@ -29,5 +30,9 @@ class DiscussionListViewModel: ObservableObject {
         }
         .assign(to: \.discussionCellViewModels, on: self)
         .store(in: &cancellables)
+    }
+    
+    func populateMessagesForDiscussionWith(id: String) {
+        self.appDelegate.discussionsStore?.populateMessagesForDiscussionWith(id: id)
     }
 }

@@ -11,14 +11,16 @@ import Combine
 
 class DiscussionCellViewModel: ObservableObject, Identifiable  {
     var id: UUID
+    @Published var discussionId: String = ""
     @Published var title: String = ""
     @Published var lastMessageAuthor: String = ""
     @Published var lastMessageText: String = ""
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(title: String, lastMessageAuthor: String, lastMessageText: String) {
+    init(discussionId: String, title: String, lastMessageAuthor: String, lastMessageText: String) {
         id = UUID()
+        self.discussionId = discussionId
         self.title = title
         self.lastMessageAuthor = lastMessageAuthor
         self.lastMessageText = lastMessageText

@@ -57,6 +57,12 @@
 		20A5EC8724C7C4A800CEB744 /* DiscussionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */; };
 		20A5EC8924C7C4B600CEB744 /* DiscussionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */; };
 		20A5EC8B24C7C5FC00CEB744 /* DiscussionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8A24C7C5FC00CEB744 /* DiscussionsStore.swift */; };
+		20A5EC8E24C89FF200CEB744 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8D24C89FF200CEB744 /* MessagesView.swift */; };
+		20A5EC9024C8A41E00CEB744 /* MessagesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC8F24C8A41E00CEB744 /* MessagesHeaderView.swift */; };
+		20A5EC9224C8A49100CEB744 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC9124C8A49100CEB744 /* MessageListViewModel.swift */; };
+		20A5EC9424C8A4EE00CEB744 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC9324C8A4EE00CEB744 /* MessageViewModel.swift */; };
+		20A5EC9624C8F1D200CEB744 /* MessagesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC9524C8F1D200CEB744 /* MessagesListView.swift */; };
+		20A5EC9824C8F1E200CEB744 /* MessagesListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5EC9724C8F1E200CEB744 /* MessagesListItemView.swift */; };
 		20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C79E24AFC5AB0098BBF6 /* AppDelegate.swift */; };
 		20B7C7A124AFC5AB0098BBF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7A024AFC5AB0098BBF6 /* SceneDelegate.swift */; };
 		20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7A224AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld */; };
@@ -156,6 +162,12 @@
 		20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionListViewModel.swift; sourceTree = "<group>"; };
 		20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCellViewModel.swift; sourceTree = "<group>"; };
 		20A5EC8A24C7C5FC00CEB744 /* DiscussionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionsStore.swift; sourceTree = "<group>"; };
+		20A5EC8D24C89FF200CEB744 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		20A5EC8F24C8A41E00CEB744 /* MessagesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesHeaderView.swift; sourceTree = "<group>"; };
+		20A5EC9124C8A49100CEB744 /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		20A5EC9324C8A4EE00CEB744 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		20A5EC9524C8F1D200CEB744 /* MessagesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesListView.swift; sourceTree = "<group>"; };
+		20A5EC9724C8F1E200CEB744 /* MessagesListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesListItemView.swift; sourceTree = "<group>"; };
 		20B7C79B24AFC5AB0098BBF6 /* Freelance App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Freelance App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B7C79E24AFC5AB0098BBF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B7C7A024AFC5AB0098BBF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +389,7 @@
 				20A5EC7B24C7C2F900CEB744 /* DiscussionsListView.swift */,
 				20A5EC7D24C7C32300CEB744 /* DiscussionsListCellView.swift */,
 				20A5EC7F24C7C33000CEB744 /* DiscussionsFooterView.swift */,
+				20A5EC8C24C89FC800CEB744 /* Messages */,
 			);
 			path = Discussions;
 			sourceTree = "<group>";
@@ -386,8 +399,21 @@
 			children = (
 				20A5EC8624C7C4A800CEB744 /* DiscussionListViewModel.swift */,
 				20A5EC8824C7C4B600CEB744 /* DiscussionCellViewModel.swift */,
+				20A5EC9124C8A49100CEB744 /* MessageListViewModel.swift */,
+				20A5EC9324C8A4EE00CEB744 /* MessageViewModel.swift */,
 			);
 			path = Discussions;
+			sourceTree = "<group>";
+		};
+		20A5EC8C24C89FC800CEB744 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				20A5EC8D24C89FF200CEB744 /* MessagesView.swift */,
+				20A5EC8F24C8A41E00CEB744 /* MessagesHeaderView.swift */,
+				20A5EC9524C8F1D200CEB744 /* MessagesListView.swift */,
+				20A5EC9724C8F1E200CEB744 /* MessagesListItemView.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		20B7C79224AFC5AA0098BBF6 = {
@@ -824,8 +850,10 @@
 				20B7C7D224AFC6240098BBF6 /* ProjectsView.swift in Sources */,
 				20FCE46424B1408800D2C270 /* RequirementsListView.swift in Sources */,
 				207F4FF124BD51CA0044E1B7 /* RequirementSimpleSectionView.swift in Sources */,
+				20A5EC9624C8F1D200CEB744 /* MessagesListView.swift in Sources */,
 				2093C38424B5735E001C6C5F /* RequirementsStore.swift in Sources */,
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
+				20A5EC9424C8A4EE00CEB744 /* MessageViewModel.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,
 				207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */,
 				207F4FDD24BD0EC90044E1B7 /* LoginViewModel.swift in Sources */,
@@ -843,19 +871,23 @@
 				207F4FC324BB6F6F0044E1B7 /* NavigationListView.swift in Sources */,
 				207F4FF424BE980D0044E1B7 /* CoreConstants.swift in Sources */,
 				20A5EC7E24C7C32300CEB744 /* DiscussionsListCellView.swift in Sources */,
+				20A5EC9024C8A41E00CEB744 /* MessagesHeaderView.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
 				20A5EC8324C7C39900CEB744 /* Discussion.swift in Sources */,
 				208A9E2024C33E01000D07BD /* FeaturesEditListView.swift in Sources */,
 				207F4FDB24BD02ED0044E1B7 /* User.swift in Sources */,
+				20A5EC9824C8F1E200CEB744 /* MessagesListItemView.swift in Sources */,
 				20A5EC8524C7C3A900CEB744 /* DiscussionMessage.swift in Sources */,
 				207F4FE124BD39830044E1B7 /* ProjectMembersStore.swift in Sources */,
 				20A5EC7724C51C1000CEB744 /* ReusableTextButtonView.swift in Sources */,
 				2093C38024B56745001C6C5F /* ProjectListCellView.swift in Sources */,
+				20A5EC9224C8A49100CEB744 /* MessageListViewModel.swift in Sources */,
 				2093C37C24B52EDD001C6C5F /* ProjectCellViewModel.swift in Sources */,
 				208A9E1C24C33B4C000D07BD /* FeaturesEditView.swift in Sources */,
 				20B7C7A424AFC5AB0098BBF6 /* Freelance_App.xcdatamodeld in Sources */,
 				20EDFF9B24C204E700A56DCC /* FeaturesListItemView.swift in Sources */,
 				207F4FEF24BD41CC0044E1B7 /* WorkInProgressView.swift in Sources */,
+				20A5EC8E24C89FF200CEB744 /* MessagesView.swift in Sources */,
 				20A5EC8B24C7C5FC00CEB744 /* DiscussionsStore.swift in Sources */,
 				208A9E2424C4A6BC000D07BD /* NavigationListItemView.swift in Sources */,
 				20FCE45A24AFED3700D2C270 /* ProjectsStore.swift in Sources */,
