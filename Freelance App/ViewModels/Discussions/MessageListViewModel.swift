@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Combine
+import FirebaseFirestore
 
 class MessageListViewModel: ObservableObject  {
     @Published var discussionId: String = ""
@@ -20,11 +21,32 @@ class MessageListViewModel: ObservableObject  {
     
     init(discussionId: String) {
         self.discussionId = discussionId
+        self.populateMessages()
+        
+    }
+    
+    func sendReply(reply: String) {
+        if let author: User = self.appDelegate.sessionStore?.session {
+            let message: DiscussionMessage = DiscussionMessage(
+                id: String.init(describing: UUID()),
+                author: author.displayName ?? "",
+                authorId: author.id,
+                text: reply,
+                timestamp: Timestamp()
+            )
+            self.appDelegate.discussionsStore?.sendReply(discussionId: self.discussionId, message: message)
+            self.messageViewModels.append(
+                MessageViewModel(text: message.text, author: message.author, timestamp: message.timestamp)
+            )
+        }
+    }
+    
+    private func populateMessages() {
         self.appDelegate.discussionsStore?.$discussions
             .map { discussions in
                 var messages: [MessageViewModel] = [MessageViewModel]()
                 if let discussion: Discussion = discussions.first(where: { discussion in
-                    discussion.id == discussionId
+                    discussion.id == self.discussionId
                 }) {
                     self.discussionTitle = discussion.title
                     messages = discussion.messages.map { messages in

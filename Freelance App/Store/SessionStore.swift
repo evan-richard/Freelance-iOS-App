@@ -8,11 +8,13 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 import Combine
 
 class SessionStore : ObservableObject {
     @Published var session: User?
     
+    private let db = Firestore.firestore()
     var handle: AuthStateDidChangeListenerHandle?
     
     init() {
@@ -21,7 +23,8 @@ class SessionStore : ObservableObject {
         } else {
             self.session = User(
                 id: "test1",
-                email: "test@email.com"
+                email: "test@email.com",
+                displayName: "John Doe"
             )
         }
     }
@@ -35,11 +38,21 @@ class SessionStore : ObservableObject {
     func listen () {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                print("Welcome user: \(String(describing: user.uid))")
                 self.session = User(
                     id: user.uid,
                     email: user.email
                 )
+                self.db.collection("users").document(user.uid).addSnapshotListener { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        if let data = querySnapshot?.data() {
+                            self.session?.displayName = data["displayName"] as? String
+                            self.session?.type = data["type"] as? String
+                        }
+                        print("Welcome user: \(String(describing: self.session?.displayName))")
+                    }
+                }
             } else {
                 self.session = nil
             }

@@ -60,7 +60,7 @@ class RequirementDetailViewModel: ObservableObject {
     
     func updateFeatures(features: [String]) {
         if self.selectedRequirement != nil {
-            self.appDelegate.requirementsStore?.updateRequirementStatus(requirement: self.selectedRequirement!, status: status)
+            self.appDelegate.requirementsStore?.updateRequirementFeatures(requirement: self.selectedRequirement!, features: features)
             self.features = features
         }
     }

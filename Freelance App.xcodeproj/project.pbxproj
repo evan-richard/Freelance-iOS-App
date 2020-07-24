@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		206FBDC724CA39D400826022 /* ReplyTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FBDC624CA39D400826022 /* ReplyTextFieldView.swift */; };
 		207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */; };
 		207F4FBA24B758220044E1B7 /* RequirementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FB924B758220044E1B7 /* RequirementDetailView.swift */; };
 		207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */; };
@@ -112,6 +113,7 @@
 		1242585E9DF028D98147BB74 /* Pods_Freelance_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freelance_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13DE3E101A4E9587C1F9FAE4 /* Pods-Freelance App-Freelance AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freelance App-Freelance AppUITests.release.xcconfig"; path = "Target Support Files/Pods-Freelance App-Freelance AppUITests/Pods-Freelance App-Freelance AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1D5E6780A3186D2B5AE91A97 /* Pods_Freelance_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freelance_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		206FBDC624CA39D400826022 /* ReplyTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTextFieldView.swift; sourceTree = "<group>"; };
 		207F4FB724B757920044E1B7 /* RequirementDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailViewModel.swift; sourceTree = "<group>"; };
 		207F4FB924B758220044E1B7 /* RequirementDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementDetailView.swift; sourceTree = "<group>"; };
 		207F4FBC24B7DA370044E1B7 /* DismissKeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardHelper.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				20A5EC8F24C8A41E00CEB744 /* MessagesHeaderView.swift */,
 				20A5EC9524C8F1D200CEB744 /* MessagesListView.swift */,
 				20A5EC9724C8F1E200CEB744 /* MessagesListItemView.swift */,
+				206FBDC624CA39D400826022 /* ReplyTextFieldView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -903,6 +906,7 @@
 				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBarView.swift in Sources */,
 				20FCE45224AFDCF100D2C270 /* CreateProjectView.swift in Sources */,
 				2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */,
+				206FBDC724CA39D400826022 /* ReplyTextFieldView.swift in Sources */,
 				20A5EC8924C7C4B600CEB744 /* DiscussionCellViewModel.swift in Sources */,
 				20EDFF9924C201D500A56DCC /* FeaturesListView.swift in Sources */,
 				2093C38E24B6C535001C6C5F /* ProjectViewModel.swift in Sources */,

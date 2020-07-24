@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-public struct ReplyTextFieldStyle : TextFieldStyle {
-    public func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .strokeBorder(Color.secondary.opacity(0.5), lineWidth: 1))
-    }
-}
-
 struct MessagesView: View {
     @ObservedObject var messageListVM: MessageListViewModel
     @State private var reply: String = ""
@@ -36,11 +26,15 @@ struct MessagesView: View {
                 MessagesListView(messageListVM: messageListVM)
             }
             Spacer()
-            TextField("Enter text to reply", text: $reply)
-                .textFieldStyle(ReplyTextFieldStyle())
-                .padding(.horizontal)
+            ReplyTextFieldView(reply: $reply, sendReply: self.sendReply)
         }
         .padding(.vertical)
+    }
+    
+    private func sendReply() {
+        self.messageListVM.sendReply(reply: self.reply)
+        self.reply = ""
+        // TODO: scroll to the bottom of the list when iOS 14 is released
     }
 }
 

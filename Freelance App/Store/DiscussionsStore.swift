@@ -37,6 +37,46 @@ class DiscussionsStore: ObservableObject {
         }
     }
     
+    func sendReply(discussionId: String, message: DiscussionMessage) {
+        if CoreConstants.USE_FIRESTORE {
+            let ref: DocumentReference = db.collection("discussions").document(discussionId).collection("messages").document()
+            ref.setData([
+                "id": ref.documentID,
+                "author": message.author,
+                "authorId": message.authorId,
+                "text": message.text,
+                "timestamp": message.timestamp
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    self.db.collection("discussions").document(discussionId).updateData([
+                        "lastMessageAuthor": message.author,
+                        "lastMessageText": message.text,
+                        "lastMessageTimestamp": message.timestamp
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        }
+                    }
+                }
+            }
+        } else {
+            if let idx = self.discussions.firstIndex(where: { discussion in
+                discussion.id == discussionId
+            }) {
+                self.discussions[idx].messages?.append(message)
+                self.discussions[idx].lastMessageAuthor = message.author
+                self.discussions[idx].lastMessageText = message.text
+                self.discussions[idx].lastMessageTimestamp = message.timestamp
+                self.discussions = self.discussions
+                    .sorted { discussionOne, discussionTwo in
+                        discussionOne.lastMessageTimestamp.compare(discussionTwo.lastMessageTimestamp).rawValue > 0
+                    }
+            }
+        }
+    }
+    
     private func loadDiscussionsList(projectId: String) -> Void {
         if CoreConstants.USE_FIRESTORE {
             db.collection("discussions").whereField("projectId", isEqualTo: projectId).order(by: "lastMessageTimestamp", descending: true).addSnapshotListener { (querySnapshot, err) in
@@ -44,7 +84,16 @@ class DiscussionsStore: ObservableObject {
                     print("Error getting documents: \(err)")
                 } else {
                     self.discussions = querySnapshot!.documents.compactMap { document -> Discussion? in
-                            try? document.data(as: Discussion.self)
+                        var discussion: Discussion? = try? document.data(as: Discussion.self)
+                        if (!self.discussions.isEmpty) {
+                            if let currentDiscussion = self.discussions.first(where: { d in
+                                d.id == discussion?.id
+                            }) {
+                                print("HERE")
+                                discussion?.messages = currentDiscussion.messages
+                            }
+                        }
+                        return discussion
                     }
                 }
             }
@@ -64,6 +113,9 @@ class DiscussionsStore: ObservableObject {
                     DiscussionMessage(id: "3", author: "Developer 3", authorId: "test2", text: "Test last message two", timestamp: Timestamp())
                 ], requirementId: "6")
             ]
+            .sorted { discussionOne, discussionTwo in
+                discussionOne.lastMessageTimestamp.compare(discussionTwo.lastMessageTimestamp).rawValue > 0
+            }
         }
     }
 }

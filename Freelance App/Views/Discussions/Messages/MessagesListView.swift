@@ -23,6 +23,9 @@ struct MessagesListView: View {
                 }
                 .padding(.horizontal)
             }
+            .onAppear {
+                // TODO: scroll to the bottom of the list when iOS 14 is released
+            }
         }
     }
 }
