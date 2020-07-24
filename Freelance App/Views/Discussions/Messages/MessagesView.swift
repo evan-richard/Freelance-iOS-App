@@ -9,14 +9,9 @@
 import SwiftUI
 
 struct MessagesView: View {
-    @ObservedObject var messageListVM: MessageListViewModel
+    @ObservedObject var messageListVM: MessageListViewModel = MessageListViewModel()
     @State private var reply: String = ""
     @Binding var isMessagesSheetOpen: Bool
-    
-    init(discussionId: String, isMessagesSheetOpen: Binding<Bool>) {
-        self.messageListVM = MessageListViewModel(discussionId: discussionId)
-        self._isMessagesSheetOpen = isMessagesSheetOpen
-    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -40,6 +35,6 @@ struct MessagesView: View {
 
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesView(discussionId: "1", isMessagesSheetOpen: Binding.constant(true))
+        MessagesView(isMessagesSheetOpen: Binding.constant(true))
     }
 }

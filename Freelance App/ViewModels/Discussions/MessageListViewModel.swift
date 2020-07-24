@@ -19,10 +19,11 @@ class MessageListViewModel: ObservableObject  {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var cancellables = Set<AnyCancellable>()
     
-    init(discussionId: String) {
-        self.discussionId = discussionId
-        self.populateMessages()
-        
+    init() {
+        if let selectedDiscussionId: String = self.appDelegate.discussionsStore?.selectedDiscussion?.id {
+            self.discussionId = selectedDiscussionId
+            self.populateMessages()
+        }
     }
     
     func sendReply(reply: String) {
@@ -34,9 +35,9 @@ class MessageListViewModel: ObservableObject  {
                 text: reply,
                 timestamp: Timestamp()
             )
-            self.appDelegate.discussionsStore?.sendReply(discussionId: self.discussionId, message: message)
+            self.appDelegate.discussionsStore?.sendReply(message: message)
             self.messageViewModels.append(
-                MessageViewModel(text: message.text, author: message.author, timestamp: message.timestamp)
+                MessageViewModel(messageId: message.id, text: message.text, authorId: message.authorId, author: message.author, timestamp: message.timestamp)
             )
         }
     }
@@ -52,7 +53,9 @@ class MessageListViewModel: ObservableObject  {
                     messages = discussion.messages.map { messages in
                         messages.map { message in
                             MessageViewModel(
+                                messageId: message.id,
                                 text: message.text,
+                                authorId: message.authorId,
                                 author: message.author,
                                 timestamp: message.timestamp
                             )

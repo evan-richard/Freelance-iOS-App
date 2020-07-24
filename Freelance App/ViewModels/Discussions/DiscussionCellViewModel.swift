@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class DiscussionCellViewModel: ObservableObject, Identifiable  {
     var id: UUID
@@ -16,6 +17,7 @@ class DiscussionCellViewModel: ObservableObject, Identifiable  {
     @Published var lastMessageAuthor: String = ""
     @Published var lastMessageText: String = ""
     
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var cancellables = Set<AnyCancellable>()
     
     init(discussionId: String, title: String, lastMessageAuthor: String, lastMessageText: String) {
@@ -24,5 +26,12 @@ class DiscussionCellViewModel: ObservableObject, Identifiable  {
         self.title = title
         self.lastMessageAuthor = lastMessageAuthor
         self.lastMessageText = lastMessageText
+    }
+    
+    func setSelectedDiscussion() {
+        self.appDelegate.discussionsStore?.selectedDiscussion = self.appDelegate.discussionsStore?.discussions
+            .first { discussion in
+                discussion.id == self.discussionId
+            }
     }
 }

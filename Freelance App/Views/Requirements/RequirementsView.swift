@@ -12,7 +12,6 @@ struct RequirementsView: View {
     @State private var isSearching: Bool = false
     @State private var searchString: String = ""
     @State private var isRequirementDetailOpen: Bool = false
-    @State private var selectedRequirementTitle: String = ""
     
     var body: some View {
         VStack {
@@ -20,34 +19,29 @@ struct RequirementsView: View {
                 SearchBarView(searchString: $searchString, isSearching: $isSearching)
                     .navigationBarTitle("Requirements", displayMode: .inline)
             }
-            RequirementsListView(searchString: $searchString, selectedRequirementTitle: $selectedRequirementTitle, isRequirementDetailOpen: $isRequirementDetailOpen)
-                .navigationBarTitle("Requirements", displayMode: .large)
-                .navigationBarItems(trailing:
-                    HStack(spacing: 35) {
-                        Button(action: {
-                            withAnimation {
-                                self.isSearching.toggle()
-                                self.searchString = ""
-                            }
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.purple)
-                                .imageScale(.large)
-                        }
-                        Button(action: {
-            //            pass
-                        }) {
-                            Image(systemName: "square.and.pencil")
-                                .foregroundColor(.purple)
-                                .imageScale(.large)
-                        }
-                    }
-                )
+            RequirementsListView(searchString: $searchString, isRequirementDetailOpen: $isRequirementDetailOpen)
         }
+        .navigationBarTitle("Requirements", displayMode: .large)
+        .navigationBarItems(trailing:
+            HStack(spacing: 35) {
+                Button(action: self.searchAction) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.purple)
+                        .imageScale(.large)
+                }
+            }
+        )
         .padding()
         .sheet(isPresented: self.$isRequirementDetailOpen, content: {
-            RequirementDetailView(requirementTitle: self.selectedRequirementTitle, isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
+            RequirementDetailView(isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
         })
+    }
+    
+    private func searchAction() {
+        withAnimation {
+            self.isSearching.toggle()
+            self.searchString = ""
+        }
     }
 }
 

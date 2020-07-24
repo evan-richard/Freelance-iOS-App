@@ -16,17 +16,13 @@ struct ProjectsFooterView: View {
     var body: some View {
         HStack {
             if self.isFilterActive {
-                Button(action: {
-//                            pass
-                }) {
+                Button(action: self.toggleFilterAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
                         .foregroundColor(.purple)
                         .imageScale(.large)
                 }
             } else {
-                Button(action: {
-//                            pass
-                }) {
+                Button(action: self.toggleFilterAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle")
                         .foregroundColor(.purple)
                         .imageScale(.large)
@@ -36,9 +32,7 @@ struct ProjectsFooterView: View {
             Text("\(String(numberOfProjects)) Projects")
                 .font(.footnote)
             Spacer()
-            Button(action: {
-                self.isCreateProjectOpen = true
-            }) {
+            Button(action: self.createProjectAction) {
                 Image(systemName: "square.and.pencil")
                     .foregroundColor(.purple)
                     .imageScale(.large)
@@ -48,6 +42,12 @@ struct ProjectsFooterView: View {
             })
         }
         .padding(.top, 5)
+    }
+    
+    private func toggleFilterAction() { }
+    
+    private func createProjectAction() {
+        self.isCreateProjectOpen = true
     }
 }
 

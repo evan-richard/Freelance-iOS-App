@@ -11,7 +11,6 @@ import SwiftUI
 struct RequirementsListView: View {
     @ObservedObject var requirementListVM: RequirementListViewModel = RequirementListViewModel()
     @Binding var searchString: String
-    @Binding var selectedRequirementTitle: String
     @Binding var isRequirementDetailOpen: Bool
     
     var body: some View {
@@ -22,13 +21,13 @@ struct RequirementsListView: View {
                 return true
             }
         })) { requirementCellVM in
-            RequirementsListCellView(requirementCellVM: requirementCellVM, selectedRequirementTitle: self.$selectedRequirementTitle, isRequirementDetailOpen: self.$isRequirementDetailOpen)
+            RequirementsListCellView(requirementCellVM: requirementCellVM, isRequirementDetailOpen: self.$isRequirementDetailOpen)
         }
     }
 }
 
 struct RequirementsListView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementsListView(searchString: Binding.constant(""), selectedRequirementTitle: Binding.constant(""), isRequirementDetailOpen: Binding.constant(false))
+        RequirementsListView(searchString: Binding.constant(""), isRequirementDetailOpen: Binding.constant(false))
     }
 }

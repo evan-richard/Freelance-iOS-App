@@ -14,7 +14,6 @@ struct FeaturesListItemView: View {
     
     var body: some View {
         HStack() {
-            // Bullet point preprended to feature
             Text("\(index + 1). \(feature)")
                 .foregroundColor(.secondary)
                 .lineLimit(5)

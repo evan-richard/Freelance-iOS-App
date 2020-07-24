@@ -15,10 +15,7 @@ struct FeaturesEditView: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            EditSectionHeaderView(label: "Features",action: {
-                self.isEditOpen.toggle()
-                self.requirementDetailVM.updateFeatures(features: self.editFeaturesList)
-            })
+            EditSectionHeaderView(label: "Features", action: self.onSaveAction)
             FeaturesEditListView(features: self.$editFeaturesList)
             Spacer()
         }
@@ -27,10 +24,15 @@ struct FeaturesEditView: View {
             self.editFeaturesList = self.requirementDetailVM.features
         })
     }
+    
+    private func onSaveAction() {
+        self.isEditOpen.toggle()
+        self.requirementDetailVM.updateFeatures(features: self.editFeaturesList)
+    }
 }
 
 struct FeaturesEditView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesEditView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), isEditOpen: Binding.constant(true))
+        FeaturesEditView(requirementDetailVM: RequirementDetailViewModel(), isEditOpen: Binding.constant(true))
     }
 }

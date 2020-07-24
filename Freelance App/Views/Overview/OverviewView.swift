@@ -18,15 +18,15 @@ struct OverviewView: View {
                 .padding(.bottom, 20)
         }
         .navigationBarTitle("Overview", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-//            pass
-        }) {
+        .navigationBarItems(trailing: Button(action: self.shareProjectAction) {
             Image(systemName: "square.and.arrow.up")
                 .foregroundColor(.purple)
                 .imageScale(.large)
         })
         .padding()
     }
+    
+    private func shareProjectAction() { }
 }
 
 struct OverviewView_Previews: PreviewProvider {

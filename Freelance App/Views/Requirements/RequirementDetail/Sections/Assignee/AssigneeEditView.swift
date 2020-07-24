@@ -18,10 +18,7 @@ struct AssigneeEditView: View {
     
     var body: some View {
         VStack {
-            EditSectionHeaderView(label: "Assignee",action: {
-                self.isEditOpen.toggle()
-                self.requirementDetailVM.updateAssignee(assigneeId: self.selectedMemberId)
-            })
+            EditSectionHeaderView(label: "Assignee", action: self.onSaveAction)
             SearchBarView(searchString: $searchString, isSearching: $isSearching)
             AssigneeListView(projectMemberListVM: projectMemberListVM, searchString: $searchString, selectedMemberId: $selectedMemberId)
         }
@@ -29,13 +26,16 @@ struct AssigneeEditView: View {
         .onAppear {
             self.selectedMemberId = self.requirementDetailVM.assigneeId
         }
-        
     }
     
+    private func onSaveAction() {
+        self.isEditOpen.toggle()
+        self.requirementDetailVM.updateAssignee(assigneeId: self.selectedMemberId)
+    }
 }
 
 struct AssigneeEditView_Previews: PreviewProvider {
     static var previews: some View {
-        AssigneeEditView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), isEditOpen: Binding.constant(true))
+        AssigneeEditView(requirementDetailVM: RequirementDetailViewModel(), isEditOpen: Binding.constant(true))
     }
 }

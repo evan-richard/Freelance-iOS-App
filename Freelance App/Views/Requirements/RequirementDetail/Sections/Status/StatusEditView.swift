@@ -21,10 +21,7 @@ struct StatusEditView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 50) {
-            EditSectionHeaderView(label: "Status", action: {
-                self.isEditOpen.toggle()
-                self.requirementDetailVM.updateStatus(status: self.selectedLabel)
-            })
+            EditSectionHeaderView(label: "Status", action: self.onSaveAction)
                 .padding(.horizontal)
             VStack(alignment: .leading) {
                 PickListView(selectedLabel: self.$selectedLabel, optionList: statusOptions)
@@ -39,10 +36,15 @@ struct StatusEditView: View {
             self.selectedLabel = self.requirementDetailVM.status
         }
     }
+    
+    private func onSaveAction() {
+        self.isEditOpen.toggle()
+        self.requirementDetailVM.updateStatus(status: self.selectedLabel)
+    }
 }
 
 struct StatusEditView_Previews: PreviewProvider {
     static var previews: some View {
-        StatusEditView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), isEditOpen: Binding.constant(true))
+        StatusEditView(requirementDetailVM: RequirementDetailViewModel(), isEditOpen: Binding.constant(true))
     }
 }

@@ -32,6 +32,6 @@ struct MessagesListView: View {
 
 struct MessagesListView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesListView(messageListVM: MessageListViewModel(discussionId: "1"))
+        MessagesListView(messageListVM: MessageListViewModel())
     }
 }

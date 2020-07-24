@@ -15,25 +15,23 @@ struct DiscussionsView: View {
     @State private var isFilterActive: Bool = false
     @State private var isCreateDiscussionOpen: Bool = false
     @State private var isMessagesSheetOpen: Bool = false
-    @State private var selectedDiscussionId: String = ""
     
     var body: some View {
         VStack {
             SearchBarView(searchString: $searchString, isSearching: $isSearching)
-            DiscussionsListView(discussionListVM: discussionListVM, searchString: $searchString, isMessagesSheetOpen: $isMessagesSheetOpen, selectedDiscussionId: $selectedDiscussionId, selectAction: self.selectAction)
+            DiscussionsListView(discussionListVM: discussionListVM, searchString: $searchString, isMessagesSheetOpen: $isMessagesSheetOpen, selectAction: self.selectAction)
             Spacer()
             DiscussionsFooterView(isFilterActive: $isFilterActive, isCreateDiscussionOpen: $isCreateDiscussionOpen, numberOfNewMessages: Binding.constant(0))
         }
         .navigationBarTitle("Discussion", displayMode: .large)
         .padding()
         .sheet(isPresented: $isMessagesSheetOpen) {
-            MessagesView(discussionId: self.selectedDiscussionId, isMessagesSheetOpen: self.$isMessagesSheetOpen)
+            MessagesView(isMessagesSheetOpen: self.$isMessagesSheetOpen)
         }
     }
     
     private func selectAction() -> Void {
-        self.discussionListVM
-            .populateMessagesForDiscussionWith(id: self.selectedDiscussionId)
+        self.discussionListVM.populateMessagesForDiscussion()
     }
 }
 

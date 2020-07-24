@@ -32,7 +32,7 @@ class DiscussionListViewModel: ObservableObject {
         .store(in: &cancellables)
     }
     
-    func populateMessagesForDiscussionWith(id: String) {
-        self.appDelegate.discussionsStore?.populateMessagesForDiscussionWith(id: id)
+    func populateMessagesForDiscussion() {
+        self.appDelegate.discussionsStore?.populateMessagesForDiscussion()
     }
 }

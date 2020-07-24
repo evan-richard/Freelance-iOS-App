@@ -12,6 +12,8 @@ import FirebaseFirestoreSwift
 
 class RequirementsStore: ObservableObject {
     @Published var requirements: [Requirement] = [Requirement]()
+    @Published var selectedRequirementPrefixedTitle: String = ""
+    @Published var selectedRequirement: Requirement? = nil
     
     private let db = Firestore.firestore()
     
@@ -99,6 +101,44 @@ class RequirementsStore: ObservableObject {
                 req.id == requirement.id
             }) {
                 self.requirements[i].features = features
+            }
+        }
+    }
+    
+    func renameRequirement(requirement: Requirement, title: String) {
+        if CoreConstants.USE_FIRESTORE {
+            db.collection("requirements").document(requirement.id).updateData([
+                "title": title
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        } else {
+            if let i: Int = self.requirements.firstIndex(where: { req in
+                req.id == requirement.id
+            }) {
+                self.requirements[i].title = title
+            }
+        }
+    }
+    
+    func deleteRequirement(requirement: Requirement) {
+        if CoreConstants.USE_FIRESTORE {
+            db.collection("requirements").document(requirement.id).delete() { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        } else {
+            if let i: Int = self.requirements.firstIndex(where: { req in
+                req.id == requirement.id
+            }) {
+                self.requirements.remove(at: i)
             }
         }
     }

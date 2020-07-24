@@ -15,4 +15,5 @@ struct DiscussionMessage: Identifiable, Codable {
     var authorId: String
     var text: String
     var timestamp: Timestamp
+    var isDeleted: Bool?
 }

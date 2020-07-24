@@ -14,21 +14,6 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var loading = false
     @State private var error = false
-
-    func signIn () {
-        loading = true
-        error = false
-        loginVM.signIn(email: email, password: password) { (result, error) in
-            self.loading = false
-            if error != nil {
-                self.error = true
-            } else {
-                self.email = ""
-                self.password = ""
-            }
-        }
-        hideKeyboard()
-    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
@@ -63,6 +48,21 @@ struct LoginView: View {
         }
         .padding()
         .padding(.horizontal, 40)
+    }
+    
+    private func signIn () {
+        loading = true
+        error = false
+        loginVM.signIn(email: email, password: password) { (result, error) in
+            self.loading = false
+            if error != nil {
+                self.error = true
+            } else {
+                self.email = ""
+                self.password = ""
+            }
+        }
+        hideKeyboard()
     }
 }
 

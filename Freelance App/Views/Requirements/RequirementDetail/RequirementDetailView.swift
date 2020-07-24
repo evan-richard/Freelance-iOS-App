@@ -9,13 +9,8 @@
 import SwiftUI
 
 struct RequirementDetailView: View {
-    @ObservedObject private var requirementDetailVM: RequirementDetailViewModel
+    @ObservedObject private var requirementDetailVM: RequirementDetailViewModel = RequirementDetailViewModel()
     @Binding var isRequirementDetailViewOpen: Bool
-    
-    init(requirementTitle: String, isRequirementDetailViewOpen: Binding<Bool>) {
-        self._isRequirementDetailViewOpen = isRequirementDetailViewOpen
-        requirementDetailVM = RequirementDetailViewModel(requirementTitle: requirementTitle)
-    }
     
     var body: some View {
         ScrollView {
@@ -40,6 +35,6 @@ struct RequirementDetailView: View {
 
 struct RequirementDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementDetailView(requirementTitle: "2. About Page", isRequirementDetailViewOpen: Binding.constant(false))
+        RequirementDetailView(isRequirementDetailViewOpen: Binding.constant(false))
     }
 }

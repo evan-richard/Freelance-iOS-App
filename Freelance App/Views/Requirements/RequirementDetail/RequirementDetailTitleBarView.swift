@@ -18,13 +18,15 @@ struct RequirementDetailTitleBarView: View {
             Text(requirementDetailTitleBar)
                 .font(.title)
             Spacer()
-            Button(action: {
-                self.isRequirementDetailViewOpen.toggle()
-            }) {
+            Button(action: self.closeRequirementDetailAction) {
                 ReusableTextButtonView(label: "Done")
             }
             .accentColor(.purple)
         }
+    }
+    
+    private func closeRequirementDetailAction() {
+        self.isRequirementDetailViewOpen.toggle()
     }
 }
 

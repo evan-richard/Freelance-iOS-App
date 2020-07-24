@@ -51,6 +51,6 @@ struct RequirementSimpleSectionView: View {
 
 struct RequirementSimpleSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementSimpleSectionView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), sectionTitle: "Assignee")
+        RequirementSimpleSectionView(requirementDetailVM: RequirementDetailViewModel(), sectionTitle: "Assignee")
     }
 }

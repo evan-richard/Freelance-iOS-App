@@ -16,17 +16,13 @@ struct DiscussionsFooterView: View {
     var body: some View {
         HStack {
             if self.isFilterActive {
-                Button(action: {
-//                            pass
-                }) {
+                Button(action: self.filterToggleAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
                         .foregroundColor(.purple)
                         .imageScale(.large)
                 }
             } else {
-                Button(action: {
-//                            pass
-                }) {
+                Button(action: self.filterToggleAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle")
                         .foregroundColor(.purple)
                         .imageScale(.large)
@@ -36,9 +32,7 @@ struct DiscussionsFooterView: View {
             Text("No New Messages")
                 .font(.footnote)
             Spacer()
-            Button(action: {
-                self.isCreateDiscussionOpen = true
-            }) {
+            Button(action: self.createDiscussionAction) {
                 Image(systemName: "square.and.pencil")
                     .foregroundColor(.purple)
                     .imageScale(.large)
@@ -48,6 +42,12 @@ struct DiscussionsFooterView: View {
             })
         }
         .padding(.top, 5)
+    }
+    
+    private func filterToggleAction() { }
+    
+    private func createDiscussionAction() {
+        self.isCreateDiscussionOpen = true
     }
 }
 

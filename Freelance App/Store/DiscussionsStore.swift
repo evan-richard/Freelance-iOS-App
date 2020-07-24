@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 
 class DiscussionsStore: ObservableObject {
     @Published var discussions: [Discussion] = [Discussion]()
+    @Published var selectedDiscussion: Discussion? = nil
     
     private let db = Firestore.firestore()
     
@@ -19,17 +20,19 @@ class DiscussionsStore: ObservableObject {
         self.loadDiscussionsList(projectId: projectId)
     }
     
-    func populateMessagesForDiscussionWith(id: String) {
+    func populateMessagesForDiscussion() {
         if CoreConstants.USE_FIRESTORE {
-            db.collection("discussions").document(id).collection("messages").order(by: "timestamp").addSnapshotListener { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    if let index: Int = self.discussions.firstIndex(where: { discussion in
-                        discussion.id == id
-                    }) {
-                        self.discussions[index].messages = querySnapshot!.documents.compactMap { document -> DiscussionMessage? in
-                            try? document.data(as: DiscussionMessage.self)
+            if let id: String = selectedDiscussion?.id {
+                db.collection("discussions").document(id).collection("messages").order(by: "timestamp").addSnapshotListener { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        if let index: Int = self.discussions.firstIndex(where: { discussion in
+                            discussion.id == id
+                        }) {
+                            self.discussions[index].messages = querySnapshot!.documents.compactMap { document -> DiscussionMessage? in
+                                try? document.data(as: DiscussionMessage.self)
+                            }
                         }
                     }
                 }
@@ -37,42 +40,92 @@ class DiscussionsStore: ObservableObject {
         }
     }
     
-    func sendReply(discussionId: String, message: DiscussionMessage) {
-        if CoreConstants.USE_FIRESTORE {
-            let ref: DocumentReference = db.collection("discussions").document(discussionId).collection("messages").document()
-            ref.setData([
-                "id": ref.documentID,
-                "author": message.author,
-                "authorId": message.authorId,
-                "text": message.text,
-                "timestamp": message.timestamp
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    self.db.collection("discussions").document(discussionId).updateData([
-                        "lastMessageAuthor": message.author,
-                        "lastMessageText": message.text,
-                        "lastMessageTimestamp": message.timestamp
-                    ]) { err in
-                        if let err = err {
-                            print("Error updating document: \(err)")
+    func sendReply(message: DiscussionMessage) {
+        if let discussionId = self.selectedDiscussion?.id {
+            if CoreConstants.USE_FIRESTORE {
+                let ref: DocumentReference = db.collection("discussions").document(discussionId).collection("messages").document()
+                ref.setData([
+                    "id": ref.documentID,
+                    "author": message.author,
+                    "authorId": message.authorId,
+                    "text": message.text,
+                    "timestamp": message.timestamp
+                ]) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        self.db.collection("discussions").document(discussionId).updateData([
+                            "lastMessageAuthor": message.author,
+                            "lastMessageText": message.text,
+                            "lastMessageTimestamp": message.timestamp
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            }
                         }
                     }
                 }
+            } else {
+                if let idx = self.discussions.firstIndex(where: { discussion in
+                    discussion.id == discussionId
+                }) {
+                    self.discussions[idx].messages?.append(message)
+                    self.discussions[idx].lastMessageAuthor = message.author
+                    self.discussions[idx].lastMessageText = message.text
+                    self.discussions[idx].lastMessageTimestamp = message.timestamp
+                    self.discussions = self.discussions
+                        .sorted { discussionOne, discussionTwo in
+                            discussionOne.lastMessageTimestamp.compare(discussionTwo.lastMessageTimestamp).rawValue > 0
+                        }
+                }
             }
-        } else {
-            if let idx = self.discussions.firstIndex(where: { discussion in
-                discussion.id == discussionId
-            }) {
-                self.discussions[idx].messages?.append(message)
-                self.discussions[idx].lastMessageAuthor = message.author
-                self.discussions[idx].lastMessageText = message.text
-                self.discussions[idx].lastMessageTimestamp = message.timestamp
-                self.discussions = self.discussions
-                    .sorted { discussionOne, discussionTwo in
-                        discussionOne.lastMessageTimestamp.compare(discussionTwo.lastMessageTimestamp).rawValue > 0
+        }
+    }
+    
+    func deleteMessage(messageId: String) {
+        if let discussionId = self.selectedDiscussion?.id {
+            if CoreConstants.USE_FIRESTORE {
+                db.collection("discussions").document(discussionId).collection("messages").document(messageId)
+                    .updateData([
+                    "author": "Anonymous",
+                    "isDeleted": true,
+                    "text": "<Deleted>"
+                ]) { err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        if self.selectedDiscussion!.messages != nil && self.selectedDiscussion!.messages![self.selectedDiscussion!.messages!.count - 1].id == messageId {
+                            // If the message being deleted is the latest message,
+                            // update the discussion fields
+                            self.db.collection("discussions").document(discussionId).updateData([
+                                "lastMessageAuthor": "Anonymous",
+                                "lastMessageText": "<Deleted>"
+                            ]) { err in
+                                if let err = err {
+                                    print("Error updating document: \(err)")
+                                }
+                            }
+                        }
                     }
+                }
+            } else {
+                if let idx = self.discussions.firstIndex(where: { discussion in
+                    discussion.id == discussionId
+                }) {
+                    if let messageIdx = self.discussions[idx].messages?.firstIndex(where: { m in
+                        m.id == messageId
+                    }) {
+                        self.discussions[idx].messages![messageIdx].author = "Anonymous"
+                        self.discussions[idx].messages![messageIdx].isDeleted = true
+                        self.discussions[idx].messages![messageIdx].text = "<Deleted>"
+                        if messageIdx == self.discussions[idx].messages!.count - 1 {
+                            // If the message being deleted is the latest message,
+                            // update the discussion fields
+                            self.discussions[idx].lastMessageAuthor = "Anonymous"
+                            self.discussions[idx].lastMessageText = "<Deleted>"
+                        }
+                    }
+                }
             }
         }
     }
@@ -89,7 +142,6 @@ class DiscussionsStore: ObservableObject {
                             if let currentDiscussion = self.discussions.first(where: { d in
                                 d.id == discussion?.id
                             }) {
-                                print("HERE")
                                 discussion?.messages = currentDiscussion.messages
                             }
                         }

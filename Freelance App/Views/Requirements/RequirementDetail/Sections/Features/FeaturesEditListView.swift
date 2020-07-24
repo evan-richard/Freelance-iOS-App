@@ -44,8 +44,6 @@ struct FeaturesEditListView: View {
     }
     
     private func deleteRow(idx: Int) -> Void {
-        print(idx + 1)
-        print(self.features[idx])
         self.features.remove(at: idx)
     }
     

@@ -14,9 +14,7 @@ struct PickListOptionView: View {
     var option: PickListItem
     
     var body: some View {
-        Button(action: {
-            self.selectedLabel = self.option.label
-        }) {
+        Button(action: self.selectOptionAction) {
             HStack {
                 Image(systemName: option.icon ?? "")
                     .foregroundColor(.purple)
@@ -31,6 +29,10 @@ struct PickListOptionView: View {
             .padding()
             .background(Color(.secondarySystemBackground))
         }
+    }
+    
+    private func selectOptionAction() {
+        self.selectedLabel = self.option.label
     }
 }
 

@@ -18,14 +18,16 @@ struct MessagesHeaderView: View {
             Text(discussionTitle)
                 .font(.title)
             Spacer()
-            Button(action: {
-                self.isMessagesSheetOpen.toggle()
-            }) {
+            Button(action: self.closeDiscussionAction) {
                 Text("Done")
                     .fontWeight(.semibold)
             }
             .accentColor(.purple)
         }
+    }
+    
+    private func closeDiscussionAction() {
+        self.isMessagesSheetOpen.toggle()
     }
 }
 

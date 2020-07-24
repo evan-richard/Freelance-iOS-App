@@ -19,9 +19,7 @@ struct SearchBarView: View {
                 TextField("Search", text: $searchString)
                 
                 if !searchString.isEmpty {
-                    Button(action: {
-                        self.searchString = ""
-                    }) {
+                    Button(action: self.clearSearchBarAction) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.primary)
                             .opacity(0.3)
@@ -37,19 +35,25 @@ struct SearchBarView: View {
                 }
             }
             if isSearching {
-                Button(action: {
-                    withAnimation {
-                        self.isSearching = false
-                        self.searchString = ""
-                        self.hideKeyboard()
-                    }
-                }) {
+                Button(action: self.cancelSearchAction) {
                     Text("Cancel")
                 }
                 .accentColor(.purple)
             }
         }
         .frame(height: 40)
+    }
+    
+    private func clearSearchBarAction() {
+        self.searchString = ""
+    }
+    
+    private func cancelSearchAction() {
+        withAnimation {
+            self.isSearching = false
+            self.searchString = ""
+            self.hideKeyboard()
+        }
     }
 }
 

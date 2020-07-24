@@ -25,6 +25,6 @@ struct FeaturesView: View {
 
 struct FeaturesView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"))
+        FeaturesView(requirementDetailVM: RequirementDetailViewModel())
     }
 }

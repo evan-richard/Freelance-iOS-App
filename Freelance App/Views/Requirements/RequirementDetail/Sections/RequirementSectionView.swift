@@ -19,9 +19,7 @@ struct RequirementSectionView: View {
             HStack {
                 Text(sectionTitle)
                 Spacer()
-                Button(action: {
-                    self.isEditOpen.toggle()
-                }) {
+                Button(action: self.openEditAction) {
                     Text("Edit")
                 }
                 .accentColor(.purple)
@@ -30,10 +28,14 @@ struct RequirementSectionView: View {
         }
         .padding(.top)
     }
+    
+    private func openEditAction() {
+        self.isEditOpen.toggle()
+    }
 }
 
 struct RequirementSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementSectionView(requirementDetailVM: RequirementDetailViewModel(requirementTitle: "2. About Page"), isEditOpen: Binding.constant(true), sectionTitle: "Assignee")
+        RequirementSectionView(requirementDetailVM: RequirementDetailViewModel(), isEditOpen: Binding.constant(true), sectionTitle: "Assignee")
     }
 }

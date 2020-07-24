@@ -13,9 +13,7 @@ struct AssigneeCellView: View {
     @Binding var selectedMemberId: String
     
     var body: some View {
-        Button(action: {
-            self.selectedMemberId = self.projectMemberCellVM.projectMemberId
-        }) {
+        Button(action: self.selectAssigneeAction) {
             HStack {
                 Text(projectMemberCellVM.displayName)
                 Spacer()
@@ -25,6 +23,10 @@ struct AssigneeCellView: View {
                 }
             }
         }
+    }
+    
+    private func selectAssigneeAction() {
+        self.selectedMemberId = self.projectMemberCellVM.projectMemberId
     }
 }
 

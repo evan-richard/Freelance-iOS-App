@@ -25,11 +25,42 @@ struct MessagesListItemView: View {
         .padding()
         .background(Color(.secondarySystemBackground))
         .cornerRadius(20)
+        .contextMenu {
+            Button(action: self.copyMessageAction) {
+                Text("Copy")
+                Image(systemName: "doc.on.doc")
+            }
+
+            if messageVM.authorId == self.messageVM.userId && !self.messageVM.isDeleted {
+                // Only let the author edit/delete messages
+                
+                Button(action: self.editMessageAction) {
+                    Text("Edit")
+                    Image(systemName: "pencil.circle")
+                }
+                
+                Button(action: self.deleteMessageAction) {
+                    Text("Delete")
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                }
+            }
+        }
+    }
+
+    private func copyMessageAction() {
+        UIPasteboard.general.string = self.messageVM.text
+    }
+    
+    private func editMessageAction() { }
+    
+    private func deleteMessageAction() {
+        self.messageVM.deleteMessage()
     }
 }
 
 struct MessagesListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesListItemView(messageVM: MessageViewModel(text: "Loirem ipsum dolor sit amet, conesctoru apldicisng elit. Sed do esimod tempor incidi ut lavore et dolo magma aliqua. Ut incidicunt ut lavore et dolor, quis mostrud exercitation enem ad minimu.", author: "Kim Farland", timestamp: Timestamp()))
+        MessagesListItemView(messageVM: MessageViewModel(messageId: "1", text: "Loirem ipsum dolor sit amet, conesctoru apldicisng elit. Sed do esimod tempor incidi ut lavore et dolo magma aliqua. Ut incidicunt ut lavore et dolor, quis mostrud exercitation enem ad minimu.", authorId: "test1", author: "Kim Farland", timestamp: Timestamp()))
     }
 }

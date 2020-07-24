@@ -12,22 +12,19 @@ import Combine
 
 class RequirementDetailViewModel: ObservableObject {
     @Published var title: String = ""
-    @Published var titleWithPrefix = ""
+    @Published var titleWithPrefix: String = ""
     @Published var status: String = ""
     @Published var assignee: String = ""
     @Published var assigneeId: String = ""
     @Published var features: [String] = []
     
-    private var selectedRequirement: Requirement?
-    
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var cancellables = Set<AnyCancellable>()
     
-    init(requirementTitle: String) {
-        if let selectedRequirement: Requirement = getRequirementFromTitle(requirementTitle: requirementTitle) {
-            self.selectedRequirement = selectedRequirement
+    init() {
+        if let selectedRequirement = self.appDelegate.requirementsStore?.selectedRequirement {
             self.title = selectedRequirement.title
-            self.titleWithPrefix = requirementTitle
+            self.titleWithPrefix = self.appDelegate.requirementsStore!.selectedRequirementPrefixedTitle
             self.status = selectedRequirement.status
             self.assignee = selectedRequirement.assignee ?? "None"
             self.assigneeId = selectedRequirement.assigneeId ?? ""
@@ -36,15 +33,15 @@ class RequirementDetailViewModel: ObservableObject {
     }
     
     func updateAssignee(assigneeId: String) {
-        if self.selectedRequirement != nil {
+        if let selectedRequirement = self.appDelegate.requirementsStore?.selectedRequirement {
             if let assignee: User = self.appDelegate.projectMembersStore?.projectMembers.first(where: { member in
                 member.id == assigneeId
             }) {
-                    self.appDelegate.requirementsStore?.updateRequirementAssignee(requirement: self.selectedRequirement!, assignee: assignee)
+                    self.appDelegate.requirementsStore?.updateRequirementAssignee(requirement: selectedRequirement, assignee: assignee)
                     self.assignee = assignee.displayName ?? "None"
                     self.assigneeId = assignee.id
             } else {
-                self.appDelegate.requirementsStore?.removeRequirementAssignee(requirement: self.selectedRequirement!)
+                self.appDelegate.requirementsStore?.removeRequirementAssignee(requirement: selectedRequirement)
                 self.assignee = "None"
                 self.assigneeId = ""
             }
@@ -52,30 +49,16 @@ class RequirementDetailViewModel: ObservableObject {
     }
     
     func updateStatus(status: String) {
-        if self.selectedRequirement != nil {
-            self.appDelegate.requirementsStore?.updateRequirementStatus(requirement: self.selectedRequirement!, status: status)
+        if let selectedRequirement = self.appDelegate.requirementsStore?.selectedRequirement {
+            self.appDelegate.requirementsStore?.updateRequirementStatus(requirement: selectedRequirement, status: status)
             self.status = status
         }
     }
     
     func updateFeatures(features: [String]) {
-        if self.selectedRequirement != nil {
-            self.appDelegate.requirementsStore?.updateRequirementFeatures(requirement: self.selectedRequirement!, features: features)
+        if let selectedRequirement = self.appDelegate.requirementsStore?.selectedRequirement {
+            self.appDelegate.requirementsStore?.updateRequirementFeatures(requirement: selectedRequirement, features: features)
             self.features = features
         }
     }
-    
-    private func getRequirementFromTitle(requirementTitle: String) -> Requirement? {
-        var selectedRequirement: Requirement? = nil
-        
-        // Want to parse the actual title from the pre-pended index
-        let splitTitle: [Substring] = requirementTitle.split(separator: ".")
-        let parsedTitle: String = String(splitTitle[splitTitle.count - 1]).trimmingCharacters(in: .whitespaces)
-        
-        if let requirements = self.appDelegate.requirementsStore?.requirements {
-            selectedRequirement = requirements.first(where: { $0.title == parsedTitle })
-        }
-        return selectedRequirement
-    }
-    
 }
