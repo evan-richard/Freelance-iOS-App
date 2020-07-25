@@ -9,5 +9,5 @@
 import Foundation
 
 struct CoreConstants {
-    static var USE_FIRESTORE: Bool = false
+    static var USE_FIRESTORE: Bool = true
 }

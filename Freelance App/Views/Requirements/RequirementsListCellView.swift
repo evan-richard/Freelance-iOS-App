@@ -56,7 +56,9 @@ struct RequirementsListCellView: View {
         self.isRequirementDetailOpen.toggle()
     }
     
-    private func onInsertAction(isInsertBefore: Bool) {}
+    private func onInsertAction(isInsertBefore: Bool) {
+        self.requirementCellVM.insertRequirement(isInsertBefore: isInsertBefore, title: "Test New Req")
+    }
     
     private func onAddChildAction() {}
     

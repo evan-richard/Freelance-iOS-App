@@ -105,6 +105,61 @@ class RequirementsStore: ObservableObject {
         }
     }
     
+    func insertRequirement(isInsertBefore: Bool, title: String, referringRequirement: Requirement, existingTopLevelReqs: [String]?) {
+        if CoreConstants.USE_FIRESTORE {
+            let ref: DocumentReference = db.collection("requirements").document()
+            var requirementData = [
+                "id": ref.documentID,
+                "projectId": referringRequirement.projectId,
+                "title": title,
+                "status": "To-Do"
+            ]
+            if referringRequirement.parentReqId != nil {
+                // Not a top-level requirement, need to update the parent req also
+                requirementData["parentReqId"] = referringRequirement.parentReqId
+            }
+            ref.setData(requirementData) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    if let parentReqId: String = requirementData["parentReqId"] {
+                        // Get the existing childReqId array from the parent requirement
+                        var childReqIds: [String] = self.requirements.first { requirement in
+                            requirement.id == parentReqId
+                        }?.childReqIds ?? []
+                        
+                        // Insert the new requirement in the appropriate place
+                        let insertIdx: Int = childReqIds.firstIndex(of: referringRequirement.id) ?? 0
+                        childReqIds.insert(ref.documentID, at: isInsertBefore ? insertIdx : insertIdx + 1)
+                        
+                        self.db.collection("requirements").document(parentReqId).updateData([
+                            "childReqIds": childReqIds
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            }
+                        }
+                    } else {
+                        // Top-level requirement, so update the project
+                        var topLevelReqs: [String] = existingTopLevelReqs ?? []
+                        
+                        // Insert the new requirement in the appropriate place
+                        let insertIdx: Int = topLevelReqs.firstIndex(of: referringRequirement.id) ?? 0
+                        topLevelReqs.insert(ref.documentID, at: isInsertBefore ? insertIdx : insertIdx + 1)
+                        
+                        self.db.collection("projects").document(referringRequirement.projectId).updateData([
+                            "topLevelReqs": topLevelReqs
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func renameRequirement(requirement: Requirement, title: String) {
         if CoreConstants.USE_FIRESTORE {
             db.collection("requirements").document(requirement.id).updateData([
@@ -125,20 +180,63 @@ class RequirementsStore: ObservableObject {
         }
     }
     
-    func deleteRequirement(requirement: Requirement) {
+    func deleteRequirement(requirement: Requirement, existingTopLevelReqs: [String]?) {
         if CoreConstants.USE_FIRESTORE {
-            db.collection("requirements").document(requirement.id).delete() { err in
+            let batch: WriteBatch = db.batch()
+            
+            // Delete the parent and all child documents
+            self.deleteRequirementHelper(batch: batch, requirement: requirement)
+            
+            batch.commit() { err in
                 if let err = err {
                     print("Error updating document: \(err)")
                 } else {
-                    print("Document successfully updated")
+                    if let parentReqId: String = requirement.parentReqId {
+                        // Get the existing childReqId array from the parent requirement
+                        var childReqIds: [String] = self.requirements.first { requirement in
+                            requirement.id == parentReqId
+                        }?.childReqIds ?? []
+                        
+                        // Remove the requirement reference
+                        let removeIdx: Int = childReqIds.firstIndex(of: requirement.id) ?? 0
+                        childReqIds.remove(at: removeIdx)
+                        
+                        self.db.collection("requirements").document(parentReqId).updateData([
+                            "childReqIds": childReqIds
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            }
+                        }
+                    } else {
+                        // Top-level requirement, so update the project
+                        var topLevelReqs: [String] = existingTopLevelReqs ?? []
+                        
+                        // Insert the new requirement in the appropriate place
+                        let removeIdx: Int = topLevelReqs.firstIndex(of: requirement.id) ?? 0
+                        topLevelReqs.remove(at: removeIdx)
+                        
+                        self.db.collection("projects").document(requirement.projectId).updateData([
+                            "topLevelReqs": topLevelReqs
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            }
+                        }
+                    }
                 }
             }
-        } else {
-            if let i: Int = self.requirements.firstIndex(where: { req in
-                req.id == requirement.id
+        }
+    }
+    
+    private func deleteRequirementHelper(batch: WriteBatch, requirement: Requirement) {
+        batch.deleteDocument(db.collection("requirements").document(requirement.id))
+        
+        requirement.childReqIds?.forEach { id in
+            if let childRequirement = self.requirements.first(where: { childRequirement in
+                childRequirement.id == id
             }) {
-                self.requirements.remove(at: i)
+                self.deleteRequirementHelper(batch: batch, requirement: childRequirement)
             }
         }
     }
@@ -157,13 +255,13 @@ class RequirementsStore: ObservableObject {
         } else {
             self.requirements = [
                 Requirement(id: "1", projectId: "123", title: "Landing Page", status: "In Progress", assignee: "Developer 1", assigneeId: "test1", childReqIds: ["2", "3", "4"]),
-                Requirement(id: "2", projectId: "123", title: "Navigation Bar", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"]),
-                Requirement(id: "3", projectId: "123", title: "Website Logo", status: "In Progress", assignee: "Developer 2", assigneeId: "test2"),
-                Requirement(id: "4", projectId: "123", title: "Video Thumbclip", status: "To-Do"),
+                Requirement(id: "2", projectId: "123", title: "Navigation Bar", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"], parentReqId: "1"),
+                Requirement(id: "3", projectId: "123", title: "Website Logo", status: "In Progress", assignee: "Developer 2", assigneeId: "test2", parentReqId: "1"),
+                Requirement(id: "4", projectId: "123", title: "Video Thumbclip", status: "To-Do", parentReqId: "1"),
                 Requirement(id: "5", projectId: "123", title: "About Page", status: "To-Do", childReqIds: ["6"]),
-                Requirement(id: "6", projectId: "123", title: "Biography", status: "To-Do", childReqIds: ["7", "8"]),
-                Requirement(id: "7", projectId: "123", title: "Mission Statement", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"]),
-                Requirement(id: "8", projectId: "123", title: "Company History", status: "To-Do"),
+                Requirement(id: "6", projectId: "123", title: "Biography", status: "To-Do", childReqIds: ["7", "8"], parentReqId: "5"),
+                Requirement(id: "7", projectId: "123", title: "Mission Statement", status: "To-Do", features: ["Feature 1 description goes here", "And then another feature description follows that one", "We may have a bit of a longer feature description at times, but that should still be OK", "And a short one too"], parentReqId: "6"),
+                Requirement(id: "8", projectId: "123", title: "Company History", status: "To-Do", parentReqId: "6"),
                 Requirement(id: "9", projectId: "123", title: "Portfolio", status: "To-Do")
             ]
         }

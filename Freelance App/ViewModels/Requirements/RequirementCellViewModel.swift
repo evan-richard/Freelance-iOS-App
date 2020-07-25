@@ -48,7 +48,11 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
         self.appDelegate.requirementsStore?.selectedRequirement = self.getRequirementFromTitle()
     }
     
-    func insertRequirement(isInsertBefore: Bool) {}
+    func insertRequirement(isInsertBefore: Bool, title: String) {
+        if let requirement: Requirement = self.getRequirementFromTitle() {
+            self.appDelegate.requirementsStore?.insertRequirement(isInsertBefore: isInsertBefore, title: title, referringRequirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
+        }
+    }
     
     func addChildRequirement() {}
     
@@ -62,7 +66,7 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
     
     func deleteRequirement() {
         if let requirement: Requirement = self.getRequirementFromTitle() {
-            self.appDelegate.requirementsStore?.deleteRequirement(requirement: requirement)
+            self.appDelegate.requirementsStore?.deleteRequirement(requirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
         }
     }
     

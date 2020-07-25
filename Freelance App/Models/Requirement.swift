@@ -17,4 +17,5 @@ struct Requirement: Identifiable, Codable {
     var assigneeId: String?
     var childReqIds: [String]?
     var features: [String]?
+    var parentReqId: String?
 }
