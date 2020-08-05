@@ -18,13 +18,13 @@ struct DiscussionsFooterView: View {
             if self.isFilterActive {
                 Button(action: self.filterToggleAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                         .imageScale(.large)
                 }
             } else {
                 Button(action: self.filterToggleAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                         .imageScale(.large)
                 }
             }
@@ -34,7 +34,7 @@ struct DiscussionsFooterView: View {
             Spacer()
             Button(action: self.createDiscussionAction) {
                 Image(systemName: "square.and.pencil")
-                    .foregroundColor(.purple)
+                    .foregroundColor(ThemeConstants.ACCENT_COLOR)
                     .imageScale(.large)
             }
             .sheet(isPresented: $isCreateDiscussionOpen, content: {

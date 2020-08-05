@@ -14,7 +14,7 @@ struct FeaturesEditListView: View {
     
     var minusIcon: AnyView = AnyView(
         Image(systemName: "i.circle")
-            .foregroundColor(.red)
+            .foregroundColor(ThemeConstants.DANGER_COLOR)
             .rotationEffect(.degrees(90))
     )
     

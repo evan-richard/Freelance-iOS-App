@@ -9,9 +9,12 @@
 import SwiftUI
 
 struct RequirementsListView: View {
-    @ObservedObject var requirementListVM: RequirementListViewModel = RequirementListViewModel()
+    @ObservedObject var requirementListVM: RequirementListViewModel
     @Binding var searchString: String
     @Binding var isRequirementDetailOpen: Bool
+    @Binding var isPopupViewOpen: Bool
+    @Binding var contextMenuAction: String
+    @Binding var requirementTitle: String
     
     var body: some View {
         List(self.requirementListVM.requirementCellViewModels.filter({ requirementCellVM in
@@ -21,13 +24,13 @@ struct RequirementsListView: View {
                 return true
             }
         })) { requirementCellVM in
-            RequirementsListCellView(requirementCellVM: requirementCellVM, isRequirementDetailOpen: self.$isRequirementDetailOpen)
+            RequirementsListCellView(requirementCellVM: requirementCellVM, isRequirementDetailOpen: self.$isRequirementDetailOpen, isPopupViewOpen: self.$isPopupViewOpen, contextMenuAction: self.$contextMenuAction, requirementTitle: self.$requirementTitle)
         }
     }
 }
 
 struct RequirementsListView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementsListView(searchString: Binding.constant(""), isRequirementDetailOpen: Binding.constant(false))
+        RequirementsListView(requirementListVM: RequirementListViewModel(), searchString: Binding.constant(""), isRequirementDetailOpen: Binding.constant(false), isPopupViewOpen: Binding.constant(false), contextMenuAction: Binding.constant(""), requirementTitle: Binding.constant(""))
     }
 }

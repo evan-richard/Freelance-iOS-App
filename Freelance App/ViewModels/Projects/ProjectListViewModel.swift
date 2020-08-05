@@ -41,4 +41,31 @@ class ProjectListViewModel: ObservableObject {
             self.appDelegate.discussionsStore = DiscussionsStore(projectId: projectId)
         }
     }
+    
+    func createProject(name: String, customer: String) {
+        if (name != "" && customer != "") {
+            if let currentUserId: String = self.appDelegate.sessionStore?.session?.id {
+                self.appDelegate.projectsStore?.createProject(
+                    currentUserId: currentUserId,
+                    name: name,
+                    customer: customer
+                )
+            }
+        }
+    }
+    
+    func renameProject(projectId: String, name: String) {
+        if (name != "") {
+            self.appDelegate.projectsStore?.renameProject(
+                projectId: projectId,
+                name: name
+            )
+        }
+    }
+    
+    func deleteProject(projectId: String) {
+        self.appDelegate.projectsStore?.deleteProject(
+            projectId: projectId
+        )
+    }
 }

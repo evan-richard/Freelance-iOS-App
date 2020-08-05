@@ -24,6 +24,95 @@ class ProjectsStore: ObservableObject {
         self.currentProject = project
     }
     
+    func createProject(currentUserId: String, name: String, customer: String) {
+        if CoreConstants.USE_FIRESTORE {
+            let ref: DocumentReference = db.collection("projects").document()
+            let projectData: [String: Any] = [
+                "id": ref.documentID,
+                "grantedUsers": [currentUserId],
+                "appName": name,
+                "customerName": customer
+            ]
+            ref.setData(projectData) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Successfully added document: \(name)")
+                }
+            }
+        }
+    }
+    
+    func renameProject(projectId: String, name: String) {
+        if CoreConstants.USE_FIRESTORE {
+            db.collection("projects").document(projectId).updateData([
+                "appName": name
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+    }
+    
+    func deleteProject(projectId: String) {
+        if CoreConstants.USE_FIRESTORE {
+            db.collection("projects").document(projectId).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    // Delete all nodes referencing this project in the db
+                    self.deleteHelper(projectId: projectId)
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    }
+    
+    private func deleteHelper(projectId: String) {
+        if CoreConstants.USE_FIRESTORE {
+            let batch: WriteBatch = db.batch()
+            // This ensures all of our asynchronous get calls finish
+            let batchGroup = DispatchGroup()
+
+            batchGroup.enter()
+            DispatchQueue.main.async {
+                self.db.collection("requirements")
+                    .whereField("projectId", isEqualTo: projectId)
+                    .getDocuments { documents, err in
+                        documents?.documents.forEach { document in
+                            batch.deleteDocument(self.db.collection("requirements").document(document.data()["id"] as! String))
+                        }
+                        batchGroup.leave()
+                    }
+            }
+        
+            batchGroup.enter()
+            DispatchQueue.main.async {
+                self.db.collection("discussions")
+                    .whereField("projectId", isEqualTo: projectId)
+                    .getDocuments { documents, err in
+                        documents?.documents.forEach { document in
+                            batch.deleteDocument(self.db.collection("discussions").document(document.data()["id"] as! String))
+                        }
+                        batchGroup.leave()
+                    }
+            }
+            
+            batchGroup.notify(queue: .main) {
+                batch.commit() { err in
+                    if let err = err {
+                        print("Error deleting references: \(err)")
+                    } else {
+                        print("References successfully removed!")
+                    }
+                }
+            }
+        }
+    }
+    
     private func loadProjectsList(userId: String) -> Void {
         if CoreConstants.USE_FIRESTORE {
             db.collection("projects").whereField("grantedUsers", arrayContains: userId).addSnapshotListener { (querySnapshot, err) in
@@ -31,7 +120,13 @@ class ProjectsStore: ObservableObject {
                     print("Error getting documents: \(err)")
                 } else {
                     self.projects = querySnapshot!.documents.compactMap { document -> Project? in
-                        try? document.data(as: Project.self)
+                        let project: Project? = try? document.data(as: Project.self)
+                        if let currentProjectId: String = self.currentProject?.id {
+                            if project?.id == currentProjectId {
+                                self.currentProject = project
+                            }
+                        }
+                        return project
                     }
                 }
             }

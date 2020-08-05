@@ -229,6 +229,34 @@ class RequirementsStore: ObservableObject {
         }
     }
     
+    func createRequirement(title: String, projectId: String) {
+        if CoreConstants.USE_FIRESTORE {
+            let ref: DocumentReference = db.collection("requirements").document()
+            let requirementData: [String: String] = [
+                "id": ref.documentID,
+                "projectId": projectId,
+                "title": title,
+                "status": "To-Do"
+            ]
+            ref.setData(requirementData) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    // Top-level requirement, so update the project
+                    let topLevelReqs: [String] = [ref.documentID]
+                    
+                    self.db.collection("projects").document(projectId).updateData([
+                        "topLevelReqs": topLevelReqs
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     private func deleteRequirementHelper(batch: WriteBatch, requirement: Requirement) {
         batch.deleteDocument(db.collection("requirements").document(requirement.id))
         
@@ -241,7 +269,7 @@ class RequirementsStore: ObservableObject {
         }
     }
     
-    private func loadRequirementsList(projectId: String) -> Void {
+    func loadRequirementsList(projectId: String) -> Void {
         if CoreConstants.USE_FIRESTORE {
             db.collection("requirements").whereField("projectId", isEqualTo: projectId).addSnapshotListener { (querySnapshot, err) in
                 if let err = err {

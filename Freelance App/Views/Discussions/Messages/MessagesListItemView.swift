@@ -28,7 +28,7 @@ struct MessagesListItemView: View {
         .contextMenu {
             Button(action: self.copyMessageAction) {
                 Text("Copy")
-                Image(systemName: "doc.on.doc")
+                IconConstants.COPY
             }
 
             if messageVM.authorId == self.messageVM.userId && !self.messageVM.isDeleted {
@@ -36,13 +36,12 @@ struct MessagesListItemView: View {
                 
                 Button(action: self.editMessageAction) {
                     Text("Edit")
-                    Image(systemName: "pencil.circle")
+                    IconConstants.EDIT
                 }
                 
                 Button(action: self.deleteMessageAction) {
                     Text("Delete")
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
+                    IconConstants.DELETE
                 }
             }
         }

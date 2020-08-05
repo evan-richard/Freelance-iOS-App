@@ -46,34 +46,22 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
     func setSeletectedRequirement() {
         self.appDelegate.requirementsStore?.selectedRequirementPrefixedTitle = self.title
         self.appDelegate.requirementsStore?.selectedRequirement = self.getRequirementFromTitle()
-    }
-    
-    func insertRequirement(isInsertBefore: Bool, title: String) {
-        if let requirement: Requirement = self.getRequirementFromTitle() {
-            self.appDelegate.requirementsStore?.insertRequirement(isInsertBefore: isInsertBefore, title: title, referringRequirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
+        self.appDelegate.discussionsStore?.selectedDiscussion = self.appDelegate.discussionsStore?.discussions.first { discussion in
+            discussion.requirementId == self.appDelegate.requirementsStore?.selectedRequirement?.id ?? ""
+        }
+        if self.appDelegate.discussionsStore?.selectedDiscussion != nil {
+            self.appDelegate.discussionsStore?.populateMessagesForDiscussion()
         }
     }
     
-    func addChildRequirement() {}
-    
-    func renameRequirement(title: String) {
-        if let requirement: Requirement = self.getRequirementFromTitle() {
-            self.appDelegate.requirementsStore?.renameRequirement(requirement: requirement, title: title)
-            let splitTitle: [Substring] = self.title.split(separator: ".")
-            self.title = "\(splitTitle[0 ..< splitTitle.count - 1].joined()) \(title)"
-        }
-    }
-    
-    func deleteRequirement() {
-        if let requirement: Requirement = self.getRequirementFromTitle() {
-            self.appDelegate.requirementsStore?.deleteRequirement(requirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
-        }
+    func getParsedTitle() -> String {
+        // Want to parse the actual title from the pre-pended index
+        let splitTitle: [Substring] = self.title.split(separator: ".")
+        return String(splitTitle[splitTitle.count - 1]).trimmingCharacters(in: .whitespaces)
     }
     
     private func getRequirementFromTitle() -> Requirement? {
-        // Want to parse the actual title from the pre-pended index
-        let splitTitle: [Substring] = self.title.split(separator: ".")
-        let parsedTitle: String = String(splitTitle[splitTitle.count - 1]).trimmingCharacters(in: .whitespaces)
+        let parsedTitle: String = self.getParsedTitle()
         
         return self.appDelegate.requirementsStore?.requirements
             .first { requirement in

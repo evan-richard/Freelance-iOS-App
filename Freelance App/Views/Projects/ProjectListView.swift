@@ -12,6 +12,10 @@ struct ProjectListView: View {
     @ObservedObject var projectListVM: ProjectListViewModel
     @State private var selectedProjectId: String?
     @Binding var searchString: String
+    @Binding var isPopupViewOpen: Bool
+    @Binding var contextMenuAction: String
+    @Binding var actionProjectId: String
+    @Binding var actionProjectTitle: String
     
     var body: some View {
         List(projectListVM.projectCellViewModels.filter({ projectCellVM in
@@ -23,7 +27,7 @@ struct ProjectListView: View {
         })) { projectCellVM in
             NavigationLink(destination: OverviewView(), tag: projectCellVM.projectId,
             selection: self.selectedProjectBinding()) {
-                ProjectListCellView(projectCellVM: projectCellVM)
+                ProjectListCellView(projectCellVM: projectCellVM, isPopupViewOpen: self.$isPopupViewOpen, contextMenuAction: self.$contextMenuAction, actionProjectId: self.$actionProjectId, actionProjectTitle: self.$actionProjectTitle)
             }
         }
     }
@@ -44,6 +48,6 @@ struct ProjectListView: View {
 struct ProjectListView_Previews: PreviewProvider {
     static var previews: some View {
         let projectListVM: ProjectListViewModel = ProjectListViewModel()
-        return ProjectListView(projectListVM: projectListVM, searchString: Binding.constant(""))
+        return ProjectListView(projectListVM: projectListVM, searchString: Binding.constant(""), isPopupViewOpen: Binding.constant(false), contextMenuAction: Binding.constant(""), actionProjectId: Binding.constant(""), actionProjectTitle: Binding.constant(""))
     }
 }

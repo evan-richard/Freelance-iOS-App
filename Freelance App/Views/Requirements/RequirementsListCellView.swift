@@ -11,6 +11,9 @@ import SwiftUI
 struct RequirementsListCellView: View {
     @ObservedObject var requirementCellVM: RequirementCellViewModel
     @Binding var isRequirementDetailOpen: Bool
+    @Binding var isPopupViewOpen: Bool
+    @Binding var contextMenuAction: String
+    @Binding var requirementTitle: String
     
     var body: some View {
         Button(action: self.openRequirementDetailAction) {
@@ -20,33 +23,38 @@ struct RequirementsListCellView: View {
                 .font(requirementCellVM.font)
         }
         .contextMenu {
-            Button(action: { self.onInsertAction(isInsertBefore: true) }) {
-                Text("Insert Before")
-                Image(systemName: "arrow.turn.up.right")
+            Button(action: {
+                self.openPopupTextFieldAction(action: RequirementMenuActionConstants.INSERT_BEFORE)
+            }) {
+                Text(RequirementMenuActionConstants.INSERT_BEFORE)
+                IconConstants.INSERT_BEFORE
             }
 
-            Button(action: { self.onInsertAction(isInsertBefore: false) }) {
-                Text("Insert After")
-                Image(systemName: "arrow.turn.up.left")
-                    .rotationEffect(.degrees(180))
+            Button(action: {
+                self.openPopupTextFieldAction(action: RequirementMenuActionConstants.INSERT_AFTER)
+            }) {
+                Text(RequirementMenuActionConstants.INSERT_AFTER)
+                IconConstants.INSERT_AFTER
             }
             
-            Button(action: self.onAddChildAction) {
-                Text("Add Child")
-                Image(systemName: "arrow.up.right")
-                    .rotationEffect(.degrees(90))
+            Button(action: {
+                self.openPopupTextFieldAction(action: RequirementMenuActionConstants.ADD_CHILD)
+            }) {
+                Text(RequirementMenuActionConstants.ADD_CHILD)
+                IconConstants.ADD_CHILD
             }
             .disabled(requirementCellVM.title.split(separator: ".").count == 4)
             
-            Button(action: self.onRenameAction) {
-                Text("Rename")
-                Image(systemName: "pencil.and.ellipsis.rectangle")
+            Button(action: {
+                self.openPopupTextFieldAction(action: RequirementMenuActionConstants.RENAME)
+            }) {
+                Text(RequirementMenuActionConstants.RENAME)
+                IconConstants.EDIT
             }
             
             Button(action: self.onDeleteAction) {
-                Text("Delete")
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
+                Text(RequirementMenuActionConstants.DELETE)
+                IconConstants.DELETE
             }
         }
     }
@@ -56,23 +64,31 @@ struct RequirementsListCellView: View {
         self.isRequirementDetailOpen.toggle()
     }
     
-    private func onInsertAction(isInsertBefore: Bool) {
-        self.requirementCellVM.insertRequirement(isInsertBefore: isInsertBefore, title: "Test New Req")
-    }
-    
-    private func onAddChildAction() {}
-    
-    private func onRenameAction() {
-        self.requirementCellVM.renameRequirement(title: "Test name")
+    private func openPopupTextFieldAction(action: String) {
+        self.requirementCellVM.setSeletectedRequirement()
+        self.contextMenuAction = action
+        if action == RequirementMenuActionConstants.RENAME {
+            self.requirementTitle = self.requirementCellVM.getParsedTitle()
+        } else {
+            self.requirementTitle = ""
+        }
+        withAnimation {
+            self.isPopupViewOpen.toggle()
+        }
     }
     
     private func onDeleteAction() {
-        self.requirementCellVM.deleteRequirement()
+        self.requirementCellVM.setSeletectedRequirement()
+        self.contextMenuAction = RequirementMenuActionConstants.DELETE
+        withAnimation {
+            self.isPopupViewOpen.toggle()
+        }
     }
 }
 
 struct RequirementsListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementsListCellView(requirementCellVM: RequirementCellViewModel(title: "2. About Page"), isRequirementDetailOpen: Binding.constant(false))
+        RequirementsListCellView(requirementCellVM: RequirementCellViewModel(title: "2. About Page"), isRequirementDetailOpen: Binding.constant(false), isPopupViewOpen: Binding.constant(false), contextMenuAction: Binding.constant(""), requirementTitle: Binding.constant("")
+        )
     }
 }

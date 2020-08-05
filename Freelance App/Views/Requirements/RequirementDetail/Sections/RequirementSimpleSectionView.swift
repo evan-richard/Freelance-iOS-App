@@ -16,7 +16,7 @@ struct RequirementSimpleSectionView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RequirementSectionView(requirementDetailVM: requirementDetailVM, isEditOpen: $isEditOpen, sectionTitle: sectionTitle)
+            RequirementSectionView(isEditOpen: $isEditOpen, sectionTitle: sectionTitle)
             Text(self.getValueForSection())
                 .font(.body)
                 .foregroundColor(.secondary)

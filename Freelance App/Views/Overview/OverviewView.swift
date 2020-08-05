@@ -20,7 +20,7 @@ struct OverviewView: View {
         .navigationBarTitle("Overview", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: self.shareProjectAction) {
             Image(systemName: "square.and.arrow.up")
-                .foregroundColor(.purple)
+                .foregroundColor(ThemeConstants.ACCENT_COLOR)
                 .imageScale(.large)
         })
         .padding()

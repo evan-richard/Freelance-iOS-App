@@ -13,8 +13,6 @@ struct MessagesListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text("Comments")
-                .padding(.horizontal)
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
                     ForEach(messageListVM.messageViewModels) { messageVM in

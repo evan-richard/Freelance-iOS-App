@@ -38,11 +38,11 @@ struct LoginView: View {
                         .padding(.horizontal, 40)
                         .shadow(radius: 10)
                 }
-                .background(Color(.purple))
+                .background(ThemeConstants.ACCENT_COLOR)
                 .cornerRadius(30)
                 if (error) {
                     Text("Failed to authenticate. Please try again.")
-                        .foregroundColor(.red)
+                        .foregroundColor(ThemeConstants.DANGER_COLOR)
                 }
             }
         }

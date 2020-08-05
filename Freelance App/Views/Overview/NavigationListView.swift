@@ -10,18 +10,9 @@ import SwiftUI
 
 struct NavigationListView: View {
     
-    private let navigationLinks: [String] = [
-        "Requirements",
-        "Discussion",
-        "Milestones",
-        "Designs",
-        "Timesheet",
-        "Supporting Documents"
-    ]
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(navigationLinks, id: \.self) { link in
+            ForEach(OverviewNavLinkConstants.NAVIGATION_LINKS, id: \.self) { link in
                 NavigationListItemView(label: link)
             }
             Divider()

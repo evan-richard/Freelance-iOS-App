@@ -18,7 +18,11 @@ struct MessagesView: View {
             VStack(alignment: .leading, spacing: 20) {
                 MessagesHeaderView(isMessagesSheetOpen: $isMessagesSheetOpen, discussionTitle: messageListVM.discussionTitle)
                     .padding(.horizontal)
-                MessagesListView(messageListVM: messageListVM)
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Comments")
+                        .padding(.horizontal)
+                    MessagesListView(messageListVM: messageListVM)
+                }
             }
             Spacer()
             ReplyTextFieldView(reply: $reply, sendReply: self.sendReply)

@@ -14,10 +14,10 @@ struct ReusableTextButtonView: View {
     var body: some View {
         Text(label)
             .fontWeight(.semibold)
-            .foregroundColor(.white)
+            .foregroundColor(ThemeConstants.ACCENT_COLOR_FOREGROUND)
             .padding(.vertical, 6)
             .padding(.horizontal)
-            .background(Color(.purple))
+            .background(ThemeConstants.ACCENT_COLOR_BACKGROUND)
             .cornerRadius(30)
     }
 }

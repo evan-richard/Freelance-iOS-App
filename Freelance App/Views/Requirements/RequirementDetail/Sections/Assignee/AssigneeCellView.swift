@@ -19,7 +19,7 @@ struct AssigneeCellView: View {
                 Spacer()
                 if selectedMemberId == projectMemberCellVM.projectMemberId {
                     Image(systemName: "checkmark")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                 }
             }
         }

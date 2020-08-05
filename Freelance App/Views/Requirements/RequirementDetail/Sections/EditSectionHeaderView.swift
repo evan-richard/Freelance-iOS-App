@@ -20,7 +20,7 @@ struct EditSectionHeaderView: View {
             Button(action: action) {
                 ReusableTextButtonView(label: "Save")
             }
-            .accentColor(.purple)
+            .accentColor(ThemeConstants.ACCENT_COLOR)
         }
     }
 }

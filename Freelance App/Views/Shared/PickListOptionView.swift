@@ -17,13 +17,13 @@ struct PickListOptionView: View {
         Button(action: self.selectOptionAction) {
             HStack {
                 Image(systemName: option.icon ?? "")
-                    .foregroundColor(.purple)
+                    .foregroundColor(ThemeConstants.ACCENT_COLOR)
                 Text(option.label)
                     .foregroundColor(.primary)
                 Spacer()
                 if self.selectedLabel == self.option.label {
                     Image(systemName: "checkmark")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                 }
             }
             .padding()

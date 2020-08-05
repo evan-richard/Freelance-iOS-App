@@ -38,7 +38,7 @@ struct SearchBarView: View {
                 Button(action: self.cancelSearchAction) {
                     Text("Cancel")
                 }
-                .accentColor(.purple)
+                .accentColor(ThemeConstants.ACCENT_COLOR)
             }
         }
         .frame(height: 40)

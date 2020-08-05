@@ -9,20 +9,22 @@
 import SwiftUI
 
 struct RequirementSectionView: View {
-    @ObservedObject var requirementDetailVM: RequirementDetailViewModel
     @Binding var isEditOpen: Bool
     
     var sectionTitle: String
+    var isEditable: Bool = true
     
     var body: some View {
         VStack {
             HStack {
                 Text(sectionTitle)
                 Spacer()
-                Button(action: self.openEditAction) {
-                    Text("Edit")
+                if isEditable {
+                    Button(action: self.openEditAction) {
+                        Text("Edit")
+                    }
+                    .accentColor(ThemeConstants.ACCENT_COLOR)
                 }
-                .accentColor(.purple)
             }
             Divider()
         }
@@ -36,6 +38,6 @@ struct RequirementSectionView: View {
 
 struct RequirementSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        RequirementSectionView(requirementDetailVM: RequirementDetailViewModel(), isEditOpen: Binding.constant(true), sectionTitle: "Assignee")
+        RequirementSectionView(isEditOpen: Binding.constant(true), sectionTitle: "Assignee")
     }
 }

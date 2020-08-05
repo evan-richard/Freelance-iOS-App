@@ -12,19 +12,20 @@ struct ProjectsFooterView: View {
     @Binding var isFilterActive: Bool
     @Binding var isCreateProjectOpen: Bool
     @Binding var numberOfProjects: Int
+    @Binding var contextMenuAction: String
     
     var body: some View {
         HStack {
             if self.isFilterActive {
                 Button(action: self.toggleFilterAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle.fill")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                         .imageScale(.large)
                 }
             } else {
                 Button(action: self.toggleFilterAction) {
                     Image(systemName: "line.horizontal.3.decrease.circle")
-                        .foregroundColor(.purple)
+                        .foregroundColor(ThemeConstants.ACCENT_COLOR)
                         .imageScale(.large)
                 }
             }
@@ -34,12 +35,9 @@ struct ProjectsFooterView: View {
             Spacer()
             Button(action: self.createProjectAction) {
                 Image(systemName: "square.and.pencil")
-                    .foregroundColor(.purple)
+                    .foregroundColor(ThemeConstants.ACCENT_COLOR)
                     .imageScale(.large)
             }
-            .sheet(isPresented: $isCreateProjectOpen, content: {
-                CreateProjectView()
-            })
         }
         .padding(.top, 5)
     }
@@ -47,12 +45,13 @@ struct ProjectsFooterView: View {
     private func toggleFilterAction() { }
     
     private func createProjectAction() {
+        self.contextMenuAction = ProjectMenuActionConstants.CREATE
         self.isCreateProjectOpen = true
     }
 }
 
 struct ProjectsFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectsFooterView(isFilterActive: Binding.constant(false), isCreateProjectOpen: Binding.constant(false), numberOfProjects: Binding.constant(3))
+        ProjectsFooterView(isFilterActive: Binding.constant(false), isCreateProjectOpen: Binding.constant(false), numberOfProjects: Binding.constant(3), contextMenuAction: Binding.constant(""))
     }
 }

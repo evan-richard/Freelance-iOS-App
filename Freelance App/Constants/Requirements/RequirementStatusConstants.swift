@@ -8,9 +8,7 @@
 
 import Foundation
 
-struct RequirementStatusConstants {
-    struct Titles {
-        static var assignee = "Assignee"
-        static var status = "Status"
-    }
+struct RequirementDetailTitleConstants {
+    static var ASSIGNEE = "Assignee"
+    static var STATUS = "Status"
 }

@@ -14,7 +14,7 @@ struct FeaturesView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RequirementSectionView(requirementDetailVM: requirementDetailVM, isEditOpen: $isEditOpen, sectionTitle: "Features")
+            RequirementSectionView(isEditOpen: $isEditOpen, sectionTitle: "Features")
             FeaturesListView(features: requirementDetailVM.features)
         }
         .sheet(isPresented: $isEditOpen) {

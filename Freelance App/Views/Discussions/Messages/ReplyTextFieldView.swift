@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-public struct ReplyTextFieldStyle : TextFieldStyle {
-    public func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 5)
-                    .strokeBorder(Color.secondary.opacity(0.5), lineWidth: 1))
-    }
-}
-
 struct ReplyTextFieldView: View {
     @Binding var reply: String
     
@@ -28,7 +18,7 @@ struct ReplyTextFieldView: View {
             TextField("Enter text to reply", text: $reply)
                 .textFieldStyle(ReplyTextFieldStyle())
             Button(action: sendReply) {
-                ReusableTextButtonView(label: "Reply")
+                ReusableTextButtonView(label: "Send")
             }
         }
         .padding(.horizontal)

@@ -22,7 +22,7 @@ struct MessagesHeaderView: View {
                 Text("Done")
                     .fontWeight(.semibold)
             }
-            .accentColor(.purple)
+            .accentColor(ThemeConstants.ACCENT_COLOR)
         }
     }
     
