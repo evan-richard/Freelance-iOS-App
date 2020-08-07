@@ -160,6 +160,37 @@ class RequirementsStore: ObservableObject {
         }
     }
     
+    func addChildRequirement(referringRequirement: Requirement, title: String) {
+        if CoreConstants.USE_FIRESTORE {
+            let ref: DocumentReference = db.collection("requirements").document()
+            let requirementData: [String: String] = [
+                "id": ref.documentID,
+                "projectId": referringRequirement.projectId,
+                "title": title,
+                "status": "To-Do",
+                "parentReqId": referringRequirement.id
+            ]
+            ref.setData(requirementData) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    var childReqIds: [String] = referringRequirement.childReqIds ?? []
+                    childReqIds.append(ref.documentID)
+                    self.db.collection("requirements").document(referringRequirement.id)
+                        .updateData([
+                            "childReqIds": childReqIds
+                        ]) { updateErr in
+                            if let updateErr = updateErr {
+                                print("Error updating parent document: \(updateErr)")
+                            } else {
+                                print("Updated parent document successfully.")
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
     func renameRequirement(requirement: Requirement, title: String) {
         if CoreConstants.USE_FIRESTORE {
             db.collection("requirements").document(requirement.id).updateData([

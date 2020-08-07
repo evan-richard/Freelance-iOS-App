@@ -17,31 +17,25 @@ class RequirementListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        if let topLevelReqs = self.appDelegate.projectsStore?.currentProject?.topLevelReqs {
-            self.appDelegate.requirementsStore?.$requirements.map { requirements in
-                self.flattenRequirementTitles(requirements: requirements, orderOfIds: topLevelReqs).map { requirementTitle in
-                    RequirementCellViewModel(title: requirementTitle)
+        self.appDelegate.projectsStore?.$currentProject.sink { currentProject in
+            if let topLevelReqs = currentProject?.topLevelReqs {
+                self.appDelegate.requirementsStore?.$requirements.map { requirements in
+                    self.flattenRequirementTitles(requirements: requirements, orderOfIds: topLevelReqs).map { requirementTitle in
+                        RequirementCellViewModel(title: requirementTitle)
+                    }
                 }
+                .assign(to: \.requirementCellViewModels, on: self)
+                .store(in: &self.cancellables)
             }
-            .assign(to: \.requirementCellViewModels, on: self)
-            .store(in: &cancellables)
         }
-        
-//        self.appDelegate.requirementsStore?.$requirements.sink(receiveValue: { requirements in
-//            print("Here")
-//            if let currentProject: Project = self.appDelegate.projectsStore?.currentProject {
-//                self.appDelegate.requirementsStore?.loadRequirementsList(projectId: currentProject.id)
-//                if let topLevelReqs: [String] = currentProject.topLevelReqs {
-//                    self.appDelegate.requirementsStore?.$requirements.map { requirements in
-//                        self.flattenRequirementTitles(requirements: requirements, orderOfIds: topLevelReqs).map { requirementTitle in
-//                            RequirementCellViewModel(title: requirementTitle)
-//                        }
-//                    }
-//                    .assign(to: \.requirementCellViewModels, on: self)
-//                    .store(in: &self.cancellables)
-//                }
-//            }
-//        }).store(in: &self.cancellables)
+        .store(in: &cancellables)
+    }
+    
+    deinit {
+        self.cancellables.forEach { cancellable in
+            cancellable.cancel()
+            self.cancellables.remove(cancellable)
+        }
     }
     
     func insertRequirement(isInsertBefore: Bool, title: String) {
@@ -52,7 +46,13 @@ class RequirementListViewModel: ObservableObject {
         }
     }
     
-    func addChildRequirement() {}
+    func addChildRequirement(title: String) {
+        if title != "" {
+            if let requirement: Requirement = self.appDelegate.requirementsStore?.selectedRequirement {
+                self.appDelegate.requirementsStore?.addChildRequirement(referringRequirement: requirement, title: title)
+            }
+        }
+    }
     
     func renameRequirement(title: String) {
         if title != "" {

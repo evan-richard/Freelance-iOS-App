@@ -91,6 +91,8 @@ struct RequirementsView: View {
                 return self.insertBeforeAction
             case RequirementMenuActionConstants.INSERT_AFTER:
                 return self.insertAfterAction
+            case RequirementMenuActionConstants.ADD_CHILD:
+                return self.addChildAction
             case RequirementMenuActionConstants.RENAME:
                 return self.renameAction
             case RequirementMenuActionConstants.DELETE:
@@ -120,6 +122,11 @@ struct RequirementsView: View {
     private func insertAfterAction() {
         self.hideKeyboard()
         self.requirementListVM.insertRequirement(isInsertBefore: false, title: self.popupTextFieldText)
+    }
+    
+    private func addChildAction() {
+        self.hideKeyboard()
+        self.requirementListVM.addChildRequirement(title: self.popupTextFieldText)
     }
     
     private func deleteAction() {

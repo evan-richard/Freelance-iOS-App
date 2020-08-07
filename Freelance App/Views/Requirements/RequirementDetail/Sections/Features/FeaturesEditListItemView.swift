@@ -20,6 +20,8 @@ struct FeaturesEditListItemView: View {
             Divider()
             HStack {
                 Text("\(index + 1).")
+                    .foregroundColor(newFeature == "" ? .secondary : .primary)
+                    .opacity(newFeature == "" ? 0.5 : 1.0)
                 TextField("Add a new feature", text: $newFeature)
                 Button(action: action) {
                     editIcon
