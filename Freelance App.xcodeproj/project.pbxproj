@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201DBADC24DE2062005072C7 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201DBADB24DE2062005072C7 /* ShareSheetView.swift */; };
 		2023F0EA24CF2B0300C2BCF9 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023F0E924CF2B0300C2BCF9 /* CommentsView.swift */; };
 		2048790024D7696400DF7CE0 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204878FF24D7696400DF7CE0 /* FormTextFieldView.swift */; };
 		2048790624D7767A00DF7CE0 /* EmptyRequirmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048790524D7767A00DF7CE0 /* EmptyRequirmentListView.swift */; };
@@ -128,6 +129,7 @@
 		1242585E9DF028D98147BB74 /* Pods_Freelance_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freelance_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13DE3E101A4E9587C1F9FAE4 /* Pods-Freelance App-Freelance AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freelance App-Freelance AppUITests.release.xcconfig"; path = "Target Support Files/Pods-Freelance App-Freelance AppUITests/Pods-Freelance App-Freelance AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1D5E6780A3186D2B5AE91A97 /* Pods_Freelance_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freelance_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		201DBADB24DE2062005072C7 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		2023F0E924CF2B0300C2BCF9 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		204878FF24D7696400DF7CE0 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		2048790524D7767A00DF7CE0 /* EmptyRequirmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRequirmentListView.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				204878FF24D7696400DF7CE0 /* FormTextFieldView.swift */,
 				2048791124D9048400DF7CE0 /* DeleteConfirmationView.swift */,
 				2048791324D9087700DF7CE0 /* TitleConfirmationView.swift */,
+				201DBADB24DE2062005072C7 /* ShareSheetView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				207F4FF124BD51CA0044E1B7 /* RequirementSimpleSectionView.swift in Sources */,
 				20A5EC9624C8F1D200CEB744 /* MessagesListView.swift in Sources */,
 				2093C38424B5735E001C6C5F /* RequirementsStore.swift in Sources */,
+				201DBADC24DE2062005072C7 /* ShareSheetView.swift in Sources */,
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
 				20A5EC9424C8A4EE00CEB744 /* MessageViewModel.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,

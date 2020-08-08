@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProjectDetailView: View {
-    @ObservedObject var projectVM: ProjectViewModel = ProjectViewModel()
+    @ObservedObject var projectVM: ProjectViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
@@ -28,6 +28,6 @@ struct ProjectDetailView: View {
 
 struct ProjectDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectDetailView()
+        ProjectDetailView(projectVM: ProjectViewModel())
     }
 }

@@ -9,13 +9,22 @@
 import SwiftUI
 
 struct OverviewView: View {
+    @ObservedObject var projectVM: ProjectViewModel = ProjectViewModel()
+    @State private var isShareSheetOpen: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
-            ProjectDetailView()
+            ProjectDetailView(projectVM: projectVM)
             Spacer()
             NavigationListView()
                 .padding(.bottom, 20)
+        }
+        .sheet(isPresented: $isShareSheetOpen) {
+            ShareSheetView(activityItems: [
+                self.projectVM.appName,
+//                URL(string: "freelanceapp:Invitee?projectId:\(self.projectVM.appName)")!
+                URL(string: "https://google.com")!
+            ])
         }
         .navigationBarTitle("Overview", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: self.shareProjectAction) {
@@ -26,7 +35,9 @@ struct OverviewView: View {
         .padding()
     }
     
-    private func shareProjectAction() { }
+    private func shareProjectAction() {
+        self.isShareSheetOpen.toggle()
+    }
 }
 
 struct OverviewView_Previews: PreviewProvider {
