@@ -112,7 +112,7 @@ class RequirementsStore: ObservableObject {
                 "id": ref.documentID,
                 "projectId": referringRequirement.projectId,
                 "title": title,
-                "status": "To-Do"
+                "status": RequirementStatusConstants.TO_DO
             ]
             if referringRequirement.parentReqId != nil {
                 // Not a top-level requirement, need to update the parent req also
@@ -167,7 +167,7 @@ class RequirementsStore: ObservableObject {
                 "id": ref.documentID,
                 "projectId": referringRequirement.projectId,
                 "title": title,
-                "status": "To-Do",
+                "status": RequirementStatusConstants.TO_DO,
                 "parentReqId": referringRequirement.id
             ]
             ref.setData(requirementData) { err in
@@ -267,7 +267,7 @@ class RequirementsStore: ObservableObject {
                 "id": ref.documentID,
                 "projectId": projectId,
                 "title": title,
-                "status": "To-Do"
+                "status": RequirementStatusConstants.TO_DO
             ]
             ref.setData(requirementData) { err in
                 if let err = err {

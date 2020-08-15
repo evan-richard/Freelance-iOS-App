@@ -12,34 +12,47 @@ import Combine
 
 class ProjectListViewModel: ObservableObject {
     @Published var projectCellViewModels = [ProjectCellViewModel]()
-    @Published var numberOfProjects: Int = 0
+    @Published var currentProjectName: String = "App Name"
+    @Published var currentProjectCustomer: String = "Customer's Name Inc."
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        let userId: String = self.appDelegate.sessionStore?.session?.id ?? ""
-        self.appDelegate.projectsStore = ProjectsStore(userId: userId)
-        
-        self.appDelegate.projectsStore!.$projects.map { projects in
-            self.numberOfProjects = projects.count
-            return projects.map { project in
-                ProjectCellViewModel(projectId: project.id, appName: project.appName, customerName: project.customerName)
+        self.appDelegate.sessionInitGroup.notify(queue: .main) {
+            self.setCurrentProject()
+            
+            self.appDelegate.projectsStore?.$projects.map { projects in
+                projects.map { project in
+                    ProjectCellViewModel(
+                        projectId: project.id,
+                        appName: project.appName,
+                        customerName: project.customerName
+                    )
+                }
             }
+            .assign(to: \.projectCellViewModels, on: self)
+            .store(in: &self.cancellables)
         }
-        .assign(to: \.projectCellViewModels, on: self)
-        .store(in: &cancellables)
     }
     
-    func setCurrentProject(projectId: String) {
-        if let currentProject: Project = self.appDelegate.projectsStore?.projects.first(where: { project in
-            project.id == projectId
-        }) {
-            self.appDelegate.projectsStore?.setCurrentProject(project: currentProject)
-            self.appDelegate.requirementsStore = RequirementsStore(projectId: projectId)
-            self.appDelegate.projectMembersStore = ProjectMembersStore(grantedUsers: currentProject.grantedUsers)
-            self.appDelegate.discussionsStore = DiscussionsStore(projectId: projectId)
+    func setCurrentProject(newProjectId: String = "") {
+        if newProjectId != "" {
+            self.appDelegate.sessionStore?.setLastProjectId(projectId: newProjectId)
         }
+        self.appDelegate.sessionStore?.$session.sink { session in
+            if let currentProjectId: String = session?.lastProjectId {
+                if let currentProject: Project = self.appDelegate.projectsStore?.projects.first(where: { project in
+                    project.id == currentProjectId
+                }) {
+                    self.currentProjectName = currentProject.appName
+                    self.currentProjectCustomer = currentProject.customerName
+                    self.appDelegate.projectsStore?.setCurrentProject(project: currentProject)
+                    self.appDelegate.projectMembersStore = ProjectMembersStore(grantedUsers: currentProject.grantedUsers)
+                }
+            }
+        }
+        .store(in: &cancellables)
     }
     
     func createProject(name: String, customer: String) {

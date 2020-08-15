@@ -9,30 +9,40 @@
 import SwiftUI
 
 struct OverviewView: View {
-    @ObservedObject var projectVM: ProjectViewModel = ProjectViewModel()
+    @ObservedObject var projectListVM: ProjectListViewModel = ProjectListViewModel()
     @State private var isShareSheetOpen: Bool = false
+    @State private var isProjectActionOpen: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ProjectDetailView(projectVM: projectVM)
-            Spacer()
-            NavigationListView()
-                .padding(.bottom, 20)
+        NavigationView {
+            ZStack {
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .center, spacing: 40) {
+                        OverviewHeaderView(
+                            isShareSheetOpen: $isShareSheetOpen,
+                            isProjectActionOpen: $isProjectActionOpen,
+                            appName: $projectListVM.currentProjectName,
+                            customerName: $projectListVM.currentProjectCustomer
+                        )
+                            .padding(.top, 50)
+                        WidgetListView()
+                    }
+                    .padding(.horizontal)
+                }
+                ProjectActionView(projectListVM: projectListVM, isProjectActionOpen: $isProjectActionOpen)
+            }
+            .sheet(isPresented: $isShareSheetOpen) {
+                ShareSheetView(activityItems: [
+                    self.projectListVM.currentProjectName,
+    //                URL(string: "freelanceapp:Invitee?projectId:\(self.projectVM.appName)")!
+                    URL(string: "https://google.com")!
+                ])
+            }
+            .navigationBarTitle("Overview")
+            .navigationBarHidden(true)
+            .padding(.vertical)
+            .edgesIgnoringSafeArea(.vertical)
         }
-        .sheet(isPresented: $isShareSheetOpen) {
-            ShareSheetView(activityItems: [
-                self.projectVM.appName,
-//                URL(string: "freelanceapp:Invitee?projectId:\(self.projectVM.appName)")!
-                URL(string: "https://google.com")!
-            ])
-        }
-        .navigationBarTitle("Overview", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: self.shareProjectAction) {
-            Image(systemName: "square.and.arrow.up")
-                .foregroundColor(ThemeConstants.ACCENT_COLOR)
-                .imageScale(.large)
-        })
-        .padding()
     }
     
     private func shareProjectAction() {

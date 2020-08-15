@@ -27,9 +27,9 @@ struct PickListView: View {
 struct PickListView_Previews: PreviewProvider {
     static var previews: some View {
         PickListView(selectedLabel: Binding.constant("In Progress"), optionList: [
-            PickListItem(label: "To-Do", icon: "person.circle"),
-            PickListItem(label: "In Progress", icon: "scribble"),
-            PickListItem(label: "Done", icon: "checkmark.circle")
+            PickListItem(label: RequirementStatusConstants.TO_DO, icon: "person.circle"),
+            PickListItem(label: RequirementStatusConstants.IN_PROGRESS, icon: "scribble"),
+            PickListItem(label: RequirementStatusConstants.DONE, icon: "checkmark.circle")
         ])
     }
 }

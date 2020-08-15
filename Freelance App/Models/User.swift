@@ -13,4 +13,5 @@ struct User: Identifiable, Codable {
     var email: String?
     var displayName: String?
     var type: String?
+    var lastProjectId: String?
 }

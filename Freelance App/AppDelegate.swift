@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var requirementsStore: RequirementsStore? = nil
     var projectMembersStore: ProjectMembersStore? = nil
     var discussionsStore: DiscussionsStore? = nil
+    
+    let sessionInitGroup: DispatchGroup = DispatchGroup()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        sessionInitGroup.enter()
         FirebaseApp.configure()
+        
         return true
     }
 

@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if (loginVM.isAuthenticated) {
-                ProjectsView()
+                OverviewView()
             } else {
                 LoginView(loginVM: loginVM)
             }

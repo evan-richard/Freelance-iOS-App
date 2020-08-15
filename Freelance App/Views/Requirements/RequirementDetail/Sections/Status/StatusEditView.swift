@@ -14,9 +14,9 @@ struct StatusEditView: View {
     @Binding var isEditOpen: Bool
     
     private let statusOptions: [PickListItem] = [
-        PickListItem(label: "To-Do", icon: "person.circle"),
-        PickListItem(label: "In Progress", icon: "scribble"),
-        PickListItem(label: "Done", icon: "checkmark.circle")
+        PickListItem(label: RequirementStatusConstants.TO_DO, icon: "person.circle"),
+        PickListItem(label: RequirementStatusConstants.IN_PROGRESS, icon: "scribble"),
+        PickListItem(label: RequirementStatusConstants.DONE, icon: "checkmark.circle")
     ]
     
     var body: some View {

@@ -20,8 +20,20 @@ class LoginViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.sessionStore = SessionStore()
-        initializeUserFromStore()
+        let asyncGroup: DispatchGroup = DispatchGroup()
+        asyncGroup.enter()
+
+        DispatchQueue.main.async {
+            self.appDelegate.sessionStore = SessionStore(dispatchGroup: asyncGroup)
+            self.initializeUserFromStore()
+        }
+
+        asyncGroup.notify(queue: .main) {
+            self.appDelegate.projectsStore = ProjectsStore(userId: self.appDelegate.sessionStore?.session?.id ?? "")
+            self.appDelegate.requirementsStore = RequirementsStore(projectId: self.appDelegate.sessionStore!.session?.lastProjectId ?? "")
+            self.appDelegate.discussionsStore = DiscussionsStore(projectId: self.appDelegate.sessionStore!.session?.lastProjectId ?? "")
+            self.appDelegate.sessionInitGroup.leave()
+        }
     }
     
     func signUp(

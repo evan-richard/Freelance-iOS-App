@@ -14,18 +14,22 @@ import Combine
 class SessionStore : ObservableObject {
     @Published var session: User?
     
+    var isFirstLogin: Bool
+    
     private let db = Firestore.firestore()
     var handle: AuthStateDidChangeListenerHandle?
     
-    init() {
+    init(dispatchGroup: DispatchGroup) {
+        self.isFirstLogin = true
         if CoreConstants.USE_FIRESTORE {
-            self.listen()
+            self.listen(dispatchGroup: dispatchGroup)
         } else {
             self.session = User(
                 id: "test1",
                 email: "test@email.com",
                 displayName: "John Doe"
             )
+            dispatchGroup.leave()
         }
     }
     
@@ -35,7 +39,7 @@ class SessionStore : ObservableObject {
         }
     }
 
-    func listen () {
+    func listen (dispatchGroup: DispatchGroup) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 self.session = User(
@@ -49,12 +53,18 @@ class SessionStore : ObservableObject {
                         if let data = querySnapshot?.data() {
                             self.session?.displayName = data["displayName"] as? String
                             self.session?.type = data["type"] as? String
+                            self.session?.lastProjectId = data["lastProjectId"] as? String
                         }
                         print("Welcome user: \(String(describing: self.session?.displayName))")
+                    }
+                    if self.isFirstLogin {
+                        dispatchGroup.leave()
+                        self.isFirstLogin = false
                     }
                 }
             } else {
                 self.session = nil
+                dispatchGroup.leave()
             }
         }
     }
@@ -88,6 +98,18 @@ class SessionStore : ObservableObject {
     func unbind () {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
+    func setLastProjectId(projectId: String) {
+        if let userId: String = self.session?.id {
+            self.db.collection("users").document(userId).updateData([
+                "lastProjectId": projectId
+            ]) { err in
+                if let err = err {
+                    print("Error updating last project id: \(err)")
+                }
+            }
         }
     }
 }

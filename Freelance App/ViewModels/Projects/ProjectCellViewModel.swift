@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class ProjectCellViewModel: ObservableObject, Identifiable  {
+class ProjectCellViewModel: ObservableObject, Identifiable {
     var id: UUID
     @Published var projectId: String = ""
     @Published var appName: String = ""
@@ -23,5 +23,4 @@ class ProjectCellViewModel: ObservableObject, Identifiable  {
         self.appName = appName
         self.customerName = customerName
     }
-    
 }
