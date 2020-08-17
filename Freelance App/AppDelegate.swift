@@ -13,19 +13,26 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var sessionStore: SessionStore? = nil
-    var projectsStore: ProjectsStore? = nil
-    var requirementsStore: RequirementsStore? = nil
-    var projectMembersStore: ProjectMembersStore? = nil
-    var discussionsStore: DiscussionsStore? = nil
+    var sessionStore: SessionStore
+    var projectsStore: ProjectsStore
+    var requirementsStore: RequirementsStore
+    var projectMembersStore: ProjectMembersStore
+    var discussionsStore: DiscussionsStore
     
-    let sessionInitGroup: DispatchGroup = DispatchGroup()
+    override init() {
+        FirebaseApp.configure()
+        
+        sessionStore = SessionStore()
+        projectsStore = ProjectsStore()
+        requirementsStore = RequirementsStore()
+        projectMembersStore = ProjectMembersStore()
+        discussionsStore = DiscussionsStore()
+        
+        sessionStore.loadSession()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        sessionInitGroup.enter()
-        FirebaseApp.configure()
-        
         return true
     }
 

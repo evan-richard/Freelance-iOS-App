@@ -26,7 +26,7 @@ class MessageViewModel: ObservableObject, Identifiable {
     
     init(messageId: String, text: String, authorId: String, author: String, timestamp: Timestamp) {
         id = UUID()
-        self.userId = self.appDelegate.sessionStore?.session?.id ?? ""
+        self.userId = self.appDelegate.sessionStore.session?.id ?? ""
         self.messageId = messageId
         self.text = text
         self.authorId = authorId
@@ -36,7 +36,7 @@ class MessageViewModel: ObservableObject, Identifiable {
     }
     
     func deleteMessage() {
-        self.appDelegate.discussionsStore?.deleteMessage(messageId: self.messageId)
+        self.appDelegate.discussionsStore.deleteMessage(messageId: self.messageId)
         self.text = "<Deleted>"
         self.author = "Anonymous"
         self.isDeleted = true

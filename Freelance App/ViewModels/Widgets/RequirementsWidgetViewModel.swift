@@ -20,28 +20,26 @@ class RequirementsWidgetViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.sessionInitGroup.notify(queue: .main) {
-            self.appDelegate.requirementsStore?.$requirements.sink { requirements in
-                self.resetCount()
-                requirements.forEach { requirement in
-                    self.totalNum += 1
-                    switch(requirement.status) {
-                        case RequirementStatusConstants.DONE:
-                            self.numOfDone += 1
-                            break
-                        case RequirementStatusConstants.IN_PROGRESS:
-                            self.numOfInProgress += 1
-                            break
-                        case RequirementStatusConstants.TO_DO:
-                            self.numOfToDo += 1
-                            break
-                        default:
-                            break
-                    }
+        self.appDelegate.requirementsStore.$requirements.sink { requirements in
+            self.resetCount()
+            requirements.forEach { requirement in
+                self.totalNum += 1
+                switch(requirement.status) {
+                    case RequirementStatusConstants.DONE:
+                        self.numOfDone += 1
+                        break
+                    case RequirementStatusConstants.IN_PROGRESS:
+                        self.numOfInProgress += 1
+                        break
+                    case RequirementStatusConstants.TO_DO:
+                        self.numOfToDo += 1
+                        break
+                    default:
+                        break
                 }
             }
-            .store(in: &self.cancellables)
         }
+        .store(in: &self.cancellables)
     }
     
     private func resetCount() {

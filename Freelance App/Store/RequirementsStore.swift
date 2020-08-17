@@ -16,10 +16,7 @@ class RequirementsStore: ObservableObject {
     @Published var selectedRequirement: Requirement? = nil
     
     private let db = Firestore.firestore()
-    
-    init(projectId: String) {
-        self.loadRequirementsList(projectId: projectId)
-    }
+    private var requirementsSnapshotListener: ListenerRegistration? = nil
     
     func updateRequirementAssignee(requirement: Requirement, assignee: User) {
         if CoreConstants.USE_FIRESTORE {
@@ -301,8 +298,12 @@ class RequirementsStore: ObservableObject {
     }
     
     func loadRequirementsList(projectId: String) -> Void {
+        if self.requirementsSnapshotListener != nil {
+            self.requirementsSnapshotListener?.remove()
+        }
+        
         if CoreConstants.USE_FIRESTORE {
-            db.collection("requirements").whereField("projectId", isEqualTo: projectId).addSnapshotListener { (querySnapshot, err) in
+            self.requirementsSnapshotListener = db.collection("requirements").whereField("projectId", isEqualTo: projectId).addSnapshotListener { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

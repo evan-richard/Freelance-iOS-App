@@ -15,15 +15,17 @@ class DiscussionsStore: ObservableObject {
     @Published var selectedDiscussion: Discussion? = nil
     
     private let db = Firestore.firestore()
-    
-    init(projectId: String) {
-        self.loadDiscussionsList(projectId: projectId)
-    }
+    private var discussionsSnapshotListener: ListenerRegistration? = nil
+    private var messagesSnapshotListener: ListenerRegistration? = nil
     
     func populateMessagesForDiscussion() {
+        if self.messagesSnapshotListener != nil {
+            self.messagesSnapshotListener?.remove()
+        }
+        
         if CoreConstants.USE_FIRESTORE {
             if let id: String = selectedDiscussion?.id {
-                db.collection("discussions").document(id).collection("messages").order(by: "timestamp").addSnapshotListener { (querySnapshot, err) in
+                self.messagesSnapshotListener = db.collection("discussions").document(id).collection("messages").order(by: "timestamp").addSnapshotListener { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
@@ -130,9 +132,13 @@ class DiscussionsStore: ObservableObject {
         }
     }
     
-    private func loadDiscussionsList(projectId: String) -> Void {
+    func loadDiscussionsList(projectId: String) -> Void {
+        if self.discussionsSnapshotListener != nil {
+            self.discussionsSnapshotListener?.remove()
+        }
+        
         if CoreConstants.USE_FIRESTORE {
-            db.collection("discussions").whereField("projectId", isEqualTo: projectId).order(by: "lastMessageTimestamp", descending: true).addSnapshotListener { (querySnapshot, err) in
+            self.discussionsSnapshotListener = db.collection("discussions").whereField("projectId", isEqualTo: projectId).order(by: "lastMessageTimestamp", descending: true).addSnapshotListener { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

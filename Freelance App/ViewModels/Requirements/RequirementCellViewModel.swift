@@ -44,13 +44,13 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
     }
     
     func setSeletectedRequirement() {
-        self.appDelegate.requirementsStore?.selectedRequirementPrefixedTitle = self.title
-        self.appDelegate.requirementsStore?.selectedRequirement = self.getRequirementFromTitle()
-        self.appDelegate.discussionsStore?.selectedDiscussion = self.appDelegate.discussionsStore?.discussions.first { discussion in
-            discussion.requirementId == self.appDelegate.requirementsStore?.selectedRequirement?.id ?? ""
+        self.appDelegate.requirementsStore.selectedRequirementPrefixedTitle = self.title
+        self.appDelegate.requirementsStore.selectedRequirement = self.getRequirementFromTitle()
+        self.appDelegate.discussionsStore.selectedDiscussion = self.appDelegate.discussionsStore.discussions.first { discussion in
+            discussion.requirementId == self.appDelegate.requirementsStore.selectedRequirement?.id ?? ""
         }
-        if self.appDelegate.discussionsStore?.selectedDiscussion != nil {
-            self.appDelegate.discussionsStore?.populateMessagesForDiscussion()
+        if self.appDelegate.discussionsStore.selectedDiscussion != nil {
+            self.appDelegate.discussionsStore.populateMessagesForDiscussion()
         }
     }
     
@@ -63,7 +63,7 @@ class RequirementCellViewModel: ObservableObject, Identifiable  {
     private func getRequirementFromTitle() -> Requirement? {
         let parsedTitle: String = self.getParsedTitle()
         
-        return self.appDelegate.requirementsStore?.requirements
+        return self.appDelegate.requirementsStore.requirements
             .first { requirement in
                 requirement.title == parsedTitle
             }

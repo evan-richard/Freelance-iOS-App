@@ -29,7 +29,7 @@ class DiscussionCellViewModel: ObservableObject, Identifiable  {
     }
     
     func setSelectedDiscussion() {
-        self.appDelegate.discussionsStore?.selectedDiscussion = self.appDelegate.discussionsStore?.discussions
+        self.appDelegate.discussionsStore.selectedDiscussion = self.appDelegate.discussionsStore.discussions
             .first { discussion in
                 discussion.id == self.discussionId
             }

@@ -14,39 +14,40 @@ import Combine
 class SessionStore : ObservableObject {
     @Published var session: User?
     
-    var isFirstLogin: Bool
-    
     private let db = Firestore.firestore()
+    private var userSnapshotListener: ListenerRegistration? = nil
     var handle: AuthStateDidChangeListenerHandle?
-    
-    init(dispatchGroup: DispatchGroup) {
-        self.isFirstLogin = true
-        if CoreConstants.USE_FIRESTORE {
-            self.listen(dispatchGroup: dispatchGroup)
-        } else {
-            self.session = User(
-                id: "test1",
-                email: "test@email.com",
-                displayName: "John Doe"
-            )
-            dispatchGroup.leave()
-        }
-    }
     
     deinit {
         if CoreConstants.USE_FIRESTORE {
             self.unbind()
         }
     }
+    
+    func loadSession() {
+        if CoreConstants.USE_FIRESTORE {
+            self.listen()
+        } else {
+            self.session = User(
+                id: "test1",
+                email: "test@email.com",
+                displayName: "John Doe"
+            )
+        }
+    }
 
-    func listen (dispatchGroup: DispatchGroup) {
+    func listen () {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if self.userSnapshotListener != nil {
+                self.userSnapshotListener?.remove()
+            }
+            
             if let user = user {
                 self.session = User(
                     id: user.uid,
                     email: user.email
                 )
-                self.db.collection("users").document(user.uid).addSnapshotListener { (querySnapshot, err) in
+                self.userSnapshotListener = self.db.collection("users").document(user.uid).addSnapshotListener { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
@@ -57,14 +58,9 @@ class SessionStore : ObservableObject {
                         }
                         print("Welcome user: \(String(describing: self.session?.displayName))")
                     }
-                    if self.isFirstLogin {
-                        dispatchGroup.leave()
-                        self.isFirstLogin = false
-                    }
                 }
             } else {
                 self.session = nil
-                dispatchGroup.leave()
             }
         }
     }

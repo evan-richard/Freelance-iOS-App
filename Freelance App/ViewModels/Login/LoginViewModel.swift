@@ -20,20 +20,19 @@ class LoginViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        let asyncGroup: DispatchGroup = DispatchGroup()
-        asyncGroup.enter()
-
-        DispatchQueue.main.async {
-            self.appDelegate.sessionStore = SessionStore(dispatchGroup: asyncGroup)
-            self.initializeUserFromStore()
+        self.appDelegate.sessionStore.$session.sink{ user in
+            if let authenticatedUser = user {
+                self.id = authenticatedUser.id
+                self.displayName = authenticatedUser.displayName
+                self.isAuthenticated = true
+                self.appDelegate.projectsStore.loadProjectsList(userId: authenticatedUser.id)
+            } else {
+                self.id = ""
+                self.displayName = nil
+                self.isAuthenticated = false
+            }
         }
-
-        asyncGroup.notify(queue: .main) {
-            self.appDelegate.projectsStore = ProjectsStore(userId: self.appDelegate.sessionStore?.session?.id ?? "")
-            self.appDelegate.requirementsStore = RequirementsStore(projectId: self.appDelegate.sessionStore!.session?.lastProjectId ?? "")
-            self.appDelegate.discussionsStore = DiscussionsStore(projectId: self.appDelegate.sessionStore!.session?.lastProjectId ?? "")
-            self.appDelegate.sessionInitGroup.leave()
-        }
+        .store(in: &cancellables)
     }
     
     func signUp(
@@ -41,7 +40,7 @@ class LoginViewModel: ObservableObject {
         password: String,
         handler: @escaping AuthDataResultCallback
     ) {
-        self.appDelegate.sessionStore?.signUp(email: email, password: password, handler: handler)
+        self.appDelegate.sessionStore.signUp(email: email, password: password, handler: handler)
     }
     
     func signIn(
@@ -49,23 +48,14 @@ class LoginViewModel: ObservableObject {
         password: String,
         handler: @escaping AuthDataResultCallback
     ) {
-        self.appDelegate.sessionStore?.signIn(email: email, password: password, handler: handler)
+        self.appDelegate.sessionStore.signIn(email: email, password: password, handler: handler)
     }
     
     func signOut () -> Bool {
-        let didSignOut: Bool = self.appDelegate.sessionStore?.signOut() ?? false
+        let didSignOut: Bool = self.appDelegate.sessionStore.signOut()
         if didSignOut {
             self.isAuthenticated = false
         }
         return didSignOut
-    }
-    
-    private func initializeUserFromStore() {
-        self.appDelegate.sessionStore?.$session.sink(receiveValue: { (user) in
-            self.id = user?.id ?? ""
-            self.displayName = user?.displayName
-            self.isAuthenticated = true
-        })
-        .store(in: &cancellables)
     }
 }

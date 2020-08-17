@@ -15,10 +15,7 @@ class ProjectsStore: ObservableObject {
     @Published var currentProject: Project? = nil
     
     private let db = Firestore.firestore()
-    
-    init(userId: String) {
-        self.loadProjectsList(userId: userId)
-    }
+    private var projectsSnapshotListener: ListenerRegistration? = nil
     
     func setCurrentProject(project: Project?) {
         self.currentProject = project
@@ -113,9 +110,13 @@ class ProjectsStore: ObservableObject {
         }
     }
     
-    private func loadProjectsList(userId: String) -> Void {
+    func loadProjectsList(userId: String) -> Void {
+        if self.projectsSnapshotListener != nil {
+            self.projectsSnapshotListener?.remove()
+        }
+        
         if CoreConstants.USE_FIRESTORE {
-            db.collection("projects").whereField("grantedUsers", arrayContains: userId).addSnapshotListener { (querySnapshot, err) in
+            self.projectsSnapshotListener = db.collection("projects").whereField("grantedUsers", arrayContains: userId).addSnapshotListener { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

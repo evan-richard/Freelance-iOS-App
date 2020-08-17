@@ -17,9 +17,9 @@ class RequirementListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.projectsStore?.$currentProject.sink { currentProject in
+        self.appDelegate.projectsStore.$currentProject.sink { currentProject in
             if let topLevelReqs = currentProject?.topLevelReqs {
-                self.appDelegate.requirementsStore?.$requirements.map { requirements in
+                self.appDelegate.requirementsStore.$requirements.map { requirements in
                     self.flattenRequirementTitles(requirements: requirements, orderOfIds: topLevelReqs).map { requirementTitle in
                         RequirementCellViewModel(title: requirementTitle)
                     }
@@ -40,38 +40,38 @@ class RequirementListViewModel: ObservableObject {
     
     func insertRequirement(isInsertBefore: Bool, title: String) {
         if title != "" {
-            if let requirement: Requirement = self.appDelegate.requirementsStore?.selectedRequirement {
-                self.appDelegate.requirementsStore?.insertRequirement(isInsertBefore: isInsertBefore, title: title, referringRequirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
+            if let requirement: Requirement = self.appDelegate.requirementsStore.selectedRequirement {
+                self.appDelegate.requirementsStore.insertRequirement(isInsertBefore: isInsertBefore, title: title, referringRequirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore.currentProject?.topLevelReqs)
             }
         }
     }
     
     func addChildRequirement(title: String) {
         if title != "" {
-            if let requirement: Requirement = self.appDelegate.requirementsStore?.selectedRequirement {
-                self.appDelegate.requirementsStore?.addChildRequirement(referringRequirement: requirement, title: title)
+            if let requirement: Requirement = self.appDelegate.requirementsStore.selectedRequirement {
+                self.appDelegate.requirementsStore.addChildRequirement(referringRequirement: requirement, title: title)
             }
         }
     }
     
     func renameRequirement(title: String) {
         if title != "" {
-            if let requirement: Requirement = self.appDelegate.requirementsStore?.selectedRequirement {
-                self.appDelegate.requirementsStore?.renameRequirement(requirement: requirement, title: title)
+            if let requirement: Requirement = self.appDelegate.requirementsStore.selectedRequirement {
+                self.appDelegate.requirementsStore.renameRequirement(requirement: requirement, title: title)
             }
         }
     }
     
     func deleteRequirement() {
-        if let requirement: Requirement = self.appDelegate.requirementsStore?.selectedRequirement {
-            self.appDelegate.requirementsStore?.deleteRequirement(requirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore?.currentProject?.topLevelReqs)
+        if let requirement: Requirement = self.appDelegate.requirementsStore.selectedRequirement {
+            self.appDelegate.requirementsStore.deleteRequirement(requirement: requirement, existingTopLevelReqs: self.appDelegate.projectsStore.currentProject?.topLevelReqs)
         }
     }
     
     func createRequirement(title: String) {
         if title != "" {
-            if let projectId: String = self.appDelegate.projectsStore?.currentProject?.id {
-                self.appDelegate.requirementsStore?.createRequirement(title: title, projectId: projectId)
+            if let projectId: String = self.appDelegate.projectsStore.currentProject?.id {
+                self.appDelegate.requirementsStore.createRequirement(title: title, projectId: projectId)
             }
         }
     }

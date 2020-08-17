@@ -14,14 +14,15 @@ class ProjectMembersStore: ObservableObject {
     @Published var projectMembers: [User] = [User]()
     
     private let db = Firestore.firestore()
+    private var projectMembersSnapshotListener: ListenerRegistration? = nil
     
-    init(grantedUsers: [String]) {
-        self.loadProjectMembersList(grantedUsers: grantedUsers)
-    }
-    
-    private func loadProjectMembersList(grantedUsers: [String]) -> Void {
+    func loadProjectMembersList(grantedUsers: [String]) -> Void {
+        if self.projectMembersSnapshotListener != nil {
+            self.projectMembersSnapshotListener?.remove()
+        }
+        
         if CoreConstants.USE_FIRESTORE {
-            db.collection("users").whereField("id", in: grantedUsers).addSnapshotListener { (querySnapshot, err) in
+            self.projectMembersSnapshotListener = db.collection("users").whereField("id", in: grantedUsers).addSnapshotListener { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {

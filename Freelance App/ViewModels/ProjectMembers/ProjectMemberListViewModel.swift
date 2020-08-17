@@ -18,7 +18,7 @@ class ProjectMemberListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.projectMembersStore?.$projectMembers
+        self.appDelegate.projectMembersStore.$projectMembers
             .map { projectMembers in
                 projectMembers.map { projectMember in
                     ProjectMemberCellViewModel(

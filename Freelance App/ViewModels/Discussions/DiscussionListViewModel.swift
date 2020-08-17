@@ -17,7 +17,7 @@ class DiscussionListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.discussionsStore?.$discussions
+        self.appDelegate.discussionsStore.$discussions
             .map { discussions in
                 discussions.map { discussion in
                     DiscussionCellViewModel(
@@ -33,6 +33,6 @@ class DiscussionListViewModel: ObservableObject {
     }
     
     func populateMessagesForDiscussion() {
-        self.appDelegate.discussionsStore?.populateMessagesForDiscussion()
+        self.appDelegate.discussionsStore.populateMessagesForDiscussion()
     }
 }

@@ -18,14 +18,15 @@ class DiscussionsWidgetViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.appDelegate.sessionInitGroup.notify(queue: .main) {
-            self.appDelegate.discussionsStore?.$discussions.sink { discussions in
-                if discussions.count > 0 {
-                    self.lastMessageText = discussions[0].lastMessageText
-                    self.lastMessageAuthor = discussions[0].lastMessageAuthor
-                }
+        self.appDelegate.discussionsStore.$discussions.sink { discussions in
+            self.lastMessageText = ""
+            self.lastMessageAuthor = ""
+            
+            if discussions.count > 0 {
+                self.lastMessageText = discussions[0].lastMessageText
+                self.lastMessageAuthor = discussions[0].lastMessageAuthor
             }
-            .store(in: &self.cancellables)
         }
+        .store(in: &self.cancellables)
     }
 }
