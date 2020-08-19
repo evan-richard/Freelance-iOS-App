@@ -25,6 +25,9 @@ struct DiscussionsView: View {
         }
         .navigationBarTitle("Discussion", displayMode: .large)
         .padding()
+        .padding(.bottom, 20)
+        .background(Color(.secondarySystemBackground))
+        .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isMessagesSheetOpen) {
             MessagesView(isMessagesSheetOpen: self.$isMessagesSheetOpen)
         }

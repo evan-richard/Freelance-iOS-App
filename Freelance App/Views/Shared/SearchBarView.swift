@@ -27,7 +27,7 @@ struct SearchBarView: View {
                 }
             }
             .padding(7)
-            .background(Color(.secondarySystemBackground))
+            .background(Color(.systemBackground))
             .cornerRadius(8)
             .onTapGesture {
                 withAnimation {

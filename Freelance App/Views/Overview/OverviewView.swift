@@ -41,7 +41,8 @@ struct OverviewView: View {
             .navigationBarTitle("Overview")
             .navigationBarHidden(true)
             .padding(.vertical)
-            .edgesIgnoringSafeArea(.vertical)
+            .background(Color(.secondarySystemBackground))
+            .edgesIgnoringSafeArea(.all)
         }
     }
     

@@ -92,6 +92,7 @@
 		20B7C7C424AFC5AF0098BBF6 /* Freelance_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7C324AFC5AF0098BBF6 /* Freelance_AppUITests.swift */; };
 		20B7C7D424AFC86C0098BBF6 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7D324AFC86C0098BBF6 /* SearchBarView.swift */; };
 		20B7C7DC24AFD1330098BBF6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7DB24AFD1330098BBF6 /* Project.swift */; };
+		20C4740124EC8FD300A9BB6E /* CreateProjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4740024EC8FD300A9BB6E /* CreateProjectButtonView.swift */; };
 		20C4844524E5FE4100118AB2 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844424E5FE4100118AB2 /* PieChartView.swift */; };
 		20C4844724E5FEA400118AB2 /* PieChartSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844624E5FEA400118AB2 /* PieChartSliceView.swift */; };
 		20C4844A24E600D300118AB2 /* PieChartSliceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844924E600D300118AB2 /* PieChartSliceViewModel.swift */; };
@@ -232,6 +233,7 @@
 		20B7C7C524AFC5AF0098BBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B7C7D324AFC86C0098BBF6 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		20B7C7DB24AFD1330098BBF6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		20C4740024EC8FD300A9BB6E /* CreateProjectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectButtonView.swift; sourceTree = "<group>"; };
 		20C4844424E5FE4100118AB2 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		20C4844624E5FEA400118AB2 /* PieChartSliceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSliceView.swift; sourceTree = "<group>"; };
 		20C4844924E600D300118AB2 /* PieChartSliceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSliceViewModel.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				20C4845324E6190C00118AB2 /* ProjectActionView.swift */,
 				20C4845724E71D1F00118AB2 /* ProjectListView.swift */,
 				20C4845924E71DAA00118AB2 /* ProjectListCellView.swift */,
+				20C4740024EC8FD300A9BB6E /* CreateProjectButtonView.swift */,
 			);
 			path = ProjectActionView;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				201DBADC24DE2062005072C7 /* ShareSheetView.swift in Sources */,
 				20C4845824E71D1F00118AB2 /* ProjectListView.swift in Sources */,
 				20FCE46224B0D6B400D2C270 /* Requirement.swift in Sources */,
+				20C4740124EC8FD300A9BB6E /* CreateProjectButtonView.swift in Sources */,
 				20A5EC9424C8A4EE00CEB744 /* MessageViewModel.swift in Sources */,
 				20B7C79F24AFC5AB0098BBF6 /* AppDelegate.swift in Sources */,
 				207F4FB824B757920044E1B7 /* RequirementDetailViewModel.swift in Sources */,

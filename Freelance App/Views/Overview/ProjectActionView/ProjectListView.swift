@@ -21,10 +21,9 @@ struct ProjectListView: View {
                 selectAction: self.setCurrentProjectAction
             )
         }
-        .listRowBackground(Color(.secondarySystemBackground))
-        .frame(width: 250, height: self.isProjectActionOpen ? 230 : 0)
-        .cornerRadius(20)
-        .animation(Animation.linear(duration: 0.2).delay(self.isProjectActionOpen ? 0.3 : 0))
+        .frame(width: 270, height: self.isProjectActionOpen ? 230 : 0)
+        .cornerRadius(10)
+        .animation(Animation.linear(duration: 0.2).delay(self.isProjectActionOpen ? 0.15 : 0))
     }
     
     private func setCurrentProjectAction() {

@@ -32,6 +32,7 @@ struct DiscussionsWidgetView: View {
                     DiscussionThemeConstants.SECONDARY_ACCENT_COLOR
                 )
                 .cornerRadius(20)
+                .shadow(radius: 2)
             }
             .padding()
             .foregroundColor(DiscussionThemeConstants.ACCENT_COLOR_FOREGROUND)

@@ -13,10 +13,10 @@ struct RadialGradientStyle: View {
     
     var body: some View {
         RadialGradient(
-            gradient: Gradient(colors: [accentColor, .white]),
+            gradient: Gradient(colors: [accentColor, Color(red: 245/255, green: 245/255, blue: 245/255)]),
             center: .center,
             startRadius: 2,
-            endRadius: 650
+            endRadius: 750
         )
     }
 }

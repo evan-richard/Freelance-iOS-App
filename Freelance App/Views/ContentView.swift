@@ -19,6 +19,11 @@ struct ContentView: View {
                 LoginView(loginVM: loginVM)
             }
         }
+        .onAppear {
+            UINavigationBar.appearance().backgroundColor = .secondarySystemBackground
+            UITableView.appearance().backgroundColor = .secondarySystemBackground
+            UITableViewCell.appearance().backgroundColor = .secondarySystemBackground
+        }
     }
 }
 

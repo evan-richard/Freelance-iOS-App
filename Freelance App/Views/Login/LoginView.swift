@@ -48,6 +48,8 @@ struct LoginView: View {
         }
         .padding()
         .padding(.horizontal, 40)
+        .background(Color(.secondarySystemBackground))
+        .edgesIgnoringSafeArea(.all)
     }
     
     private func signIn () {

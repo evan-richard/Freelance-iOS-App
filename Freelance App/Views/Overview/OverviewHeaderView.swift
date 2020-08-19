@@ -19,11 +19,13 @@ struct OverviewHeaderView: View {
             HStack {
                 Button(action: self.openShareSheet) {
                     IconConstants.SHARE
-                        .padding(20)
+                        .imageScale(.large)
+                        .frame(maxWidth: 60, maxHeight: 60)
                         .offset(y: -3)
-                        .background(Color(.secondarySystemBackground))
+                        .background(Color(.systemGray4))
                         .cornerRadius(100)
                 }
+                .shadow(radius: 5)
                 Spacer()
             }
             ProjectPickerView(

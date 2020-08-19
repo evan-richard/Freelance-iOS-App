@@ -16,6 +16,7 @@ struct RequirementsWidgetView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text(OverviewNavLinkConstants.REQUIREMENTS)
                     .font(.title)
+                    .shadow(radius: 5)
                 HStack(alignment: .center, spacing: 0) {
                     if requirementsWidgetVM.totalNum > 0 {
                         PieChartView(pieChartVM: PieChartViewModel(data: [
@@ -35,6 +36,7 @@ struct RequirementsWidgetView: View {
                                 color: RequirementThemeConstants.STATUS_TO_DO_COLOR
                             )
                         ]))
+                            .shadow(radius: 5)
                             .padding(.leading, 20)
                             .padding(.top, 8)
                         VStack(alignment: .leading, spacing: 10) {
@@ -48,6 +50,7 @@ struct RequirementsWidgetView: View {
                             RequirementThemeConstants.SECONDARY_ACCENT_COLOR
                         )
                         .cornerRadius(20)
+                        .shadow(radius: 2)
                     }
                 }
                 .frame(maxWidth: .greatestFiniteMagnitude)

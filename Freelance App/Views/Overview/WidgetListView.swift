@@ -12,8 +12,11 @@ struct WidgetListView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
             RequirementsWidgetView()
+                .shadow(radius: 5)
             DiscussionsWidgetView()
+                .shadow(radius: 5)
             TimesheetWidgetView()
+                .shadow(radius: 5)
         }
     }
 }

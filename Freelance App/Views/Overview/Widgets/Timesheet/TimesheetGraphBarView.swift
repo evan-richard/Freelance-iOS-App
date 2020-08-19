@@ -28,6 +28,7 @@ struct TimesheetGraphBarView: View {
         .foregroundColor(TimesheetThemeConstants.ACCENT_COLOR_FOREGROUND)
         .background(TimesheetThemeConstants.SECONDARY_ACCENT_COLOR)
         .cornerRadius(20)
+        .shadow(radius: 2)
     }
 }
 

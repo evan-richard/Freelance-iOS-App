@@ -73,6 +73,8 @@ struct RequirementsView: View {
                     ))
             )
         )
+        .background(Color(.secondarySystemBackground))
+        .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: self.$isRequirementDetailOpen, content: {
             RequirementDetailView(isRequirementDetailViewOpen: self.$isRequirementDetailOpen)
         })
