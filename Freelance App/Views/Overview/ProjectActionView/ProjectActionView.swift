@@ -68,9 +68,9 @@ struct ProjectActionView: View {
         .edgesIgnoringSafeArea(.all)
         .opacity(self.isProjectActionOpen ? 1.0 : 0.0)
         .animation(Animation.default.delay(self.isProjectActionOpen ? 0.0 : 0.15))
-//        .onTapGesture {
-//            self.isProjectActionOpen.toggle()
-//        }
+        .onTapGesture {
+            self.isProjectActionOpen.toggle()
+        }
     }
     
     private func createProjectAction() {

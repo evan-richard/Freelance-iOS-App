@@ -16,14 +16,17 @@ struct DiscussionsListView: View {
     var selectAction: () -> Void
     
     var body: some View {
-        List(discussionListVM.discussionCellViewModels.filter({ discussionCellVM in
-            if searchString != "" {
-                return discussionCellVM.title.lowercased().contains(searchString.lowercased()) || discussionCellVM.lastMessageAuthor.lowercased().contains(searchString.lowercased()) || discussionCellVM.lastMessageText.lowercased().contains(searchString.lowercased())
-            } else {
-                return true
+        List {
+            ForEach(discussionListVM.discussionCellViewModels.filter({ discussionCellVM in
+                if searchString != "" {
+                    return discussionCellVM.title.lowercased().contains(searchString.lowercased()) || discussionCellVM.lastMessageAuthor.lowercased().contains(searchString.lowercased()) || discussionCellVM.lastMessageText.lowercased().contains(searchString.lowercased())
+                } else {
+                    return true
+                }
+            })) { discussionCellVM in
+                DiscussionsListCellView(discussionCellVM: discussionCellVM, isMessagesSheetOpen: self.$isMessagesSheetOpen, selectAction: self.selectAction)
             }
-        })) { discussionCellVM in
-            DiscussionsListCellView(discussionCellVM: discussionCellVM, isMessagesSheetOpen: self.$isMessagesSheetOpen, selectAction: self.selectAction)
+            .listRowBackground(Color(.secondarySystemBackground))
         }
     }
 }

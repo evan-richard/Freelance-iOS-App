@@ -33,7 +33,12 @@ struct OverviewView: View {
                     }
                     .padding(.horizontal)
                 }
-                ProjectActionView(projectListVM: projectListVM, isProjectActionOpen: $isProjectActionOpen, isPopupViewOpen: $isPopupViewOpen, projectAction: $projectAction)
+                ProjectActionView(
+                    projectListVM: projectListVM,
+                    isProjectActionOpen: $isProjectActionOpen,
+                    isPopupViewOpen: $isPopupViewOpen,
+                    projectAction: $projectAction
+                )
             }
             .sheet(isPresented: $isShareSheetOpen) {
                 ShareSheetView(activityItems: [
@@ -83,7 +88,6 @@ struct OverviewView: View {
                     confirmAction: self.deleteProjectAction
                 ))
             case ProjectMenuActionConstants.RENAME:
-                self.newProjectTitle = self.projectListVM.currentProjectName
                 return AnyView(TitleConfirmationView(
                     isOpen: $isPopupViewOpen,
                     text: $newProjectTitle,
