@@ -10,9 +10,10 @@ import SwiftUI
 
 struct CreateProjectButtonView: View {
     var isProjectActionOpen: Bool
+    var createProjectAction: () -> Void
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: createProjectAction) {
             ZStack {
                 Rectangle()
                     .fill(Color(.systemGreen))
@@ -31,6 +32,6 @@ struct CreateProjectButtonView: View {
 
 struct CreateProjectButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateProjectButtonView(isProjectActionOpen: true)
+        CreateProjectButtonView(isProjectActionOpen: true, createProjectAction: {})
     }
 }

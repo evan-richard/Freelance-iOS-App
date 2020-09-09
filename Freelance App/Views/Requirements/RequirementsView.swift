@@ -20,25 +20,25 @@ struct RequirementsView: View {
     var body: some View {
         VStack {
             if (requirementListVM.requirementCellViewModels.count > 0) {
-                    if isSearching {
-                        SearchBarView(searchString: $searchString, isSearching: $isSearching)
-                    }
-                    RequirementsListView(
-                        requirementListVM: requirementListVM,
-                        searchString: $searchString,
-                        isRequirementDetailOpen: $isRequirementDetailOpen,
-                        isPopupViewOpen: $isPopupViewOpen,
-                        contextMenuAction: $contextMenuAction,
-                        requirementTitle: $popupTextFieldText
-                    )
-                } else {
-                    Spacer()
-                    EmptyRequirmentListView(
-                        isPopupViewOpen: $isPopupViewOpen,
-                        contextMenuAction: $contextMenuAction
-                    )
-                    Spacer()
+                if isSearching {
+                    SearchBarView(searchString: $searchString, isSearching: $isSearching)
                 }
+                RequirementsListView(
+                    requirementListVM: requirementListVM,
+                    searchString: $searchString,
+                    isRequirementDetailOpen: $isRequirementDetailOpen,
+                    isPopupViewOpen: $isPopupViewOpen,
+                    contextMenuAction: $contextMenuAction,
+                    requirementTitle: $popupTextFieldText
+                )
+            } else {
+                Spacer()
+                EmptyRequirmentListView(
+                    isPopupViewOpen: $isPopupViewOpen,
+                    contextMenuAction: $contextMenuAction
+                )
+                Spacer()
+            }
         }
         .navigationBarTitle("Requirements", displayMode: isSearching ? .inline : .large)
         .navigationBarItems(trailing:

@@ -12,6 +12,7 @@ import Combine
 
 class ProjectListViewModel: ObservableObject {
     @Published var projectCellViewModels = [ProjectCellViewModel]()
+    @Published var currentProjectId: String = ""
     @Published var currentProjectName: String = "App Name"
     @Published var currentProjectCustomer: String = "Customer's Name Inc."
     
@@ -21,6 +22,7 @@ class ProjectListViewModel: ObservableObject {
     init() {
         self.appDelegate.projectsStore.$currentProject.sink { currentProject in
             if let project = currentProject {
+                self.currentProjectId = project.id
                 self.currentProjectName = project.appName
                 self.currentProjectCustomer = project.customerName
                 self.appDelegate.requirementsStore.loadRequirementsList(projectId: project.id)
@@ -77,18 +79,18 @@ class ProjectListViewModel: ObservableObject {
         }
     }
     
-    func renameProject(projectId: String, name: String) {
+    func renameProject(name: String) {
         if (name != "") {
             self.appDelegate.projectsStore.renameProject(
-                projectId: projectId,
+                projectId: self.currentProjectId,
                 name: name
             )
         }
     }
     
-    func deleteProject(projectId: String) {
+    func deleteProject() {
         self.appDelegate.projectsStore.deleteProject(
-            projectId: projectId
+            projectId: self.currentProjectId
         )
     }
 }

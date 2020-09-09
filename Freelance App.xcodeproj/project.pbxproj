@@ -93,6 +93,7 @@
 		20B7C7D424AFC86C0098BBF6 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7D324AFC86C0098BBF6 /* SearchBarView.swift */; };
 		20B7C7DC24AFD1330098BBF6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C7DB24AFD1330098BBF6 /* Project.swift */; };
 		20C4740124EC8FD300A9BB6E /* CreateProjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4740024EC8FD300A9BB6E /* CreateProjectButtonView.swift */; };
+		20C4740524F1991900A9BB6E /* CreateProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4740424F1991900A9BB6E /* CreateProjectView.swift */; };
 		20C4844524E5FE4100118AB2 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844424E5FE4100118AB2 /* PieChartView.swift */; };
 		20C4844724E5FEA400118AB2 /* PieChartSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844624E5FEA400118AB2 /* PieChartSliceView.swift */; };
 		20C4844A24E600D300118AB2 /* PieChartSliceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4844924E600D300118AB2 /* PieChartSliceViewModel.swift */; };
@@ -105,7 +106,7 @@
 		20C4845A24E71DAA00118AB2 /* ProjectListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4845924E71DAA00118AB2 /* ProjectListCellView.swift */; };
 		20C4845C24E71FE600118AB2 /* OverviewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C4845B24E71FE600118AB2 /* OverviewHeaderView.swift */; };
 		20CA25AC24CBDA9400448A06 /* PopupOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CA25AB24CBDA9400448A06 /* PopupOverlayModifier.swift */; };
-		20CA25AF24CBE00300448A06 /* OpaqueRoundedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CA25AE24CBE00300448A06 /* OpaqueRoundedTextFieldStyle.swift */; };
+		20CA25AF24CBE00300448A06 /* ReplyTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CA25AE24CBE00300448A06 /* ReplyTextFieldStyle.swift */; };
 		20CA25B124CBEA0600448A06 /* LargeTextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CA25B024CBEA0600448A06 /* LargeTextButtonView.swift */; };
 		20EDFF9724C1FF2700A56DCC /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EDFF9624C1FF2700A56DCC /* FeaturesView.swift */; };
 		20EDFF9924C201D500A56DCC /* FeaturesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EDFF9824C201D500A56DCC /* FeaturesListView.swift */; };
@@ -234,6 +235,7 @@
 		20B7C7D324AFC86C0098BBF6 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		20B7C7DB24AFD1330098BBF6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		20C4740024EC8FD300A9BB6E /* CreateProjectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectButtonView.swift; sourceTree = "<group>"; };
+		20C4740424F1991900A9BB6E /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
 		20C4844424E5FE4100118AB2 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		20C4844624E5FEA400118AB2 /* PieChartSliceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSliceView.swift; sourceTree = "<group>"; };
 		20C4844924E600D300118AB2 /* PieChartSliceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSliceViewModel.swift; sourceTree = "<group>"; };
@@ -246,7 +248,7 @@
 		20C4845924E71DAA00118AB2 /* ProjectListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCellView.swift; sourceTree = "<group>"; };
 		20C4845B24E71FE600118AB2 /* OverviewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewHeaderView.swift; sourceTree = "<group>"; };
 		20CA25AB24CBDA9400448A06 /* PopupOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupOverlayModifier.swift; sourceTree = "<group>"; };
-		20CA25AE24CBE00300448A06 /* OpaqueRoundedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueRoundedTextFieldStyle.swift; sourceTree = "<group>"; };
+		20CA25AE24CBE00300448A06 /* ReplyTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTextFieldStyle.swift; sourceTree = "<group>"; };
 		20CA25B024CBEA0600448A06 /* LargeTextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextButtonView.swift; sourceTree = "<group>"; };
 		20EDFF9624C1FF2700A56DCC /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
 		20EDFF9824C201D500A56DCC /* FeaturesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesListView.swift; sourceTree = "<group>"; };
@@ -712,7 +714,7 @@
 		20CA25AD24CBDFD300448A06 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				20CA25AE24CBE00300448A06 /* OpaqueRoundedTextFieldStyle.swift */,
+				20CA25AE24CBE00300448A06 /* ReplyTextFieldStyle.swift */,
 				202BACB524DFA11100889894 /* RadialGradientStyle.swift */,
 				20C4845524E6274800118AB2 /* BlurStyle.swift */,
 			);
@@ -741,6 +743,7 @@
 				20C4845B24E71FE600118AB2 /* OverviewHeaderView.swift */,
 				201DBAEB24DF6CA5005072C7 /* ProjectPickerView.swift */,
 				201DBAE924DF6B83005072C7 /* WidgetListView.swift */,
+				20C4740424F1991900A9BB6E /* CreateProjectView.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1076,7 +1079,7 @@
 				20A5EC9024C8A41E00CEB744 /* MessagesHeaderView.swift in Sources */,
 				207F4FBD24B7DA370044E1B7 /* DismissKeyboardHelper.swift in Sources */,
 				20A5EC8324C7C39900CEB744 /* Discussion.swift in Sources */,
-				20CA25AF24CBE00300448A06 /* OpaqueRoundedTextFieldStyle.swift in Sources */,
+				20CA25AF24CBE00300448A06 /* ReplyTextFieldStyle.swift in Sources */,
 				202BACB924DFAD4400889894 /* RequirementsWidgetViewModel.swift in Sources */,
 				208A9E2024C33E01000D07BD /* FeaturesEditListView.swift in Sources */,
 				20CA25B124CBEA0600448A06 /* LargeTextButtonView.swift in Sources */,
@@ -1120,6 +1123,7 @@
 				201DBAE324DF62E8005072C7 /* TimesheetWidgetView.swift in Sources */,
 				207F4FC824BB73760044E1B7 /* RequirementDetailTitleBarView.swift in Sources */,
 				2093C38824B6C189001C6C5F /* RequirementListViewModel.swift in Sources */,
+				20C4740524F1991900A9BB6E /* CreateProjectView.swift in Sources */,
 				2023F0EA24CF2B0300C2BCF9 /* CommentsView.swift in Sources */,
 				206FBDC724CA39D400826022 /* ReplyTextFieldView.swift in Sources */,
 				20A5EC8924C7C4B600CEB744 /* DiscussionCellViewModel.swift in Sources */,
@@ -1231,7 +1235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1285,7 +1289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -21,6 +21,7 @@ struct MessagesListItemView: View {
                 Text(messageVM.author)
             }
             .foregroundColor(.secondary)
+            .font(.system(size: 14))
         }
         .padding()
         .background(Color(.secondarySystemBackground))

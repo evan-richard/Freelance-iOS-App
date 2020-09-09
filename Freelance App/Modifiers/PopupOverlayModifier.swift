@@ -34,6 +34,7 @@ struct PopUpOverlayModifier: ViewModifier {
                             .frame(height: geometry.size.height, alignment: .top)
                             .offset(y: self.isOpen ? -30 : -geometry.size.height)
                             .animation(Animation.easeInOut(duration: 0.6))
+                            .shadow(radius: 5)
                     }
                 }
                 .edgesIgnoringSafeArea(.all)

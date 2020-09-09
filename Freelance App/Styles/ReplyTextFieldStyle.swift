@@ -9,13 +9,15 @@
 import SwiftUI
 
 public struct ReplyTextFieldStyle : TextFieldStyle {
+    var isError: Bool = false
+    
     public func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 5)
                     .strokeBorder(
-                        Color.secondary.opacity(0.5), lineWidth: 1
+                        isError ? ThemeConstants.DANGER_COLOR.opacity(0.5) : Color.secondary.opacity(0.5), lineWidth: 1
                     )
             )
     }

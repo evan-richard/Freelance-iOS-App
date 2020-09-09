@@ -38,9 +38,10 @@ class LoginViewModel: ObservableObject {
     func signUp(
         email: String,
         password: String,
+        name: String,
         handler: @escaping AuthDataResultCallback
     ) {
-        self.appDelegate.sessionStore.signUp(email: email, password: password, handler: handler)
+        self.appDelegate.sessionStore.signUp(email: email, password: password, name: name, handler: handler)
     }
     
     func signIn(
